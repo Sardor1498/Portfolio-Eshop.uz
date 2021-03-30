@@ -39,7 +39,7 @@ const Notebooks = props => {
                 )}
             </div>
             <hr/>
-            <div className="grid mt-2 grid-cols-6 gap-4">
+            <div className="grid md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-8 gap-4 m-2">
                 {brand.currentBrand !== ""
                     ? props.products.map((product, index) =>
                         brand.currentBrand === product.brandName ? (

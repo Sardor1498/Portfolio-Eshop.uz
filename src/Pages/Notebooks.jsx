@@ -46,7 +46,7 @@ const Notebooks = props => {
                             <div className="text-red-500" key={index}>
                                 <RecipeReviewCard
                                     productsIsLoaded={props.productsIsLoaded}
-                                    data ={product}
+                                    data={product}
                                 />
                             </div>
                         ) : null

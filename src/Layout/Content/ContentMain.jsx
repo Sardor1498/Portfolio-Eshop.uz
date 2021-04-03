@@ -13,6 +13,7 @@ import Test from '../../Pages/Test/Test';
 import AddCategory from '../../Pages/AddCategory';
 import AddCatalog from '../../Pages/AddCatalog';
 import AddBrand from '../../Pages/AddBrand';
+import Add from '../../Pages/Add';
 
 const ContentMain = (props) => {
     return (
@@ -94,6 +95,18 @@ const ContentMain = (props) => {
                 <Route path="/test">
                     <Content />
                     <Test />
+                </Route>
+                <Route path="/add">
+                    <Content />
+                    <Add 
+                        createProduct={props.data.createProduct}
+                        createBrand={props.data.createBrand}
+                        createCategory={props.data.createCategory}
+                        createCatalogs={props.data.createCatalogs}
+                        categories={props.data.categories}
+                        catalogs={props.data.catalogs}
+                        brands={props.data.brands}
+                    />
                 </Route>
             </Switch>
         </div>

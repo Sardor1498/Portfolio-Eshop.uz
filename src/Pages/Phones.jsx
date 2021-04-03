@@ -36,7 +36,7 @@ const Phones = props => {
             <div className="grid md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-8 gap-4 m-2">
                 {brand.currentBrand !== ""
                     ? props.products.map((product, index) =>
-                        brand.currentBrand === product.brandName ? (
+                        brand.currentBrand === product.brandName && product.categoryId === 1 ? (
                             <div className="text-red-500" key={index}>
                                 <RecipeReviewCard
                                     productsIsLoaded={props.productsIsLoaded}
@@ -44,8 +44,8 @@ const Phones = props => {
                                 />
                             </div>
                         ) : null
-                        )
-                    : null}
+                    )
+                : null}
             </div>
         </>
     );

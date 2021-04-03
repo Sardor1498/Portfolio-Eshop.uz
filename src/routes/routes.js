@@ -45,4 +45,8 @@ export const routes = [
         title: "Test",
         url: "test"
     },
+    {
+        title: "Add",
+        url: "add"
+    },
 ];

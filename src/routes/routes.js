@@ -29,18 +29,18 @@ export const routes = [
     //     title: "Спорт товары",
     //     url: "sports"
     // },
-    {
-        title: "Добавить продукт",
-        url: "addproduct"
-    },
-    {
-        title: "Добавить категорию",
-        url: "addcategory"
-    },
-    {
-        title: "Добавить каталог",
-        url: "addcatalog"
-    },
+    // {
+    //     title: "Добавить продукт",
+    //     url: "addproduct"
+    // },
+    // {
+    //     title: "Добавить категорию",
+    //     url: "addcategory"
+    // },
+    // {
+    //     title: "Добавить каталог",
+    //     url: "addcatalog"
+    // },
     {
         title: "Test",
         url: "test"

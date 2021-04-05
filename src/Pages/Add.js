@@ -8,7 +8,7 @@ import AddCatalog from './AddCatalog';
 const Add = (props) => {
     return (
         <>
-            <div className="flex justify-center mt-3">
+            <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 mt-3">
                 <div>
                     <Modal
                         openBtn="Add product"

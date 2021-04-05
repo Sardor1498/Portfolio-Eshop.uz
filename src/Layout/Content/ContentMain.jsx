@@ -81,7 +81,7 @@ const ContentMain = (props) => {
                 <Route path="/addcatalog">
                     <Content />
                     <AddCatalog
-                        createCatalogs={props.data.createCatalogs}
+                        createCatalog={props.data.createCatalog}
                         categories={props.data.categories}
                     />
                 </Route>

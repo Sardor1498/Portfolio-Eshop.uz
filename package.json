@@ -8,14 +8,11 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@splidejs/react-splide": "^0.4.4",
-    "@tailwindcss/postcss7-compat": "^2.0.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
-    "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
     "material-auto-rotating-carousel": "^3.0.2",
-    "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
@@ -30,7 +27,6 @@
     "redux-form": "^8.3.7",
     "redux-thunk": "^2.3.0",
     "sweetalert": "^2.1.2",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
@@ -56,5 +52,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.4",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4"
   }
 }

@@ -43,7 +43,7 @@ const Add = (props) => {
                         sosTitle="Добавляйте на сайт разные категории"
                         component={
                             <AddCategory
-                                createCategory={props.createCategory}
+                                createCategories={props.createCategories}
                                 catalogs={props.catalogs}
                             />
                         }

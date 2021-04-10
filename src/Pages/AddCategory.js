@@ -37,7 +37,7 @@ class AddCategory extends Component {
             catalog_id: catalogId,
             title: this.state.title
         };
-        this.props.createCategory(formattedState);
+        this.props.createCategories(formattedState);
     };
 
     render() {

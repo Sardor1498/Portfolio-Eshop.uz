@@ -68,7 +68,6 @@ export default function RecipeReviewCard(props) {
             }
 
             />
-<<<<<<< HEAD
             <>
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">
@@ -88,48 +87,6 @@ export default function RecipeReviewCard(props) {
                     </IconButton>
                 </CardActions>
             </>
-=======
-            { !props.productsIsLoaded ? (
-                <React.Fragment>
-                    <Skeleton
-                        animation="wave"
-                        height={10}
-                        style={{ marginBottom: 6 }}
-                    />
-                    <Skeleton
-                        animation="wave"
-                        width="80%"
-                        height={10}
-                    />
-                </React.Fragment>
-            ) : (
-                    <>
-                        <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {props.data.price}
-                                {props.data.description}
-                            </Typography>
-                        </CardContent>
-                        <div className="text-yellow-500">
-                            <StarIcon />
-                            <StarIcon />
-                            <StarIcon />
-                            <StarIcon />
-                            <StarIcon />
-                        </div>
-                        
-                        <CardActions disableSpacing className="p-2" >
-                            <IconButton aria-label="add to favorites">
-                                <FavoriteIcon className="text-red-700" />
-                            </IconButton>
-                            <IconButton aria-label="share">
-                                <ShareIcon className="text-blue-700" />
-                            </IconButton>
-                        </CardActions>
-                    </>
-                )
-            }
->>>>>>> fbe4acd07b0cf8791e9cdfe611aead748306cf8f
         </Card>
     );
 }

@@ -90,7 +90,7 @@ export default function Modal(props) {
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
                         {props.sosTitle}
                     </Typography>
-                    <Typography variant="h5" component="h2">
+                    <Typography>
                         be{bull}nev{bull}o{bull}lent
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">

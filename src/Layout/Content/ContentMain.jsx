@@ -102,7 +102,7 @@ const ContentMain = (props) => {
                         createProduct={props.data.createProduct}
                         createBrand={props.data.createBrand}
                         createCategory={props.data.createCategory}
-                        createCatalogs={props.data.createCatalogs}
+                        createCatalog={props.data.createCatalog}
                         categories={props.data.categories}
                         catalogs={props.data.catalogs}
                         brands={props.data.brands}

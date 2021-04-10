@@ -74,7 +74,7 @@ const ContentMain = (props) => {
                 <Route path="/addcategory">
                     <Content />
                     <AddCategory
-                        createCategory={props.data.createCategory}
+                        createCategories={props.data.createCategories}
                         catalogs={props.data.catalogs}
                     />
                 </Route>
@@ -101,7 +101,7 @@ const ContentMain = (props) => {
                     <Add 
                         createProduct={props.data.createProduct}
                         createBrand={props.data.createBrand}
-                        createCategory={props.data.createCategory}
+                        createCategories={props.data.createCategories}
                         createCatalog={props.data.createCatalog}
                         categories={props.data.categories}
                         catalogs={props.data.catalogs}

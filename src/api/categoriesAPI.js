@@ -16,7 +16,7 @@ const setCategories = category => ({
 });
 
 export const categoriesAPI = {
-    createCategory(category) {
+    createCategories(category) {
         return async dispatch => {
             try {
                 let res = await instance.post("categories", category);

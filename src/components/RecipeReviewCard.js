@@ -44,10 +44,15 @@ const useStyles = makeStyles(theme => ({
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+    const [selected, setSelected] = React.useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+    const handleClick = (id) => {
+        setSelected(!selected);
+        console.log(id);
+    }
 
     return (
         <Card
@@ -56,65 +61,37 @@ export default function RecipeReviewCard(props) {
                 " h-full w-full hover:bg-blue-300 hover:border-4 cursor-pointer focus:border-yellow-800"
             }
         >
-            {
-                !props.productsIsLoaded ? (
-                    <Skeleton
-                        animation="wave"
-                        variant="circle"
-                        width={40}
-                        height={40}
-                    />
-                ) : (
 
-                        <CardMedia
-                            className={classes.media + " h-80"}
-                            image={props.data.photo}
-                            title={props.data.title}
-                        />
-                    )}
-            <CardHeader className="p-1" subheader={ !props.productsIsLoaded ? (
-                <Skeleton
-                    animation="wave"
-                    width="40%"
-                    height={10}
-                />
-            ) : (
+            <CardMedia
+                className={classes.media + " h-80"}
+                image={props.data.photo}
+                title={props.data.title}
+            />
+            <CardHeader className="p-1" subheader={
                     props.data.title
-                )
+
             }
 
             />
-            { !props.productsIsLoaded ? (
-                <React.Fragment>
-                    <Skeleton
-                        animation="wave"
-                        height={10}
-                        style={{ marginBottom: 6 }}
-                    />
-                    <Skeleton
-                        animation="wave"
-                        width="80%"
-                        height={10}
-                    />
-                </React.Fragment>
-            ) : (
-                    <>
-                        <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {props.data.price}
-                            </Typography>
-                        </CardContent>
-                        <CardActions disableSpacing className="p-2" >
-                            <IconButton aria-label="add to favorites">
-                                <FavoriteIcon className="text-red-700" />
-                            </IconButton>
-                            <IconButton aria-label="share">
-                                <ShareIcon className="text-blue-700" />
-                            </IconButton>
-                        </CardActions>
-                    </>
-                )
-            }
+            <>
+                <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {props.data.price}
+                    </Typography>
+                </CardContent>
+                <CardActions disableSpacing className="p-2" >
+                    <IconButton
+                        aria-label="add to favorites"
+                        onClick={id => handleClick(props.data.id)}
+                        color={selected ? "secondary" : "default"}
+                    >
+                        <FavoriteIcon />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                        <ShareIcon className="text-blue-700" />
+                    </IconButton>
+                </CardActions>
+            </>
         </Card>
     );
 }

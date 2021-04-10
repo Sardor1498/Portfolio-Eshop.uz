@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
+import Axios from 'axios';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -44,11 +45,25 @@ const useStyles = makeStyles(theme => ({
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+    const [selected, setSelected] = React.useState(false);
+    const [product, setProduct] = React.useState({});
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
+    const handleClick = async (prod) => {
+        setProduct(prod);
+
+        // try {
+        //     let res = Axios.post('products', id)
+        // } catch (e) {
+        //     setSelected(!selected);
+        //     console.log(e)
+        // }
+       
+        // console.log(prod);
+    };
     return (
         <Card
             className={
@@ -66,21 +81,21 @@ export default function RecipeReviewCard(props) {
                     />
                 ) : (
 
-                        <CardMedia
-                            className={classes.media + " h-80"}
-                            image={props.data.photo}
-                            title={props.data.title}
-                        />
-                    )}
-            <CardHeader className="p-1" subheader={ !props.productsIsLoaded ? (
+                    <CardMedia
+                        className={classes.media + " h-80"}
+                        image={props.data.photo}
+                        title={props.data.title}
+                    />
+                )}
+            <CardHeader className="p-1" subheader={!props.productsIsLoaded ? (
                 <Skeleton
                     animation="wave"
                     width="40%"
                     height={10}
                 />
             ) : (
-                    props.data.title
-                )
+                props.data.title
+            )
             }
 
             />
@@ -98,22 +113,26 @@ export default function RecipeReviewCard(props) {
                     />
                 </React.Fragment>
             ) : (
-                    <>
-                        <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {props.data.price}
-                            </Typography>
-                        </CardContent>
-                        <CardActions disableSpacing className="p-2" >
-                            <IconButton aria-label="add to favorites">
-                                <FavoriteIcon className="text-red-700" />
-                            </IconButton>
-                            <IconButton aria-label="share">
-                                <ShareIcon className="text-blue-700" />
-                            </IconButton>
-                        </CardActions>
-                    </>
-                )
+                <>
+                    <CardContent>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                            {props.data.price}
+                        </Typography>
+                    </CardContent>
+                    <CardActions disableSpacing className="p-2" >
+                        <IconButton aria-label="add to favorites"
+                            arial-label="add to favotites"
+                            onClick={handleClick}
+                            color={selected ? "secondary" : "default"}
+                        >
+                            <FavoriteIcon />
+                        </IconButton>
+                        <IconButton aria-label="share">
+                            <ShareIcon className="text-blue-700" />
+                        </IconButton>
+                    </CardActions>
+                </>
+            )
             }
         </Card>
     );

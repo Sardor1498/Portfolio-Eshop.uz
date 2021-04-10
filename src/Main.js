@@ -11,6 +11,7 @@ import { productsAPI } from './api/productsAPI';
 import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
+import Content from '../src/Layout/Content/Content'
 
 const Main = props => {
 
@@ -27,6 +28,9 @@ const Main = props => {
         <Header 
           catalogs={props.catalogs}
         />
+      </div>
+      <div>
+        <Content />
       </div>
       <div>
         <ContentMain 

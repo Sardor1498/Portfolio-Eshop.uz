@@ -6,6 +6,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Popover from '@material-ui/core/Popover';
 
+
 const HeaderMain = (props) => {
     return (
         <div className="grid md:grid-cols-3 sm:grid-cols-1 bg-gray-800 gap-2 md:place-content-center sm:h-22 md:h-14 md:min-h-full">
@@ -30,6 +31,7 @@ const HeaderMain = (props) => {
                     <ShoppingCartIcon />
                 </span>
             </div>
+            
         </div>
     );
 };

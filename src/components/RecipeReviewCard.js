@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Axios from 'axios';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -39,9 +40,20 @@ const useStyles = makeStyles(theme => ({
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+    const [selected, setSelected] = React.useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
+    };
+    const handleClick = async (id) => {
+        try{
+          let res = Axios.post("product", id);
+        }catch(e) {
+            console.log(e)
+        }
+        
+        // setSelected(!selected);
+        // console.log(id)
     };
 
     return (
@@ -109,8 +121,12 @@ export default function RecipeReviewCard(props) {
                         </div>
                         
                         <CardActions disableSpacing className="p-2" >
-                            <IconButton aria-label="add to favorites">
-                                <FavoriteIcon className="text-red-700" />
+                            <IconButton 
+                                aria-label="add to favorites"
+                                onClick={id => handleClick(props.data.id)}
+                                color={selected ? "secondary" : " "}
+                            >
+                                <FavoriteIcon/>
                             </IconButton>
                             <IconButton aria-label="share">
                                 <ShareIcon className="text-blue-700" />

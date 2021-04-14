@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Axios from 'axios';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -12,6 +13,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import Skeleton from "@material-ui/lab/Skeleton";
 import StarIcon from '@material-ui/icons/Star';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -35,58 +37,72 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: red[500]
     }
 }));
+const style = {
+    color: "#e85a7d"
+};
 
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
-    const [selected, setSelected] = React.useState(false);
+    const [product, setProduct] = React.useState();
+    const [loading, setLoading] = React.useState(false)
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-    const handleClick = (id) => {
-        setSelected(!selected);
-        console.log(id);
+    React.useEffect(() => {
+        setProduct(props.data);
+    }, []);
+    let url = "https://laravel-react-eshop.herokuapp.com";
+
+    const handleClick = async (prod) => {
+        let newProduct = { ...prod, selected: !prod.selected };
+        try {
+            setLoading(true);
+            let res = await Axios.put(`${url}/api/product/` + product.id, newProduct);
+            if (res.data) {
+                setLoading(false);
+                setProduct(res.data);
+            }
+        }catch(e) {
+            console.log(e)
+        }
     }
 
     return (
-        <Card
-            className={
-                classes.root +
-                " h-full w-full hover:bg-blue-300 hover:border-4 cursor-pointer focus:border-yellow-800"
-            }
-        >
-
-            <CardMedia
-                className={classes.media + " h-80"}
-                image={props.data.photo}
-                title={props.data.title}
-            />
-            <CardHeader className="p-1" subheader={
-                    props.data.title
-
-            }
-
-            />
-            <>
-                <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        {props.data.price}
-                    </Typography>
-                </CardContent>
-                <CardActions disableSpacing className="p-2" >
-                    <IconButton
-                        aria-label="add to favorites"
-                        onClick={id => handleClick(props.data.id)}
-                        color={selected ? "secondary" : "default"}
+        <>
+            {!product ? (
+                <CircularProgress />
+            ) : (
+                    <Card
+                        className={
+                            classes.root +
+                            " h-full w-full hover:bg-blue-300 hover:border-4 cursor-pointer focus:border-yellow-800"
+                        }
                     >
-                        <FavoriteIcon />
-                    </IconButton>
-                    <IconButton aria-label="share">
-                        <ShareIcon className="text-blue-700" />
-                    </IconButton>
-                </CardActions>
-            </>
-        </Card>
+                        <CardMedia
+                            className={classes.media + " h-80"}
+                            image={product.photo}
+                            title={product.title}
+                        />
+                        <CardHeader className="p-1" subheader={product.title}/>
+                        <CardContent>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {product.price}
+                            </Typography>
+                        </CardContent>
+                        <CardActions disableSpacing className="p-2" >
+                            <IconButton
+                                style={loading ? style : null}
+                                disabled={loading}
+                                aria-label="add to favorites"
+                                onClick={prod => handleClick(product)}
+                                color={ product.selected ? "secondary" : "default"}
+                            >
+                                <FavoriteIcon />
+                            </IconButton>
+                            <IconButton aria-label="share" edge="end">
+                                <ShareIcon />
+                            </IconButton>
+                        </CardActions>
+                    </Card>
+                )}
+        </>
     );
 }

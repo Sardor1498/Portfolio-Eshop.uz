@@ -37,30 +37,19 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: red[500]
     }
 }));
+const style = {
+    color: "#e85a7d"
+};
 
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
-    const [selected, setSelected] = React.useState(false);
-    const [product, setProduct] = React.useState({
-        id: "",
-        created_at: "",
-        updated_at: "",
-        description: "",
-        price: "",
-        availability: null,
-        photo: "",
-        categoryId: "",
-        brandId: "",
-        brandName: "",
-        selected: null
-    });
-    
-    
+    const [product, setProduct] = React.useState();
+    const [loading, setLoading] = React.useState(false); 
+       
     React.useEffect(() => {
         setProduct(props.data);
     }, []);
-    
+
     const handleClick = async () => {
         setProduct({
             ...product,
@@ -68,9 +57,9 @@ export default function RecipeReviewCard(props) {
         });
 
         try {
-            let res = await Axios.post(`products`, {product});
+            let res = await Axios.post(`products`, { product });
             console.log(res);
-        }catch(e) {
+        } catch (e) {
             console.log(e)
         }
     }
@@ -82,40 +71,25 @@ export default function RecipeReviewCard(props) {
                 <CircularProgress />
             ) : (
                 <Card
-            className={
-                classes.root +
-                " h-full w-full hover:bg-blue-300 hover:border-4 cursor-pointer focus:border-yellow-800"
-            }
-        >
+                    className={
+                        classes.root +
+                        " h-full w-full hover:bg-blue-300 hover:border-4 cursor-pointer focus:border-yellow-800"
+                    }
+                >
 
-            <CardMedia
-                className={classes.media + " h-80"}
-                image={props.data.photo}
-                title={props.data.title}
-            />
-            <CardHeader className="p-1" subheader={
-                    props.data.title
-
-            }
-
-            />
-            { !props.productsIsLoaded ? (
-                <React.Fragment>
-                    <Skeleton
-                        animation="wave"
-                        height={10}
-                        style={{ marginBottom: 6 }}
+                    <CardMedia
+                        className={classes.media + " h-80"}
+                        image={props.data.photo}
+                        title={props.data.title}
                     />
-                    <Skeleton
-                        animation="wave"
-                        width="80%"
-                        height={10}
-                    />
-                </React.Fragment>
-            ) : (
+                    <CardHeader className="p-1" subheader={props.data.title} />
                     <>
                         <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
+                            <Typography 
+                            variant="body2" 
+                            color="textSecondary" 
+                            component="p"
+                            >
                                 {props.data.price}
                                 {props.data.description}
                             </Typography>
@@ -127,25 +101,25 @@ export default function RecipeReviewCard(props) {
                             <StarIcon />
                             <StarIcon />
                         </div>
-                        
                         <CardActions disableSpacing className="p-2" >
-                            <IconButton 
+                            <IconButton
+                                style={loading ? style : null}
+                                disabled={loading}
                                 aria-label="add to favorites"
                                 onClick={id => handleClick(props.data.id)}
-                                color={selected ? "secondary" : " "}
+                                color={product.selected ? "secondary" : "default" }
                             >
-                                <FavoriteIcon/>
+                                <FavoriteIcon />
                             </IconButton>
                             <IconButton aria-label="share">
                                 <ShareIcon className="text-blue-700" />
                             </IconButton>
                         </CardActions>
                     </>
-                )
-            }
-        </Card>
+                    )
+                </Card>
             )}
-        
+
         </>
     );
-}
+};

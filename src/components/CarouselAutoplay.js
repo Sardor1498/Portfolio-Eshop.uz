@@ -2,6 +2,9 @@ import React from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import RecipeReviewCard from './RecipeReviewCard';
 import { CircularProgress } from "@material-ui/core";
+import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
+// or
+import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 
 /**
  * The function for the basic example.
@@ -43,8 +46,8 @@ const CarouselAutoplay = (props) => {
                     }
                 }}
                 hasSliderWrapper
-                // hasAutoplayControls
-                // hasAutoplayProgress
+            // hasAutoplayControls
+            // hasAutoplayProgress
             >
                 {props.products.map((item, index) => (
                     <SplideSlide key={index}>

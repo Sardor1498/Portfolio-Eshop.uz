@@ -14,6 +14,8 @@ import AddCategory from '../../Pages/AddCategory';
 import AddCatalog from '../../Pages/AddCatalog';
 import AddBrand from '../../Pages/AddBrand';
 import Add from '../../Pages/Add';
+import Register from '../../Pages/Register';
+import Login from '../../Pages/Login';
 
 const ContentMain = (props) => {
     return (
@@ -95,6 +97,14 @@ const ContentMain = (props) => {
                 <Route path="/test">
                     <Content />
                     <Test />
+                </Route>
+                <Route path="/register">
+                    <Content />
+                    <Register />
+                </Route>
+                <Route path="/login">
+                    <Content />
+                    <Login />
                 </Route>
                 <Route path="/add">
                     <Content />

@@ -63,16 +63,11 @@ const Login = props => {
             });
         }
     };
-    let url = "";
-    if (process.env.MIX_API_URL === "local") {
-        url = "http://localhost:8000";
-    } else {
-        url = "https://laravel-react-eshop.herokuapp.com";
-    }
+    let url = "https://laravel-react-eshop.herokuapp.com";
     const handleSubmit = async e => {
         e.preventDefault();
         try {
-            let res = await Axios.post(`${url}/api/login, user`);
+            let res = await Axios.post(`${url}/api/login`, user);
             if (res.data) {
                 localStorage.setItem("token", res.data.token);
             }
@@ -89,67 +84,67 @@ const Login = props => {
             };
             const token = localStorage.token;
             if (token) {
-                let resp = await Axios.post(`${url}/oauth/clients, data`);
+                let resp = await Axios.post(`${url}/oauth/clients`, data);
                 console.log(resp);
             }
         } catch (error) {
             console.log(error)
         }
     }
-return (
-    <div className="flex justify-center mt-3">
-        <form className="w-1/2" onSubmit={e => handleSubmit(e)}>
-            <div className="mt-3">
-                <Field
-                    name="email"
-                    component={renderTextField}
-                    label="Email"
-                    fullWidth={true}
-                    onChange={change}
-                />
-            </div>
-            <div className="mt-3">
-                <Field
-                    name="password"
-                    component={renderTextField}
-                    label="Parol"
-                    fullWidth={true}
-                    onChange={change}
-                />
-            </div>
-            <div className="mt-3 flex">
-                <div>
-                    <Button
-                        variant="outlined"
-                        disabled={pristine || submitting}
-                        type="submit"
-                        color="primary"
-                    >
-                        Kirish
-                    </Button>
+    return (
+        <div className="flex justify-center mt-3">
+            <form className="w-1/2" onSubmit={e => handleSubmit(e)}>
+                <div className="mt-3">
+                    <Field
+                        name="email"
+                        component={renderTextField}
+                        label="Email"
+                        fullWidth={true}
+                        onChange={change}
+                    />
                 </div>
-                <div className="ml-2">
-                    <Button
-                        variant="contained"
-                        onClick={reset}
-                        color="secondary"
-                    >
-                        Tozalash
-                    </Button>
+                <div className="mt-3">
+                    <Field
+                        name="password"
+                        component={renderTextField}
+                        label="Parol"
+                        fullWidth={true}
+                        onChange={change}
+                    />
                 </div>
-                <div className="ml-2">
-                    <Button
-                        variant="contained"
-                        onClick={getProfile}
-                        color="primary"
-                    >
-                        GETPROFILE
-                    </Button>
+                <div className="mt-3 flex">
+                    <div>
+                        <Button
+                            variant="outlined"
+                            disabled={pristine || submitting}
+                            type="submit"
+                            color="primary"
+                        >
+                            Kirish
+                        </Button>
+                    </div>
+                    <div className="ml-2">
+                        <Button
+                            variant="contained"
+                            onClick={reset}
+                            color="secondary"
+                        >
+                            Tozalash
+                        </Button>
+                    </div>
+                    <div className="ml-2">
+                        <Button
+                            variant="contained"
+                            onClick={getProfile}
+                            color="primary"
+                        >
+                            GETPROFILE
+                        </Button>
+                    </div>
                 </div>
-            </div>
-        </form>
-    </div>
-);
+            </form>
+        </div>
+    );
 };
 
 export default reduxForm({

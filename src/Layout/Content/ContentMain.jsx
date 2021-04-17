@@ -104,6 +104,14 @@ const ContentMain = (props) => {
                     <Content />
                     <Test />
                 </Route>
+                <Route path="/register">
+                    <Content />
+                    <Register />
+                </Route>
+                <Route path="/login">
+                    <Content />
+                    <Login />
+                </Route>
                 <Route path="/add">
                     <Content />
                     <Add 

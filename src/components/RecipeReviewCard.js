@@ -21,21 +21,22 @@ const useStyles = makeStyles(theme => ({
     },
     media: {
         height: 200,
+        backgroundSize: "contain",
         paddingTop: "56.25%" // 16:9
     },
-    expand: {
-        transform: "rotate(0deg)",
-        marginLeft: "auto",
-        transition: theme.transitions.create("transform", {
-            duration: theme.transitions.duration.shortest
-        })
-    },
-    expandOpen: {
-        transform: "rotate(180deg)"
-    },
-    avatar: {
-        backgroundColor: red[500]
-    }
+    // expand: {
+    //     transform: "rotate(0deg)",
+    //     marginLeft: "auto",
+    //     transition: theme.transitions.create("transform", {
+    //         duration: theme.transitions.duration.shortest
+    //     })
+    // },
+    // expandOpen: {
+    //     transform: "rotate(180deg)"
+    // },
+    // avatar: {
+    //     backgroundColor: red[500]
+    // }
 }));
 const style = {
     color: "#e85a7d"
@@ -73,22 +74,16 @@ export default function RecipeReviewCard(props) {
                     <Card
                         className={
                             classes.root +
-                            " h-full w-full hover:bg-blue-300 hover:border-4 cursor-pointer focus:border-yellow-800"
+                            " h-full hover:bg-gray-300 shadow-2xl hover:border-4 cursor-pointer"
                         }
                     >
                         <CardMedia
-                            className={classes.media + " h-80"}
+                            className={classes.media + " h-1/2"}
                             image={product.photo}
                             title={product.title}
                         />
-                        <CardHeader className="p-1" subheader={product.title}/>
-                        <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {product.price}
-                                {product.description}
-                            </Typography>
-                        </CardContent>
-                        <CardActions disableSpacing className="p-2" >
+                        <CardHeader className="h-1/5" subheader={product.title}/>
+                        <CardActions disableSpacing className="h-1/6" >
                             <IconButton
                                 style={loading ? style : null}
                                 disabled={loading}
@@ -102,6 +97,11 @@ export default function RecipeReviewCard(props) {
                                 <ShareIcon />
                             </IconButton>
                         </CardActions>
+                        <CardContent>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {product.price}
+                            </Typography>
+                        </CardContent>
                     </Card>
                 )}
         </>

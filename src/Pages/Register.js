@@ -33,17 +33,17 @@ const renderTextField = ({
     meta: { touched, invalid, error },
     ...custom
 }) => (
-    <TextField
-        label={label}
-        placeholder={label}
-        error={touched && invalid}
-        helperText={touched && error}
-        variant="outlined"
-        size="small"
-        {...input}
-        {...custom}
-    />
-);
+        <TextField
+            label={label}
+            placeholder={label}
+            error={touched && invalid}
+            helperText={touched && error}
+            variant="outlined"
+            size="small"
+            {...input}
+            {...custom}
+        />
+    );
 
 const Register = props => {
     const { pristine, reset, submitting, classes } = props;

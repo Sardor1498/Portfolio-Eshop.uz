@@ -14,6 +14,8 @@ import AddCategory from '../../Pages/AddCategory';
 import AddCatalog from '../../Pages/AddCatalog';
 import AddBrand from '../../Pages/AddBrand';
 import Add from '../../Pages/Add';
+import Register from '../../Pages/Register';
+import Login from '../../Pages/Login';
 
 const ContentMain = (props) => {
     return (
@@ -62,6 +64,12 @@ const ContentMain = (props) => {
                 <Route path="/sports">
                     <Content />
                     <Sports />
+                </Route>
+                <Route exact path="/register">
+                    <Register />
+                </Route>
+                <Route exat path="/login">
+                    <Login />
                 </Route>
                 <Route path="/addproduct">
                     <Content />

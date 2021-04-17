@@ -13,7 +13,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import Skeleton from "@material-ui/lab/Skeleton";
 import StarIcon from '@material-ui/icons/Star';
-import { CircularProgress } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -44,82 +44,66 @@ const style = {
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
     const [product, setProduct] = React.useState();
-    const [loading, setLoading] = React.useState(false); 
-       
+    const [loading, setLoading] = React.useState(false)
+
     React.useEffect(() => {
         setProduct(props.data);
     }, []);
+    let url = "https://laravel-react-eshop.herokuapp.com";
 
-    const handleClick = async () => {
-        setProduct({
-            ...product,
-            selected: !product.selected
-        });
-
+    const handleClick = async (prod) => {
+        let newProduct = { ...prod, selected: !prod.selected };
         try {
-            let res = await Axios.post(`products`, { product });
-            console.log(res);
-        } catch (e) {
+            setLoading(true);
+            let res = await Axios.put(`${url}/api/product/` + product.id, newProduct);
+            if (res.data) {
+                setLoading(false);
+                setProduct(res.data);
+            }
+        }catch(e) {
             console.log(e)
         }
     }
 
     return (
         <>
-
             {!product ? (
                 <CircularProgress />
             ) : (
-                <Card
-                    className={
-                        classes.root +
-                        " h-full w-full hover:bg-blue-300 hover:border-4 cursor-pointer focus:border-yellow-800"
-                    }
-                >
-
-                    <CardMedia
-                        className={classes.media + " h-80"}
-                        image={props.data.photo}
-                        title={props.data.title}
-                    />
-                    <CardHeader className="p-1" subheader={props.data.title} />
-                    <>
+                    <Card
+                        className={
+                            classes.root +
+                            " h-full w-full hover:bg-blue-300 hover:border-4 cursor-pointer focus:border-yellow-800"
+                        }
+                    >
+                        <CardMedia
+                            className={classes.media + " h-80"}
+                            image={product.photo}
+                            title={product.title}
+                        />
+                        <CardHeader className="p-1" subheader={product.title}/>
                         <CardContent>
-                            <Typography 
-                            variant="body2" 
-                            color="textSecondary" 
-                            component="p"
-                            >
-                                {props.data.price}
-                                {props.data.description}
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                {product.price}
+                                {product.description}
                             </Typography>
                         </CardContent>
-                        <div className="text-yellow-500">
-                            <StarIcon />
-                            <StarIcon />
-                            <StarIcon />
-                            <StarIcon />
-                            <StarIcon />
-                        </div>
                         <CardActions disableSpacing className="p-2" >
                             <IconButton
                                 style={loading ? style : null}
                                 disabled={loading}
                                 aria-label="add to favorites"
-                                onClick={id => handleClick(props.data.id)}
-                                color={product.selected ? "secondary" : "default" }
+                                onClick={prod => handleClick(product)}
+                                color={ product.selected ? "secondary" : "default"}
                             >
                                 <FavoriteIcon />
                             </IconButton>
-                            <IconButton aria-label="share">
-                                <ShareIcon className="text-blue-700" />
+                            <IconButton aria-label="share" edge="end">
+                                <ShareIcon />
                             </IconButton>
                         </CardActions>
-                    </>
-                    )
-                </Card>
-            )}
-
+                    </Card>
+                )}
         </>
     );
 };

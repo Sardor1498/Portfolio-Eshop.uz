@@ -11,9 +11,10 @@ import { productsAPI } from './api/productsAPI';
 import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
+import { authAPI } from './api/usersAPI';
 
 const Main = props => {
-
+  
   useEffect(() => {
     props.getProducts();
     props.getCatalogs();
@@ -25,6 +26,9 @@ const Main = props => {
     <div className="App">
       <div className="sticky top-0 z-20">
         <Header 
+          isAuthorized={props.isAuthorized}
+          login={props.login}
+          user={props.user}
           catalogs={props.catalogs}
         />
       </div>
@@ -49,8 +53,10 @@ const mapStateToProps = state => ({
   categoriesIsLoaded: state.categoriesReducer.loaded,
   brands: state.brandsReducer.brands,
   brandsIsLoaded: state.brandsReducer.loaded,
-  //currentUser: state.authReducer.currentUser,
-  //initialized: state.authReducer.initialized
+  isAuthorized: state.authReducer.isAuthorized,
+  user: state.authReducer.user,
+  // currentUser: state.authReducer.currentUser,
+  // initialized: state.authReducer.initialized
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -61,7 +67,9 @@ const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(categoriesAPI.getCategories()),
   createCategories: category => dispatch(categoriesAPI.createCategories(category)),
   getBrands: () => dispatch(brandsAPI.getBrands()),
-  createBrand: brand => dispatch(brandsAPI.createBrand(brand))
+  createBrand: brand => dispatch(brandsAPI.createBrand(brand)),
+  login: user => dispatch(authAPI.login(user)),
+  getProfile: () => dispatch(authAPI.getProfile()),
 });
 
 const MainContainer = compose(

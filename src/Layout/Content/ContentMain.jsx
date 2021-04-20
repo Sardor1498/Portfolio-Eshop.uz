@@ -104,7 +104,7 @@ const ContentMain = (props) => {
                 </Route>
                 <Route path="/login">
                     <Content />
-                    <Login />
+                    <Login login={props.data.login}/>
                 </Route>
                 <Route path="/add">
                     <Content />

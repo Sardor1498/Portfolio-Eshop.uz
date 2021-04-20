@@ -63,9 +63,14 @@ const Login = props => {
             });
         }
     };
+
+
     let url = "https://laravel-react-eshop.herokuapp.com";
+
+    
     const handleSubmit = async e => {
         e.preventDefault();
+        props.login(user);
         try {
             let res = await Axios.post(`${url}/api/login`, user);
             if (res.data) {
@@ -90,7 +95,9 @@ const Login = props => {
         } catch (error) {
             console.log(error)
         }
-    }
+    };
+
+
     return (
         <div className="flex justify-center mt-3">
             <form className="w-1/2" onSubmit={e => handleSubmit(e)}>

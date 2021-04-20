@@ -8,7 +8,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import Button from '@material-ui/core/Button';
 import CheckIcon from '@material-ui/icons/Check';
 
-const Office = () => {
+const Office = (props) => {
     return (
         <>
             <div className="mt-4 bg-gray-300 h-14">

@@ -1,18 +1,11 @@
-import * as axios from "axios";
-
-const url = "https://laravel-react-eshop.herokuapp.com";
-
-const instance = axios.create({
-    baseURL: `${url}/api`,
-    headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-    }
-});
+import instance from './instance';
 
 const loginUser = user => ({
     type: "AUTHORIZED_SUCCESS",
     payload: user
+});
+export const logoutUser = () => ({
+    type: "LOG_OUT"
 });
 
 export const authAPI = {
@@ -34,7 +27,8 @@ export const authAPI = {
             let response = await instance.post("login", user);
             if (response.status === 200) {
                 localStorage.setItem("token", response.data.token);
-                dispatch(loginUser(response.data));
+                dispatch(loginUser(response.data.user));
+                window.history.go(-1);
             }
             if (response.data.errors) {
                 document.getElementById("errorDiv").innerHTML =
@@ -43,24 +37,31 @@ export const authAPI = {
         };
     },
 
-    // getProfile() {
-    //     return async dispatch => {
-    //         const token = localStorage.token;
-    //         if (token) {
-    //             let response = await instance.get("auth", {
-    //                 headers: {
-    //                     Authorization: `Bearer ${token}`
-    //                 }
-    //             });
-    //             if (response.status === 200) {
-    //                 dispatch(loginUser(response.user));
-    //             }
-    //             if (response.message) {
-    //                 localStorage.removeItem("token");
-    //             }else {
-    //             myData.clientError(response.data);
-    //             }
-    //         }
-    //     };
-    // },
+    logout() {
+        return async dispatch => {
+            localStorage.removeItem("token"); /* local ombordagi tokenni o'chiradi */
+            dispatch(logoutUser());
+        }
+    },
+
+    getProfile() {
+        return async dispatch => {
+            const token = localStorage.token;  /* local ombordagi token */
+            if (token) { // agar token mavjud bolsa
+                let response = await instance.get("user", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                if (response.status === 200) {
+                    dispatch(loginUser(response.data));
+                }
+                if (response.message) {
+                    localStorage.removeItem("token");
+                }else {
+                    console.log(response.data);
+                }
+            }
+        };
+    },
 };

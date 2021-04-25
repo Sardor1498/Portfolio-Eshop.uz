@@ -20,6 +20,7 @@ const Main = props => {
     props.getCatalogs();
     props.getCategories();
     props.getBrands();
+    props.getProfile();
   }, []);
 
   return (
@@ -29,12 +30,14 @@ const Main = props => {
           isAuthorized={props.isAuthorized}
           login={props.login}
           user={props.user}
+          logout={props.logout}
           catalogs={props.catalogs}
         />
       </div>
       <div>
         <ContentMain 
           data={props}
+          login={props.login}
         />
       </div>
       <div>
@@ -70,6 +73,7 @@ const mapDispatchToProps = dispatch => ({
   createBrand: brand => dispatch(brandsAPI.createBrand(brand)),
   login: user => dispatch(authAPI.login(user)),
   getProfile: () => dispatch(authAPI.getProfile()),
+  logout: () => dispatch(authAPI.logout()),
 });
 
 const MainContainer = compose(

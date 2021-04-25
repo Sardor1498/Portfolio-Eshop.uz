@@ -14,33 +14,40 @@ import ShareIcon from "@material-ui/icons/Share";
 import Skeleton from "@material-ui/lab/Skeleton";
 import StarIcon from '@material-ui/icons/Star';
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ProductsItem from '../Layout/PruductDetailsPage/ProductsItem';
 
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345
     },
+    color: {
+        color: "blue"
+    },
     media: {
         height: 200,
-        backgroundSize: "contain",
+        // backgroundSize: "contain",
         paddingTop: "56.25%" // 16:9
     },
-    // expand: {
-    //     transform: "rotate(0deg)",
-    //     marginLeft: "auto",
-    //     transition: theme.transitions.create("transform", {
-    //         duration: theme.transitions.duration.shortest
-    //     })
-    // },
-    // expandOpen: {
-    //     transform: "rotate(180deg)"
-    // },
-    // avatar: {
-    //     backgroundColor: red[500]
-    // }
+    expand: {
+        transform: "rotate(0deg)",
+        marginLeft: "auto",
+        transition: theme.transitions.create("transform", {
+            duration: theme.transitions.duration.shortest
+        })
+    },
+    expandOpen: {
+        transform: "rotate(180deg)"
+    },
+    avatar: {
+        backgroundColor: red[500]
+    }
 }));
 const style = {
-    color: "#e85a7d"
+    color: "#f98181"
 };
+const size = {
+    backgroundSize: "contain"
+}
 
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
@@ -61,7 +68,7 @@ export default function RecipeReviewCard(props) {
                 setLoading(false);
                 setProduct(res.data);
             }
-        }catch(e) {
+        } catch (e) {
             console.log(e)
         }
     }
@@ -71,38 +78,47 @@ export default function RecipeReviewCard(props) {
             {!product ? (
                 <CircularProgress />
             ) : (
+                <div className="h-96">
                     <Card
                         className={
                             classes.root +
-                            " h-full hover:bg-gray-300 shadow-2xl hover:border-4 cursor-pointer"
+                            " h-full p-2 hover:shadow-3xl cursor-pointer focus:border-yellow-800"
                         }
                     >
-                        <CardMedia
-                            className={classes.media + " h-1/2"}
-                            image={product.photo}
-                            title={product.title}
-                        />
-                        <CardHeader className="h-1/5" subheader={product.title}/>
-                        <CardActions disableSpacing className="h-1/6" >
-                            <IconButton
-                                style={loading ? style : null}
-                                disabled={loading}
-                                aria-label="add to favorites"
-                                onClick={prod => handleClick(product)}
-                                color={ product.selected ? "secondary" : "default"}
-                            >
-                                <FavoriteIcon />
-                            </IconButton>
-                            <IconButton aria-label="share" edge="end">
-                                <ShareIcon />
-                            </IconButton>
-                        </CardActions>
-                        <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {product.price}
-                            </Typography>
-                        </CardContent>
+                        <div className="h-3/6 w-full">
+                            <CardMedia
+                                style={size}
+                                className={"h-full w-full"}
+                                image={product.photo}
+                                title={product.title}
+                            />
+                        </div>
+                        <div className="h-1/4">
+                            <CardHeader className="p-1" subheader={product.title} />
+                        </div>
+                        <div className="h-1/4">
+                            <CardActions disableSpacing className="h-1/2 p-1">
+                                <IconButton
+                                    style={loading ? style : null}
+                                    disabled={loading}
+                                    aria-label="add to favorites"
+                                    onClick={prod => handleClick(product)}
+                                    color={product.selected ? "secondary" : "default"}
+                                >
+                                    <FavoriteIcon />
+                                </IconButton>
+                                <IconButton aria-label="share" edge="end">
+                                    <ShareIcon />
+                                </IconButton>
+                            </CardActions>
+                            <CardContent>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    {product.price}
+                                </Typography>
+                            </CardContent>
+                        </div>
                     </Card>
+                </div>
                 )}
         </>
     );

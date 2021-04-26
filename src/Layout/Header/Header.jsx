@@ -109,14 +109,14 @@ const Header = props => {
                             </Link>
                         )}
                 </span>
-                <Link className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow" to="register">
+                <span className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow">
                     <FavoriteBorderIcon className="mr-2 cursor-pointer" />
-                        Register
-                </Link>
-                <Link className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow">
+                        My Item
+                </span>
+                <span className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow">
                     <ShoppingCartIcon className="cursor-pointer" />
                         Корзина
-                </Link>
+                </span>
             </div>
         </div>
     );

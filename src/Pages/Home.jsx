@@ -1,5 +1,4 @@
 import React from 'react';
-import Content from '../Layout/Content/Content';
 import SideBar from '../Layout/Sidebar/SideBar';
 import CarouselAutoplay from '../components/CarouselAutoplay';
 import Slideshow from '../Layout/SlideShow/SlideShow';

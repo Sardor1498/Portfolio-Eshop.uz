@@ -1,9 +1,18 @@
-import instance from './instance';
+import * as axios from 'axios';
+
+let url = "https://laravel-react-eshop.herokuapp.com";
+const instance = axios.create({
+    baseURL: `${url}/api`,
+    headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+    }
+});
 
 const loginUser = user => ({
     type: "AUTHORIZED_SUCCESS",
     payload: user
-});
+})
 export const logoutUser = () => ({
     type: "LOG_OUT"
 });
@@ -39,15 +48,15 @@ export const authAPI = {
 
     logout() {
         return async dispatch => {
-            localStorage.removeItem("token"); /* local ombordagi tokenni o'chiradi */
+            localStorage.removeItem('token'); // local ombordagi tokenni o'chiradi
             dispatch(logoutUser());
         }
     },
 
     getProfile() {
         return async dispatch => {
-            const token = localStorage.token;  /* local ombordagi token */
-            if (token) { // agar token mavjud bolsa
+            const token = localStorage.token;  // local ombordagi tokenni 
+            if (token) { //agar token mavjud bo'lsa
                 let response = await instance.get("user", {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -58,10 +67,10 @@ export const authAPI = {
                 }
                 if (response.message) {
                     localStorage.removeItem("token");
-                }else {
-                    console.log(response.data);
+                } else {
+                    console.log(response.data)
                 }
             }
         };
-    },
+    }
 };

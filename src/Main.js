@@ -34,6 +34,9 @@ const Main = props => {
           user={props.user}
           logout={props.logout}
           catalogs={props.catalogs}
+          login={props.login}
+          user={props.user}
+          logout={props.logout}
         />
       </div>
       <div>
@@ -90,11 +93,11 @@ const MainContainer = compose(
 
 const Eshop = (props) => {
   return (
-      <BrowserRouter>
-          <Provider store={store}>
-              <MainContainer />
-          </Provider>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <MainContainer />
+      </Provider>
+    </BrowserRouter>
   );
 };
 

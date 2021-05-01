@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Axios from 'axios';
 import Card from "@material-ui/core/Card";
+import { Link } from "react-router-dom";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
@@ -15,7 +16,6 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import StarIcon from '@material-ui/icons/Star';
 import CircularProgress from "@material-ui/core/CircularProgress";
 import ProductsItem from '../Layout/PruductDetailsPage/ProductsItem';
-import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     root: {

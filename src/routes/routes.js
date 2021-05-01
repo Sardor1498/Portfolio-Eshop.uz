@@ -41,6 +41,10 @@ export const routes = [
     //     title: "Добавить каталог",
     //     url: "addcatalog"
     // },
+     {
+        title: "Registratsiya",
+        url: "register"
+    },
     {
         title: "Test",
         url: "test"

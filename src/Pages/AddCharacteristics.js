@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import TextField from "@material-ui/core/TextField";
 
 class AddCharacteristics extends Component {
@@ -6,10 +6,10 @@ class AddCharacteristics extends Component {
         super(props);
         this.state = {
             category_id: "",
-            tittle: "",
-            detailss: {
+            title: "",
+            details: {
                 version: "",
-                wararnty: "",
+                warranty: "",
                 weight: "",
                 country: "",
                 delivery: null,
@@ -19,21 +19,20 @@ class AddCharacteristics extends Component {
                     faceId: null,
                     nfc: null,
                     usbType: "",
-                    bluetoothVersion: "",
                     gsmStandart: "",
                     navigation: "",
                     wiFiVersion: "",
                     ram: "",
                     memoryPhone: "",
                     slotMemoryCard: "",
-                    numberOffProcessorCores: "",
+                    numberOfProcessorCores: "",
                     batteryCapacity: "",
                     batteryType: "",
                     fastCharging: null,
                     frontalCamera: "",
                     mainCamera: "",
-                    dioganal: "",
-                    screenResolution
+                    diagonal: "",
+                    screenResolution: "",
                 },
                 feature2: ""
             }
@@ -50,16 +49,16 @@ class AddCharacteristics extends Component {
         this.setState({
             category_id: "",
             title: ""
-        })
+        });
     }
 
     submit = event => {
         event.preventDefault();
-        let categoryId = parseint(this.state.category_id);
+        let categoryId = parseInt(this.state.category_id);
         categoryId++;
         let formattedState = {
-            category_id: categoryid,
-            title: this.state.tittle
+            category_id: categoryId,
+            title: this.state.title
         };
     };
 
@@ -69,7 +68,7 @@ class AddCharacteristics extends Component {
                 <form onSubmit={this.submit}>
                     <h1>Добавить тип характеристики</h1>
                     <br />
-                    {this.props.Characteristics ? (
+                    {this.props.characteristics ? (
                         <>
                             {this.props.characteristics.map((char, id) => (
                                 <h3>{char.title}</h3>
@@ -89,31 +88,36 @@ class AddCharacteristics extends Component {
                             </option>
                         ))}
                     </select>
-                    <br/>
-                    <br/>
-                    <TextField 
-                    id="outlined-email-input-01" 
-                    label="Имя категории"
-                    type="text"
-                    variant="outlined"
-                    value={this.state.title}
-                    onChange={this.handleChange}
-                    size="small"
-                    name="title"
+                    <br />
+                    <br />
+                    <TextField
+                        id="outlined-email-input-01"
+                        label="Имя категории"
+                        type="text"
+                        variant="outlined"
+                        value={this.state.title}
+                        onChange={this.handleChange}
+                        size="small"
+                        name="title"
                     />
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <div className="grid grid-cols-1">
-                        <h5 className="text-blue-800"
-                        id="requestSuccessInfo"></h5>
-                        <h5 className="text-red-800" id="requestSuccessInfo"></h5>
+                        <h5
+                            className="text-blue-800"
+                            id="requestSuccessInfo"
+                        ></h5>
+                        <h5
+                            className="text-red-800"
+                            id="requestErrorInfo"
+                        ></h5>
                     </div>
-                    <input type="submit"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"/>
+                    <input
+                        type="submit"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    />
                 </form>
             </div>
-        )
+        );
     }
-}
- 
-export default AddCharacteristics;
+};

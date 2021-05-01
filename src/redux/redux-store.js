@@ -7,7 +7,6 @@ import categoriesReducer from './categoriesReducer';
 import brandsReducer from './brandsReducer';
 import authReducer from './authReducer';
 
-
 let reducers = combineReducers({
     form: formReducer,
     productsReducer: productsReducer,

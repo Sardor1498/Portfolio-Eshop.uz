@@ -12,11 +12,11 @@ export default function authReducer(state = initialState, action) {
                 isAuthorized: true
             };
             case "LOG_OUT":
-                return{
+                return {
                     ...state,
                     user: [],
-                    isAuthorized:false
-                }
+                    isAuthorized: false
+                };
             default:
                 return state;
     }

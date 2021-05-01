@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     boxShadow: {
-      "3x1": "0 35px 60px -15px rgba(0, 0, 0, 0.3)"
+      "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.3)"
     },
     cursor: {
       auto: "auto",

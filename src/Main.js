@@ -11,8 +11,7 @@ import { productsAPI } from './api/productsAPI';
 import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
-import Content from '../src/Layout/Content/Content'
-import { authAPI } from "./api/usersAPI";
+import { authAPI } from './api/usersAPI';
 
 const Main = props => {
   
@@ -22,15 +21,16 @@ const Main = props => {
     props.getCategories();
     props.getBrands();
     props.getProfile();
-    
-   
   }, []);
 
   return (
     <div className="App">
       <div className="sticky top-0 z-20">
-        <Header
+        <Header 
           isAuthorized={props.isAuthorized}
+          login={props.login}
+          user={props.user}
+          logout={props.logout}
           catalogs={props.catalogs}
           login={props.login}
           user={props.user}
@@ -43,6 +43,7 @@ const Main = props => {
       <div>
         <ContentMain
           data={props}
+          login={props.login}
         />
       </div>
       <div>
@@ -62,9 +63,9 @@ const mapStateToProps = state => ({
   brands: state.brandsReducer.brands,
   brandsIsLoaded: state.brandsReducer.loaded,
   isAuthorized: state.authReducer.isAuthorized,
-  user: state.authReducer.user
-  //currentUser: state.authReducer.currentUser,
-  //initialized: state.authReducer.initialized
+  user: state.authReducer.user,
+  // currentUser: state.authReducer.currentUser,
+  // initialized: state.authReducer.initialized
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -79,8 +80,6 @@ const mapDispatchToProps = dispatch => ({
   login: user => dispatch(authAPI.login(user)),
   getProfile: () => dispatch(authAPI.getProfile()),
   logout: () => dispatch(authAPI.logout()),
-  
-
 });
 
 const MainContainer = compose(

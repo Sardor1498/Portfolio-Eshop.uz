@@ -21,7 +21,7 @@ const loading = isLoading => ({
 // }
     
 let instance = axios.create({
-    baseURL:` ${url}/api`,
+    baseURL: `${url}/api`,
     headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -32,40 +32,40 @@ let instance = axios.create({
     }
 });
 
- instance.interceptors.request.use(
-         config => {
-             dispatch => {
-                 dispatch(loading(true)); 
-             }
-             console.log("REQUEST");
-             return config;
-         },
-         error => {
-             return Promise.reject(error);
-         }
-);
+//  instance.interceptors.request.use(
+//          config => {
+//              dispatch => {
+//                  dispatch(loading(true)); 
+//              }
+//              console.log("REQUEST");
+//              return config;
+//          },
+//          error => {
+//              return Promise.reject(error);
+//          }
+// );
 
-instance.interceptors.response.use(
-        response => {
-            console.log("RESPONSE");
-            switch (response.status) {
-                case 200:
-                case 204:
-                case 201:
-                    loading(false);
-                    break;
-                default:
-                    break;
-            }
-            return response;
-        },
-        error => {
-            loading(false);
-            if (error?.response && error?.response?.data) {
-                return Promise.reject(error.response.data);
-            }
-            return Promise.reject(error?.message);
-        }
-);
+// instance.interceptors.response.use(
+//         response => {
+//             console.log("RESPONSE");
+//             switch (response.status) {
+//                 case 200:
+//                 case 204:
+//                 case 201:
+//                     loading(false);
+//                     break;
+//                 default:
+//                     break;
+//             }
+//             return response;
+//         },
+//         error => {
+//             loading(false);
+//             if (error?.response && error?.response?.data) {
+//                 return Promise.reject(error.response.data);
+//             }
+//             return Promise.reject(error?.message);
+//         }
+// );
 
 export default instance;

@@ -15,8 +15,7 @@ import AddBrand from '../../Pages/AddBrand';
 import Add from '../../Pages/Add';
 import Register from '../../Pages/Register';
 import Login from '../../Pages/Login';
-import ProductDetails from '../../Pages/productDetails';
-
+import ProductDetails from '../../Pages/ProductDetails';
 
 const ContentMain = (props) => {
     return (
@@ -84,6 +83,18 @@ const ContentMain = (props) => {
                 </Route>
                 <Route path="/test">
                     <Test />
+                </Route>
+                <Route path="/register">
+                    <Content />
+                    <Register />
+                </Route>
+                <Route path="/login">
+                    <Content />
+                    <Login login={props.data.login}/>
+                </Route>
+                <Route path="/details/:id">
+                    <Content />
+                    <ProductDetails />
                 </Route>
                 <Route path="/add">
                     <Add

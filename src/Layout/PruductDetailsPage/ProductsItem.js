@@ -6,8 +6,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import InfoIcon from '@material-ui/icons/Info';
 import Button from '@material-ui/core/Button';
 import CheckIcon from '@material-ui/icons/Check';
-import Image from '../images/A21s.jpg';
-import { useParams } from 'react-router-dom';
+import Image from '../../images/A21s.jpg';
 
 const services = [
     {
@@ -32,47 +31,22 @@ const services = [
 ];
 
 
-const ProductDetails = (props) => {
-    const { id } = useParams();
-    console.log(id);
-
+const ProductsItem = (props) => {
     return (
         <>
-            <div className="md:grid grid-cols-2 sm:grid-cols-2 space-y-4 xl:grid-cols-2 lg:grid-cols-2">
-                <div className="md:flex sm:flex xl:flex lg:flex block">
-                    <div className="md:w-1/4 sm:w-1/4 lg:w-1/4 xl:w-1/4 w-1/2 grid gap-4 grid-cols-1 p-5">
-                        <div className="md:grid grid-cols-1 sm:grid grid-cols-1 xl:grid grid-cols-1 lg:grid grid-cols-1 grid-cols-3">
-                            <img
-                                className="
+            <div className="grid grid-cols-2">
+                <div className="flex">
+                    <div className="w-1/4 ml-5 p-5">
+                        <img
+                            className="
                                 rounded-2xl
                                 justify-center
                                 border-2
                                 border-gray-100 
                                 bg-gray-50 mt-5"
-                                src={Image}
-                                alt=""
-                            />
-                            <img
-                                className="
-                                rounded-2xl
-                                justify-center
-                                border-2
-                                border-gray-100 
-                                bg-gray-50 mt-5"
-                                src={Image}
-                                alt=""
-                            />
-                            <img
-                                className="
-                                rounded-2xl
-                                justify-center
-                                border-2
-                                border-gray-100 
-                                bg-gray-50 mt-5"
-                                src={Image}
-                                alt=""
-                            />
-                        </div>
+                            src={Image}
+                            alt=""
+                        />
                     </div>
                     <div className="w-3/4 p-5">
                         <img
@@ -92,7 +66,7 @@ const ProductDetails = (props) => {
                         </p>
                     <p className="text-4xl font-sans font-bold">Samsung Galaxy A21s 4/64G</p>
                     <h1 className="text-4xl font-sans font-bold">
-                        Prism Crush Black A315
+                    Prism Crush Black A315
                     </h1>
                     <br />
                     <div className="flex">
@@ -148,4 +122,4 @@ const ProductDetails = (props) => {
     );
 };
 
-export default ProductDetails;
+export default ProductsItem;

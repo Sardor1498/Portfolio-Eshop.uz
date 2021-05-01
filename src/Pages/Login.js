@@ -63,6 +63,7 @@ const Login = props => {
             });
         }
     };
+<<<<<<< HEAD
     // let url = "";
     // if (process.env.MIX_API_URL === "local") {
     //     url = "http://localhost:8000";
@@ -97,6 +98,42 @@ const Login = props => {
     //         console.log(error)
     //     }
     // }
+=======
+
+
+    let url = "https://laravel-react-eshop.herokuapp.com";
+
+    
+    const handleSubmit = async e => {
+        e.preventDefault();
+        props.login(user);
+        try {
+            let res = await Axios.post(`${url}/api/login`, user);
+            if (res.data) {
+                localStorage.setItem("token", res.data.token);
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const getProfile = async () => {
+        try {
+            const data = {
+                name: "Client Name",
+                redirect: "http://example.com/callback"
+            };
+            const token = localStorage.token;
+            if (token) {
+                let resp = await Axios.post(`${url}/oauth/clients`, data);
+                console.log(resp);
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+>>>>>>> 4706705ffc1794c9dc264b2d8eb1c00acd922285
 
     return (
         <div className="flex justify-center mt-3">
@@ -139,7 +176,11 @@ const Login = props => {
                             Tozalash
                         </Button>
                     </div>
+<<<<<<< HEAD
                     {/* <div className="ml-2">
+=======
+                    <div className="ml-2">
+>>>>>>> 4706705ffc1794c9dc264b2d8eb1c00acd922285
                         <Button
                             variant="contained"
                             onClick={getProfile}
@@ -147,7 +188,11 @@ const Login = props => {
                         >
                             GETPROFILE
                         </Button>
+<<<<<<< HEAD
                     </div> */}
+=======
+                    </div>
+>>>>>>> 4706705ffc1794c9dc264b2d8eb1c00acd922285
                 </div>
             </form>
         </div>

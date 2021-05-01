@@ -50,20 +50,20 @@ export default function HiddenPanel(props) {
             <List>
                 {routes.map(
                     (item, index) => (
-                        <ListItem button key={index}>
-                            <Link to={item.url}>
+                        <Link key={index} to={item.url}>
+                            <ListItem button key={index}>
                                 {item.title}
-                            </Link>
-                        </ListItem>
+                            </ListItem>
+                        </Link>
                     ))}
             </List>
             <List>
-                { props.catalogs.map((item, index) => (
-                    <ListItem button key={index}>
-                        <Link to={item.url}>
+                {props.catalogs.map((item, index) => (
+                    <Link key={index} to={item.url}>
+                        <ListItem button key={index}>
                             {item.title}
-                        </Link>
-                    </ListItem>
+                        </ListItem>
+                    </Link>
                 ))}
             </List>
         </div>

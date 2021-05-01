@@ -12,28 +12,36 @@ import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
 import Content from '../src/Layout/Content/Content'
+import { authAPI } from "./api/usersAPI";
 
 const Main = props => {
-
+  
   useEffect(() => {
     props.getProducts();
     props.getCatalogs();
     props.getCategories();
     props.getBrands();
+    props.getProfile();
+    
+   
   }, []);
 
   return (
     <div className="App">
       <div className="sticky top-0 z-20">
-        <Header 
+        <Header
+          isAuthorized={props.isAuthorized}
           catalogs={props.catalogs}
+          login={props.login}
+          user={props.user}
+          logout={props.logout}
         />
       </div>
       <div>
         <Content />
       </div>
       <div>
-        <ContentMain 
+        <ContentMain
           data={props}
         />
       </div>
@@ -53,6 +61,8 @@ const mapStateToProps = state => ({
   categoriesIsLoaded: state.categoriesReducer.loaded,
   brands: state.brandsReducer.brands,
   brandsIsLoaded: state.brandsReducer.loaded,
+  isAuthorized: state.authReducer.isAuthorized,
+  user: state.authReducer.user
   //currentUser: state.authReducer.currentUser,
   //initialized: state.authReducer.initialized
 });
@@ -65,7 +75,12 @@ const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(categoriesAPI.getCategories()),
   createCategories: category => dispatch(categoriesAPI.createCategories(category)),
   getBrands: () => dispatch(brandsAPI.getBrands()),
-  createBrand: brand => dispatch(brandsAPI.createBrand(brand))
+  createBrand: brand => dispatch(brandsAPI.createBrand(brand)),
+  login: user => dispatch(authAPI.login(user)),
+  getProfile: () => dispatch(authAPI.getProfile()),
+  logout: () => dispatch(authAPI.logout()),
+  
+
 });
 
 const MainContainer = compose(
@@ -75,11 +90,11 @@ const MainContainer = compose(
 
 const Eshop = (props) => {
   return (
-      <BrowserRouter>
-          <Provider store={store}>
-              <MainContainer />
-          </Provider>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <MainContainer />
+      </Provider>
+    </BrowserRouter>
   );
 };
 

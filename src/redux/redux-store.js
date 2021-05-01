@@ -5,6 +5,8 @@ import productsReducer from './productsReducer';
 import catalogsReducer from './catalogsReducer';
 import categoriesReducer from './categoriesReducer';
 import brandsReducer from './brandsReducer';
+import authReducer from './authReducer';
+
 
 let reducers = combineReducers({
     form: formReducer,
@@ -12,6 +14,7 @@ let reducers = combineReducers({
     catalogsReducer: catalogsReducer,
     categoriesReducer: categoriesReducer,
     brandsReducer: brandsReducer,
+    authReducer: authReducer,
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

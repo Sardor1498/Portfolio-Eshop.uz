@@ -8,7 +8,7 @@ import AddCatalog from './AddCatalog';
 const Add = (props) => {
     return (
         <>
-            <div className="flex justify-center mt-3">
+            <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 mt-3">
                 <div>
                     <Modal
                         openBtn="Add product"
@@ -43,7 +43,7 @@ const Add = (props) => {
                         sosTitle="Добавляйте на сайт разные категории"
                         component={
                             <AddCategory
-                                createCategory={props.createCategory}
+                                createCategories={props.createCategories}
                                 catalogs={props.catalogs}
                             />
                         }
@@ -56,7 +56,7 @@ const Add = (props) => {
                         sosTitle="Добавляйте на сайт различные каталоги"
                         component={
                             <AddCatalog
-                                createCatalogs={props.createCatalogs}
+                                createCatalog={props.createCatalog}
                                 categories={props.categories}
                             />
                         }

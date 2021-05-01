@@ -15,6 +15,9 @@ const CarouselAutoplay = (props) => {
     return (
         <div className="wrapper">
             <Splide
+                // onArrowMounted={(splide, prev, next) => {
+                //     console.log(prev, next);
+                // }}
                 className="mb-3"
                 options={{
                     type: "loop",
@@ -24,6 +27,7 @@ const CarouselAutoplay = (props) => {
                     resetProgress: false,
                     arrows: "slider",
                     width: "100%",
+                    // perMove: 10,
                     // height: "20vh",
                     // perPage: 7,
                     lazyLoad: "nearby",

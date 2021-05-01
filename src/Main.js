@@ -12,6 +12,8 @@ import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
 import { authAPI } from './api/usersAPI';
+import { detailsAPI } from './api/productsDetailsAPI';
+import Content from './Layout/Content/Content';
 
 const Main = props => {
   
@@ -33,6 +35,9 @@ const Main = props => {
           logout={props.logout}
           catalogs={props.catalogs}
         />
+      </div>
+      <div>
+        <Content />
       </div>
       <div>
         <ContentMain 
@@ -74,6 +79,8 @@ const mapDispatchToProps = dispatch => ({
   login: user => dispatch(authAPI.login(user)),
   getProfile: () => dispatch(authAPI.getProfile()),
   logout: () => dispatch(authAPI.logout()),
+  getProductDetail: (id) => dispatch(detailsAPI.getProductDetail(id)),
+  // createProductDetail: (id) => dispatch(detailsAPI.getProductDetail(id)),
 });
 
 const MainContainer = compose(

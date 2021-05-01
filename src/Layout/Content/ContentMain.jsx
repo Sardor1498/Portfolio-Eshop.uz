@@ -29,7 +29,6 @@ const ContentMain = (props) => {
                     />
                 </Route>
                 <Route path="/phones">
-                    <Content />
                     <Phones categories={props.data.categories}
                         products={props.data.products}
                         brands={props.data.brands}
@@ -37,7 +36,6 @@ const ContentMain = (props) => {
                     />
                 </Route>
                 <Route path="/notebooks">
-                    <Content />
                     <Notebooks 
                         categories={props.data.categories}
                         products={props.data.products}
@@ -46,7 +44,6 @@ const ContentMain = (props) => {
                     />
                 </Route>
                 <Route path="/tv">
-                    <Content />
                     <Tv 
                         categories={props.data.categories}
                         products={props.data.products}
@@ -55,19 +52,15 @@ const ContentMain = (props) => {
                     />
                 </Route>
                 <Route path="/appliances">
-                    <Content />
                     <Appliances />
                 </Route>
                 <Route path="/office">
-                    <Content />
                     <Office />
                 </Route>
                 <Route path="/sports">
-                    <Content />
                     <Sports />
                 </Route>
                 <Route path="/addproduct">
-                    <Content />
                     <AddProduct
                         createProduct={props.data.createProduct}
                         categories={props.data.categories}
@@ -75,44 +68,37 @@ const ContentMain = (props) => {
                     />
                 </Route>
                 <Route path="/addcategory">
-                    <Content />
                     <AddCategory
                         createCategories={props.data.createCategories}
                         catalogs={props.data.catalogs}
                     />
                 </Route>
                 <Route path="/addcatalog">
-                    <Content />
                     <AddCatalog
                         createCatalog={props.data.createCatalog}
                         categories={props.data.categories}
                     />
                 </Route>
                 <Route path="/addbrand">
-                    <Content />
                     <AddBrand
                         createBrand={props.data.createBrand}
                         categories={props.data.categories}
                     />
                 </Route>
                 <Route path="/test">
-                    <Content />
                     <Test />
                 </Route>
                 <Route path="/register">
-                    <Content />
                     <Register />
                 </Route>
                 <Route path="/login">
-                    <Content />
                     <Login login={props.data.login}/>
                 </Route>
                 <Route path="/details/:id">
-                    <Content />
-                    <ProductDetails />
+                    <ProductDetails 
+                        getProductDetail={props.data.getProductDetail}/>
                 </Route>
                 <Route path="/add">
-                    <Content />
                     <Add 
                         createProduct={props.data.createProduct}
                         createBrand={props.data.createBrand}

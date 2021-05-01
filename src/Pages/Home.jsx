@@ -7,9 +7,9 @@ import Slideshow from '../Layout/SlideShow/SlideShow';
 const Home = (props) => {
     return (
         <>
-            <div>
+            {/* <div>
                 <Content />
-            </div>
+            </div> */}
             <div>
                 <Slideshow />
             </div>

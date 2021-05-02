@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Axios from 'axios';
 import Card from "@material-ui/core/Card";
+import { Link } from "react-router-dom";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
@@ -12,15 +13,17 @@ import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 345
     },
+    color: {
+        color: "blue"
+    },
     media: {
         height: 200,
-        backgroundSize: "contain",
+        // backgroundSize: "contain",
         paddingTop: "56.25%" // 16:9
     },
     expand: {

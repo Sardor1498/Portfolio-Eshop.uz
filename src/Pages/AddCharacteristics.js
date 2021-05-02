@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 
 class AddCharactteristics extends React.Component {
+=======
+import React, { Component } from 'react';
+import TextField from "@material-ui/core/TextField";
+
+class AddCharacteristics extends Component {
+>>>>>>> 47a7ab656a1d10c5bd23cbebdf2280d65a381cac
     constructor(props) {
         super(props);
         this.state = {
@@ -15,11 +22,18 @@ class AddCharactteristics extends React.Component {
                 delivery: null,
                 phoneFeatures: {
                     simSlotAndType: "",
+<<<<<<< HEAD
                     fingreprint: null,
                     faceId: null,
                     nfc: null,
                     usbType: "",
                     bluetoothVersion: "",
+=======
+                    fingerprint: null,
+                    faceId: null,
+                    nfc: null,
+                    usbType: "",
+>>>>>>> 47a7ab656a1d10c5bd23cbebdf2280d65a381cac
                     gsmStandart: "",
                     navigation: "",
                     wiFiVersion: "",
@@ -33,7 +47,11 @@ class AddCharactteristics extends React.Component {
                     frontalCamera: "",
                     mainCamera: "",
                     diagonal: "",
+<<<<<<< HEAD
                     screenResolution 
+=======
+                    screenResolution: "",
+>>>>>>> 47a7ab656a1d10c5bd23cbebdf2280d65a381cac
                 },
                 feature2: ""
             }
@@ -49,7 +67,7 @@ class AddCharactteristics extends React.Component {
     clearState() {
         this.setState({
             category_id: "",
-            title: "",
+            title: ""
         });
     }
 
@@ -66,12 +84,12 @@ class AddCharactteristics extends React.Component {
     render() {
         return (
             <div className="flex justify-center">
-                <from onSubmit={this.submit}>
+                <form onSubmit={this.submit}>
                     <h1>Добавить тип характеристики</h1>
                     <br />
-                    {this.props.charactistics ? (
+                    {this.props.characteristics ? (
                         <>
-                            {this.props.charactistics.map((char, id) => (
+                            {this.props.characteristics.map((char, id) => (
                                 <h3>{char.title}</h3>
                             ))}
                         </>
@@ -80,7 +98,7 @@ class AddCharactteristics extends React.Component {
                         value={this.state.category_id}
                         className="border py-2 px-2 cursor-pointer"
                         name="category_id"
-                        onChange={this.handleChange} 
+                        onChange={this.handleChange}
                     >
                         <option>Выберите категорию : </option>
                         {this.props.categories.map((category, index) => (
@@ -97,22 +115,28 @@ class AddCharactteristics extends React.Component {
                         type="text"
                         variant="outlined"
                         value={this.state.title}
+                        onChange={this.handleChange}
                         size="small"
                         name="title"
-                     />
-                     <bt />
-                     <bt />
-                     <div className="grid grid-cols-1">
-                         <h5 className="text-blue-800"
-                         id="requestSuccessInfo"></h5>
-                         <h5 className="text-red-800" id="requestSuccessInfo"></h5>
-                     </div>
-                     <input type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ronded" />
-                </from>
-
+                    />
+                    <br />
+                    <br />
+                    <div className="grid grid-cols-1">
+                        <h5
+                            className="text-blue-800"
+                            id="requestSuccessInfo"
+                        ></h5>
+                        <h5
+                            className="text-red-800"
+                            id="requestErrorInfo"
+                        ></h5>
+                    </div>
+                    <input
+                        type="submit"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    />
+                </form>
             </div>
-        )
+        );
     }
-}
-
-export default AddCharactteristics;
+};

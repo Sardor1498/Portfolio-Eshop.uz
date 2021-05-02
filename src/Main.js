@@ -12,10 +12,11 @@ import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
 import { authAPI } from './api/usersAPI';
-import { detailsAPI } from './api/productsDetailAPI';
+import { detailsAPI } from './api/productsDetailsAPI';
+import Content from './Layout/Content/Content';
 
 const Main = props => {
-
+  
   useEffect(() => {
     props.getProducts();
     props.getCatalogs();
@@ -28,13 +29,18 @@ const Main = props => {
     <div className="App">
       <div className="sticky top-0 z-20">
         <Header 
-          catalogs={props.catalogs}
           isAuthorized={props.isAuthorized}
           login={props.login}
           user={props.user}
           logout={props.logout}
-
+          catalogs={props.catalogs}
+          login={props.login}
+          user={props.user}
+          logout={props.logout}
         />
+      </div>
+      <div>
+        <Content />
       </div>
       <div>
         <ContentMain 
@@ -59,7 +65,9 @@ const mapStateToProps = state => ({
   brands: state.brandsReducer.brands,
   brandsIsLoaded: state.brandsReducer.loaded,
   isAuthorized: state.authReducer.isAuthorized,
-  user: state.authReducer.user
+  user: state.authReducer.user,
+  // currentUser: state.authReducer.currentUser,
+  // initialized: state.authReducer.initialized
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -72,10 +80,10 @@ const mapDispatchToProps = dispatch => ({
   getBrands: () => dispatch(brandsAPI.getBrands()),
   createBrand: brand => dispatch(brandsAPI.createBrand(brand)),
   login: user => dispatch(authAPI.login(user)),
-  logout: () => dispatch(authAPI.logout()),
-  createUser: user => dispatch(authAPI.createUser(user)),
   getProfile: () => dispatch(authAPI.getProfile()),
-  getProductDetail: id => dispatch(detailsAPI.getProductDetail(id))
+  logout: () => dispatch(authAPI.logout()),
+  getProductDetail: (id) => dispatch(detailsAPI.getProductDetail(id)),
+  // createProductDetail: (id) => dispatch(detailsAPI.getProductDetail(id)),
 });
 
 const MainContainer = compose(
@@ -85,11 +93,11 @@ const MainContainer = compose(
 
 const Eshop = (props) => {
   return (
-      <BrowserRouter>
-          <Provider store={store}>
-              <MainContainer />
-          </Provider>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <MainContainer />
+      </Provider>
+    </BrowserRouter>
   );
 };
 

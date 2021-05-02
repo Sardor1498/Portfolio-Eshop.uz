@@ -1,5 +1,4 @@
 import React from 'react';
-import Content from '../Layout/Content/Content';
 import SideBar from '../Layout/Sidebar/SideBar';
 import CarouselAutoplay from '../components/CarouselAutoplay';
 import Slideshow from '../Layout/SlideShow/SlideShow';
@@ -7,9 +6,9 @@ import Slideshow from '../Layout/SlideShow/SlideShow';
 const Home = (props) => {
     return (
         <>
-            <div>
+            {/* <div>
                 <Content />
-            </div>
+            </div> */}
             <div>
                 <Slideshow />
             </div>

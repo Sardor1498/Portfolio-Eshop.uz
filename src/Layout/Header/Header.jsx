@@ -76,7 +76,7 @@ const Header = props => {
                             <button
                                 aria-controls="customized-menu"
                                 aria-haspopup="true"
-                                className="bg-transparent hover:bg-white-200 text-white font-semibold py-1 px-2 rounded shadow"
+                                className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow"
                                 onClick={handleClick}
                             >
                                 <AccountCircleIcon className="cursor-pointer mr-1" />
@@ -104,18 +104,18 @@ const Header = props => {
                             </StyledMenu>
                         </>
                     ) : (
-                        <Link className="text-white" to="login">
-                            Login
-                        </Link>
-                    )}
+                            <Link className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow" to="login">
+                                Login
+                            </Link>
+                        )}
                 </span>
-                <span className="mr-2">
+                <span className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow">
                     <FavoriteBorderIcon className="mr-2 cursor-pointer" />
-                    My Items
+                        My Item
                 </span>
-                <span className="mr-2">
+                <span className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow">
                     <ShoppingCartIcon className="cursor-pointer" />
-                    Корзина
+                        Корзина
                 </span>
             </div>
         </div>

@@ -109,6 +109,15 @@ const Login = props => {
                             Tozalash
                         </Button>
                     </div>
+                    {/* <div className="ml-2">
+                        <Button
+                            variant="contained"
+                            onClick={getProfile}
+                            color="primary"
+                        >
+                            GETPROFILE
+                        </Button>
+                    </div> */}
                 </div>
             </form>
         </div>

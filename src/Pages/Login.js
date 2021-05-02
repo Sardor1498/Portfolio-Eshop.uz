@@ -63,34 +63,11 @@ const Login = props => {
             });
         }
     };
-    let url = "https://laravel-react-eshop.herokuapp.com";
     const handleSubmit = async e => {
         e.preventDefault();
-        try {
-            let res = await Axios.post(`${url}/api/login`, user);
-            if (res.data) {
-                localStorage.setItem("token", res.data.token);
-            }
-        } catch (e) {
-            console.log(e);
-        }
+        props.login(user);
     };
 
-    const getProfile = async () => {
-        try {
-            const data = {
-                name: "Client Name",
-                redirect: "http://example.com/callback"
-            };
-            const token = localStorage.token;
-            if (token) {
-                let resp = await Axios.post(`${url}/oauth/clients`, data);
-                console.log(resp);
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
     return (
         <div className="flex justify-center mt-3">
             <form className="w-1/2" onSubmit={e => handleSubmit(e)}>
@@ -130,15 +107,6 @@ const Login = props => {
                             color="secondary"
                         >
                             Tozalash
-                        </Button>
-                    </div>
-                    <div className="ml-2">
-                        <Button
-                            variant="contained"
-                            onClick={getProfile}
-                            color="primary"
-                        >
-                            GETPROFILE
                         </Button>
                     </div>
                 </div>

@@ -11,6 +11,8 @@ import { productsAPI } from './api/productsAPI';
 import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
+import { authAPI } from './api/usersAPI';
+import { detailsAPI } from './api/productsDetailAPI';
 
 const Main = props => {
 
@@ -19,6 +21,7 @@ const Main = props => {
     props.getCatalogs();
     props.getCategories();
     props.getBrands();
+    props.getProfile();
   }, []);
 
   return (
@@ -26,11 +29,17 @@ const Main = props => {
       <div className="sticky top-0 z-20">
         <Header 
           catalogs={props.catalogs}
+          isAuthorized={props.isAuthorized}
+          login={props.login}
+          user={props.user}
+          logout={props.logout}
+
         />
       </div>
       <div>
         <ContentMain 
           data={props}
+          login={props.login}
         />
       </div>
       <div>
@@ -49,8 +58,8 @@ const mapStateToProps = state => ({
   categoriesIsLoaded: state.categoriesReducer.loaded,
   brands: state.brandsReducer.brands,
   brandsIsLoaded: state.brandsReducer.loaded,
-  //currentUser: state.authReducer.currentUser,
-  //initialized: state.authReducer.initialized
+  isAuthorized: state.authReducer.isAuthorized,
+  user: state.authReducer.user
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -61,7 +70,12 @@ const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(categoriesAPI.getCategories()),
   createCategories: category => dispatch(categoriesAPI.createCategories(category)),
   getBrands: () => dispatch(brandsAPI.getBrands()),
-  createBrand: brand => dispatch(brandsAPI.createBrand(brand))
+  createBrand: brand => dispatch(brandsAPI.createBrand(brand)),
+  login: user => dispatch(authAPI.login(user)),
+  logout: () => dispatch(authAPI.logout()),
+  createUser: user => dispatch(authAPI.createUser(user)),
+  getProfile: () => dispatch(authAPI.getProfile()),
+  getProductDetail: id => dispatch(detailsAPI.getProductDetail(id))
 });
 
 const MainContainer = compose(

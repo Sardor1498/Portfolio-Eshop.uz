@@ -11,7 +11,10 @@ const Sports = () => {
     return (
         <>
             <div className="grid grid-cols-2">
+                <div className="pl-60">
+                    <img className="p-5 w-96 h-100 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
                 <img className="w-20 h-20 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
+                </div>
                 <div className="text-left pl-5">
                     <h1 className="pt-2">Samsung</h1>
                     <h1 className="text-4xl font-sans font-bold">Samsung Galaxy A10s 2/32GB</h1>

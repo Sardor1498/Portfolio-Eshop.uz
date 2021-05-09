@@ -68,6 +68,7 @@ export default function RecipeReviewCard(props) {
             if (res.data) {
                 setLoading(false);
                 setProduct(res.data);
+                props.getProducts();
             }
         } catch (e) {
             console.log(e)
@@ -110,7 +111,7 @@ export default function RecipeReviewCard(props) {
                                     >
                                         <FavoriteIcon />
                                     </IconButton>
-                                    <IconButton aria-label="share" edge="end">
+                                    <IconButton aria-label="share">
                                         <ShareIcon />
                                     </IconButton>
                                 </CardActions>

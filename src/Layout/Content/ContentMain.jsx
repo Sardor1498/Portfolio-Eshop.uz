@@ -25,7 +25,7 @@ const ContentMain = (props) => {
                 <Route exact path="/">
                     <Home products={props.data.products}
                         productsIsLoaded={props.data.productsIsLoaded}
-                        createProduct={props.data.createProduct}
+                        getProducts={props.data.getProducts}
                     />
                 </Route>
                 <Route path="/phones">
@@ -96,7 +96,8 @@ const ContentMain = (props) => {
                 </Route>
                 <Route path="/details/:id">
                     <ProductDetails 
-                        getProductDetail={props.data.getProductDetail}/>
+                        getProductDetail={props.data.getProductDetail}
+                        getCurrentProduct={props.data.getCurrentProduct}/>
                 </Route>
                 <Route path="/add">
                     <Add 

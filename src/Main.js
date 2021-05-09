@@ -34,9 +34,8 @@ const Main = props => {
           user={props.user}
           logout={props.logout}
           catalogs={props.catalogs}
-          login={props.login}
-          user={props.user}
-          logout={props.logout}
+          products={props.products}
+          getProducts={props.getProducts}
         />
       </div>
       <div>
@@ -72,6 +71,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getProducts: () => dispatch(productsAPI.getProducts()),
+  getCurrentProduct: id => dispatch(productsAPI.getCurrentProduct(id)),
   createProduct: data => dispatch(productsAPI.createProduct(data)),
   getCatalogs: () => dispatch(catalogsAPI.getCatalogs()),
   createCatalog: catalog => dispatch(catalogsAPI.createCatalog(catalog)),

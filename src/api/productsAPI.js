@@ -50,6 +50,20 @@ export const productsAPI = {
             }
         };
     },
+    getCurrentProduct(id) {
+        return async dispatch => {
+            let response = await instance.get(`product/${id}`);
+            if (response.data) {
+                dispatch(setProducts(response.data));
+                return response.data;
+            }
+            if (response.data.errors) {
+                return response.data.errors;
+            } else {
+
+            }
+        };
+    },
 
     updateProduct(product) {
         return async dispatch => {

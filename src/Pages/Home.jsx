@@ -16,6 +16,7 @@ const Home = (props) => {
                 <p className="text-lg font-sans font-extrabold mt-5">Популярные товары</p>
                 <CarouselAutoplay products={props.products}
                     productsIsLoaded={props.productsIsLoaded}
+                    getProducts={props.getProducts}
                 />
             </div>
             <div>

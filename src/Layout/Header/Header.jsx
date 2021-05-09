@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import HiddenPanel from "../Menu/HiddenPanel";
@@ -12,6 +12,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import SettingsIcon from "@material-ui/icons/Settings";
+import Badge from "@material-ui/core/Badge";
 
 const StyledMenu = withStyles({
     paper: {
@@ -45,7 +46,9 @@ const StyledMenuItem = withStyles(theme => ({
 }))(MenuItem);
 
 const Header = props => {
+    console.log(props)
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [count, setCount] = React.useState(0);
 
     const handleClick = event => {
         setAnchorEl(event.target);
@@ -54,6 +57,17 @@ const Header = props => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const getCount = () => {
+        let arr = [];
+        if (props.products.length > 0) {
+            props.products.map(item => item.selected ? (arr.push(item), setCount(arr.length)) : null)
+        }
+    };
+
+    useEffect (() => {
+        getCount();
+    }, [props.products])
 
     return (
         <div
@@ -69,54 +83,52 @@ const Header = props => {
             >
                 <SearchPanel />
             </div>
-            <div className="text-white flex justify-around md:mt-2">
-                <span className="mr-1">
-                    {props.isAuthorized && props.user ? (
-                        <>
-                            <button
-                                aria-controls="customized-menu"
-                                aria-haspopup="true"
-                                className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow"
-                                onClick={handleClick}
-                            >
-                                <AccountCircleIcon className="cursor-pointer mr-1" />
-                                {props.user.name}
-                            </button>
-                            <StyledMenu
-                                id="customized-menu"
-                                anchorEl={anchorEl}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
-                            >
-                                <StyledMenuItem>
-                                    <ListItemIcon>
-                                        <SettingsIcon fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Настройки" />
-                                </StyledMenuItem>
-                                <StyledMenuItem onClick={props.logout}>
-                                    <ListItemIcon>
-                                        <ExitToAppIcon fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Выход" />
-                                </StyledMenuItem>
-                            </StyledMenu>
-                        </>
-                    ) : (
-                            <Link className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow" to="login">
-                                Login
-                            </Link>
-                        )}
-                </span>
-                <span className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow">
-                    <FavoriteBorderIcon className="mr-2 cursor-pointer" />
-                        My Item
-                </span>
-                <span className="bg-transparent hover:bg-white-200 text-white font-semibold mb-1 rounded shadow">
-                    <ShoppingCartIcon className="cursor-pointer" />
-                        Корзина
-                </span>
+            <div className="text-white flex justify-around items-center">
+                {props.isAuthorized && props.user ? (
+                    <>
+                        <button
+                            aria-controls="customized-menu"
+                            aria-haspopup="true"
+                            className="bg-transparent hover:bg-white-200 text-white font-semibold py-1 px-2 rounded shadow"
+                            onClick={handleClick}
+                        >
+                            <AccountCircleIcon className="cursor-pointer mr-1" />
+                            {props.user.name}
+                        </button>
+                        <StyledMenu
+                            id="customized-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <StyledMenuItem>
+                                <ListItemIcon>
+                                    <SettingsIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Настройки" />
+                            </StyledMenuItem>
+                            <StyledMenuItem onClick={props.logout}>
+                                <ListItemIcon>
+                                    <ExitToAppIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Выход" />
+                            </StyledMenuItem>
+                        </StyledMenu>
+                        <Badge badgeContent={count} color="primary">
+                            <FavoriteBorderIcon className="cursor-pointer" />
+                        </Badge>
+                        <span className="font-semibold">Избранные</span>
+                        <Badge badgeContent={1} color="secondary">
+                            <ShoppingCartIcon className="cursor-pointer" />
+                        </Badge>
+                        <span className="font-semibold">Корзина</span>
+                    </>
+                ) : (
+                    <Link className="text-white" to="/login">
+                        Login
+                    </Link>
+                )}
             </div>
         </div>
     );

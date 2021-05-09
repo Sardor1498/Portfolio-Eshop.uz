@@ -5,6 +5,14 @@ export const routes = [
         title: "Домашняя страница",
         url: ""
     },
+    {
+        title: "sports",
+        url: "sports"
+    },
+    {
+        title: "register",
+        url: "register"
+    },
     // {
     //     title: "Смартфоны, телефоны, гаджеты, аксессуары",
     //     url: "phones"

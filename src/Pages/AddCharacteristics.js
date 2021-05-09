@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 
-class AddCharacteristics extends Component {
+class AddCharactteristics extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,10 +15,11 @@ class AddCharacteristics extends Component {
                 delivery: null,
                 phoneFeatures: {
                     simSlotAndType: "",
-                    fingerprint: null,
+                    fingreprint: null,
                     faceId: null,
                     nfc: null,
                     usbType: "",
+                    bluetoothVersion: "",
                     gsmStandart: "",
                     navigation: "",
                     wiFiVersion: "",
@@ -32,7 +33,7 @@ class AddCharacteristics extends Component {
                     frontalCamera: "",
                     mainCamera: "",
                     diagonal: "",
-                    screenResolution: "",
+                    screenResolution 
                 },
                 feature2: ""
             }
@@ -43,7 +44,7 @@ class AddCharacteristics extends Component {
         this.setState({
             [event.target.name]: event.target.value
         });
-    };
+    }
 
     clearState() {
         this.setState({

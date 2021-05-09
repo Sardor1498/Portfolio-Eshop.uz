@@ -12,10 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-import Skeleton from "@material-ui/lab/Skeleton";
-import StarIcon from '@material-ui/icons/Star';
 import CircularProgress from "@material-ui/core/CircularProgress";
-import ProductsItem from '../Layout/PruductDetailsPage/ProductsItem';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -126,4 +123,4 @@ export default function RecipeReviewCard(props) {
                 )}
         </>
     );
-}
+};

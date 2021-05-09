@@ -1,6 +1,7 @@
-import * as axios from 'axios';
+import * as axios from "axios";
 
-let url = "https://laravel-react-eshop.herokuapp.com";
+const url = "https://laravel-react-eshop.herokuapp.com";
+
 const instance = axios.create({
     baseURL: `${url}/api`,
     headers: {
@@ -12,7 +13,8 @@ const instance = axios.create({
 const loginUser = user => ({
     type: "AUTHORIZED_SUCCESS",
     payload: user
-})
+});
+
 export const logoutUser = () => ({
     type: "LOG_OUT"
 });
@@ -37,26 +39,26 @@ export const authAPI = {
             if (response.status === 200) {
                 localStorage.setItem("token", response.data.token);
                 dispatch(loginUser(response.data.user));
-                window.history.go(-1);
+                window.history.go(-1)
             }
             if (response.data.errors) {
                 document.getElementById("errorDiv").innerHTML =
                     "wrong email or password";
             }
-        };
+        }
     },
 
     logout() {
         return async dispatch => {
-            localStorage.removeItem('token'); // local ombordagi tokenni o'chiradi
+            localStorage.removeItem("token"); // local ombordagi tokeni ochiradi
             dispatch(logoutUser());
         }
     },
 
     getProfile() {
         return async dispatch => {
-            const token = localStorage.token;  // local ombordagi tokenni 
-            if (token) { //agar token mavjud bo'lsa
+            const token = localStorage.token;  //local omboridagi token
+            if (token) { // agar token mavjud bolsa
                 let response = await instance.get("user", {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -67,10 +69,10 @@ export const authAPI = {
                 }
                 if (response.message) {
                     localStorage.removeItem("token");
-                } else {
-                    console.log(response.data)
+                }else {
+                console.log(response.data)
                 }
             }
         };
-    }
+    },
 };

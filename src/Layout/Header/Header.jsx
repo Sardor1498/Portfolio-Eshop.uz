@@ -46,9 +46,9 @@ const StyledMenuItem = withStyles(theme => ({
 }))(MenuItem);
 
 const Header = props => {
-    console.log(props)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [count, setCount] = React.useState(0);
+    const [basket, setBasket] = React.useState(0);
 
     const handleClick = event => {
         setAnchorEl(event.target);
@@ -64,9 +64,16 @@ const Header = props => {
             props.products.map(item => item.selected ? (arr.push(item), setCount(arr.length)) : null)
         }
     };
+    const getBasket = () => {
+        let arr = [];
+        if (props.products.length > 0) {
+            props.products.map(item => item.selected ? (arr.push(item), setBasket(arr.length)) : null)
+        }
+    };
 
-    useEffect (() => {
+    useEffect(() => {
         getCount();
+        getBasket();
     }, [props.products])
 
     return (
@@ -115,14 +122,18 @@ const Header = props => {
                                 <ListItemText primary="Выход" />
                             </StyledMenuItem>
                         </StyledMenu>
-                        <Badge badgeContent={count} color="primary">
-                            <FavoriteBorderIcon className="cursor-pointer" />
-                        </Badge>
-                        <span className="font-semibold">Избранные</span>
-                        <Badge badgeContent={1} color="secondary">
-                            <ShoppingCartIcon className="cursor-pointer" />
-                        </Badge>
-                        <span className="font-semibold">Корзина</span>
+                        <Link className="text-white" to="/favorites">
+                            <Badge badgeContent={count} color="primary">
+                                <FavoriteBorderIcon className="cursor-pointer" />
+                            </Badge>
+                            <span className="font-semibold">Избранные</span>
+                        </Link>
+                        <Link className="text-white" to="/basket">
+                            <Badge badgeContent={basket} color="secondary">
+                                <ShoppingCartIcon className="cursor-pointer" />
+                            </Badge>
+                            <span className="font-semibold">Корзина</span>
+                        </Link>
                     </>
                 ) : (
                     <Link className="text-white" to="/login">

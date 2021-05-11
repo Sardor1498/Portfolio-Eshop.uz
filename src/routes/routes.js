@@ -5,10 +5,10 @@ export const routes = [
         title: "Домашняя страница",
         url: ""
     },
-    {
-        title: "sports",
-        url: "sports"
-    },
+    // {
+    //     title: "sports",
+    //     url: "sports"
+    // },
     {
         title: "register",
         url: "register"
@@ -49,10 +49,10 @@ export const routes = [
     //     title: "Добавить каталог",
     //     url: "addcatalog"
     // },
-     {
-        title: "Registratsiya",
-        url: "register"
-    },
+    //  {
+    //     title: "Registratsiya",
+    //     url: "register"
+    // },
     {
         title: "Test",
         url: "test"

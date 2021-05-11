@@ -87,7 +87,7 @@ const ProductDetails = props => {
                                 </button>
                                 <button className="bg-white hover:bg-gray-100 text-block-800 font-semibold border border-gray-400">
                                     Awesome White
-                                    </button>
+                                </button>
                                 <button className="bg-white hover:bg-gray-100 text-block-800 font-semibold border border-red-400">
                                     Awesome Black
                                 </button>
@@ -96,6 +96,7 @@ const ProductDetails = props => {
                     </div>
                 </div>
             </div>
+
             <div className="grid-cols-1">
                 <div>
                     <h1 className="text-3xl">3 478 000 cym </h1>

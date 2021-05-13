@@ -55,6 +55,7 @@ export default function RecipeReviewCard(props) {
     React.useEffect(() => {
         setProduct(props.data);
     }, []);
+
     let url = "https://laravel-react-eshop.herokuapp.com";
 
     const handleClick = async (prod) => {
@@ -65,6 +66,7 @@ export default function RecipeReviewCard(props) {
             if (res.data) {
                 setLoading(false);
                 setProduct(res.data);
+                props.getProducts();
             }
         } catch (e) {
             console.log(e)

@@ -3,8 +3,6 @@ import { Field, reduxForm } from "redux-form";
 import TextField from "@material-ui/core/TextField";
 import asyncValidate from "../Helpers/asyncValidate";
 import Button from "@material-ui/core/Button";
-import Axios from 'axios';
-import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 
 const validate = values => {

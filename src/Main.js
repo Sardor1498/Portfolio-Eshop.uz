@@ -34,9 +34,8 @@ const Main = props => {
           user={props.user}
           logout={props.logout}
           catalogs={props.catalogs}
-          login={props.login}
-          user={props.user}
-          logout={props.logout}
+          products={props.products}
+          getProducts={props.getProducts}
         />
       </div>
       <div>
@@ -66,12 +65,11 @@ const mapStateToProps = state => ({
   brandsIsLoaded: state.brandsReducer.loaded,
   isAuthorized: state.authReducer.isAuthorized,
   user: state.authReducer.user,
-  // currentUser: state.authReducer.currentUser,
-  // initialized: state.authReducer.initialized
 });
 
 const mapDispatchToProps = dispatch => ({
   getProducts: () => dispatch(productsAPI.getProducts()),
+  getCurrentProduct: id => dispatch(productsAPI.getCurrentProduct(id)),
   createProduct: data => dispatch(productsAPI.createProduct(data)),
   getCatalogs: () => dispatch(catalogsAPI.getCatalogs()),
   createCatalog: catalog => dispatch(catalogsAPI.createCatalog(catalog)),
@@ -83,7 +81,6 @@ const mapDispatchToProps = dispatch => ({
   getProfile: () => dispatch(authAPI.getProfile()),
   logout: () => dispatch(authAPI.logout()),
   getProductDetail: (id) => dispatch(detailsAPI.getProductDetail(id)),
-  // createProductDetail: (id) => dispatch(detailsAPI.getProductDetail(id)),
 });
 
 const MainContainer = compose(

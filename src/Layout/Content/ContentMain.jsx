@@ -17,15 +17,19 @@ import Add from '../../Pages/Add';
 import Register from '../../Pages/Register';
 import Login from '../../Pages/Login';
 import ProductDetails from '../../Pages/ProductDetails';
+import Header from '../Header/Header';
+import Favorites from '../../Pages/Favorites';
 
 const ContentMain = (props) => {
     return (
         <div>
             <Switch>
                 <Route exact path="/">
-                    <Home products={props.data.products}
+                    <Home 
+                        products={props.data.products}
                         productsIsLoaded={props.data.productsIsLoaded}
                         createProduct={props.data.createProduct}
+                        getProducts={props.data.getProducts}
                     />
                 </Route>
                 <Route path="/phones">
@@ -100,10 +104,6 @@ const ContentMain = (props) => {
                 <Route path="/login">
                     <Login login={props.data.login}/>
                 </Route>
-                <Route path="/details/:id">
-                    <ProductDetails 
-                        getProductDetail={props.data.getProductDetail}/>
-                </Route>
                 <Route path="/add">
                     <Add 
                         createProduct={props.data.createProduct}
@@ -113,10 +113,17 @@ const ContentMain = (props) => {
                         categories={props.data.categories}
                         catalogs={props.data.catalogs}
                         brands={props.data.brands}
+                        products={props.data.products}
+                        productsIsLoaded={props.data.productsIsLoaded}
                     />
                 </Route>
                 <Route path="/details/:id">
-                    <ProductDetails getProductDetail={props.data.getProductDetail} alixoja="Valixoja"/>
+                    <ProductDetails getProductDetail={props.data.getProductDetail}
+                    getCurrentProduct={props.data.getCurrentProduct} alixoja="Valixoja"/>
+                </Route>
+
+                <Route path="/favorites">
+                    <Favorites products={props.data.products} />
                 </Route>
             </Switch>
         </div>

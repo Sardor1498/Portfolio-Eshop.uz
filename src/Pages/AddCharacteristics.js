@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-import React from "react";
-import TextField from "@material-ui/core/TextField";
-
-class AddCharactteristics extends React.Component {
-=======
 import React, { Component } from 'react';
 import TextField from "@material-ui/core/TextField";
 
 class AddCharacteristics extends Component {
->>>>>>> 47a7ab656a1d10c5bd23cbebdf2280d65a381cac
     constructor(props) {
         super(props);
         this.state = {
@@ -22,18 +15,10 @@ class AddCharacteristics extends Component {
                 delivery: null,
                 phoneFeatures: {
                     simSlotAndType: "",
-<<<<<<< HEAD
-                    fingreprint: null,
-                    faceId: null,
-                    nfc: null,
-                    usbType: "",
-                    bluetoothVersion: "",
-=======
                     fingerprint: null,
                     faceId: null,
                     nfc: null,
                     usbType: "",
->>>>>>> 47a7ab656a1d10c5bd23cbebdf2280d65a381cac
                     gsmStandart: "",
                     navigation: "",
                     wiFiVersion: "",
@@ -47,11 +32,7 @@ class AddCharacteristics extends Component {
                     frontalCamera: "",
                     mainCamera: "",
                     diagonal: "",
-<<<<<<< HEAD
-                    screenResolution 
-=======
                     screenResolution: "",
->>>>>>> 47a7ab656a1d10c5bd23cbebdf2280d65a381cac
                 },
                 feature2: ""
             }

@@ -1,93 +1,92 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StarOutlinedIcon from "@material-ui/icons/StarOutlined";
+import Image from '../images/Sirojiddin.jpg';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
+import InfoIcon from '@material-ui/icons/Info';
+import Button from '@material-ui/core/Button';
+import CheckIcon from '@material-ui/icons/Check';
+import StarOutlineIcon from '@material-ui/icons/StarOutline';
 
 const ProductDetails = props => {
     const { id } = useParams();
     const [details, setDetails] = useState({});
+    const [product, setProduct] = useState({});
+    // console.log(props);
 
     const getDetail = async () => {
         let res = await props.getProductDetail(id);
         setDetails(res);
     };
+    const getProduct = async () => {
+        let res = await props.getCurrentProduct(id);
+        setProduct(res);
+    };
 
     useEffect(() => {
         getDetail();
+        getProduct();
     }, []);
 
     return (
         <div>
-            <div className="grid grid-cols-6">
-                <div className="col-span-2 grid grid-cols-6">
-                    <div className="col-span-1">
-                        <img
-                            className="w-full h-20 border-2"
-                            src="https://olcha.uz/image/600x600/products/nuLlUceSeSMND0d0ahV8WweIdA4N3qNVQBgxbGDWrZ9Cv1TDWF68KgzZq5ln.jpeg"
-                            alt=""
-                        />
-                    </div>
-                    <div className="col-span-5">
-                        <img
-                            className="w-full h-96 border-2"
-                            src="https://olcha.uz/image/600x600/products/nuLlUceSeSMND0d0ahV8WweIdA4N3qNVQBgxbGDWrZ9Cv1TDWF68KgzZq5ln.jpeg"
-                            alt=""
-                        />
-                    </div>
+            <div className="grid grid-cols-2">
+            <div className="pl-60">
+                    <img className="p-5 w-96 h-100 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
+                <img className="w-20 h-20 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
                 </div>
-                <div className="col-span-4">
-                    <div className="flex-none">
-                        <h1 className="text-1xl text-red-600">
-                            Samsung
-                        </h1>
-                        <h1 className="text-4xl">
-                            Samsung Galaxy A32 4/64GB{" "}
-                        </h1>
-                        <h1 className="text-4xl">Awesome Black </h1>
-                        <div className="text-1xl">
-                            <StarOutlinedIcon className="text-yellow-500" />
-                            <StarOutlinedIcon className="text-yellow-500" />
-                            <StarOutlinedIcon className="text-yellow-500" />
-                            <StarOutlinedIcon className="text-yellow-500" />
-                            <StarOutlinedIcon className="text-yellow-500" />
-                            <p className="text-gray-300">
-                                ________________________________________________________________________
-                            </p>
+                <div className="text-left pl-5">
+                    <h1 className="pt-2">Samsung</h1>
+                    <h1 className="text-4xl font-sans font-bold">{product.title} {details.memoryPhone} GB</h1>
+                    <h1 className="text-4xl font-sans font-bold">Black A107</h1>
+                    <br />
+                    <div className="flex">
+                        <div className="text-left pl-5">
+                            <StarOutlineIcon />
+                            <StarOutlineIcon />
+                            <StarOutlineIcon />
+                            <StarOutlineIcon />
+                            <StarOutlineIcon />
                         </div>
-                        <div>
-                            <h1 className="text-4xl ">
-                                Коротко о товаре
-                            </h1>
-                            <h1 className="text-1xl">
-                                Гарантийный срок (месяц): 12{" "}
-                            </h1>
-                            <h1 className="text-1xl">
-                                Версия ОС: Android 11{" "}
-                            </h1>
-                            <h1 className="text-1xl">
-                                Объем встроенной памяти: 64GB
-                            </h1>
-                            <h1 className="text-1xl">
-                                Датчик Face ID: Есть
-                            </h1>
-                            <h1 className="text-1xl">
-                                Производитель смартфона: Вьетнам
-                            </h1>
+                        <div className="text-gray-300 pl-3">
+                            <span>Отзывы (4)</span>
                         </div>
-                        <div>
-                            <h1 className="text-2xl">Цвет</h1>
-                            <div>
-                                <button className="text-1xl bg-white text-block-800 border border-gray-400">
-                                    Awesome Violet
-                                </button>
-                                <button className="bg-white hover:bg-gray-100 text-block-800 font-semibold border border-gray-400">
-                                    Awesome White
-                                </button>
-                                <button className="bg-white hover:bg-gray-100 text-block-800 font-semibold border border-red-400">
-
-Awesome Black
-                                </button>
-                            </div>
+                        <div className="text-gray-300 pl-3">
+                            <span><MenuBookIcon /> В сравнение</span>
                         </div>
+                    </div>
+                    <br />
+                    <hr />
+                    <div className="text-left pl-5 pt-5 font-semibold">
+                        <span><AirportShuttleIcon /> <em>Доставка: {details.delivery ? "да" : "нет"}</em></span>
+                    </div>
+                    <h1 className="text-left pl-5 pt-5 font-semibold text-4xl">Коротко о товаре</h1>
+                    <div className=" text-left pl-5 pt-5">
+                        <p>Гарантийный срок (месяц): {details.waranty}</p>
+                        <p>Версия ОС: Android 9.0 (pie)</p>
+                        <p>Объем встроенной памяти: {details.memoryPhone} GB</p>
+                        <p>Датчик Face ID: {details.faceId ? "Есть" : "Нет"}</p>
+                    </div>
+                    <div className="text-left text-3xl pl-5 pt-5 font-semibold">
+                        <span>{product.price}$</span>
+                    </div>
+                    <div className="text-left pl-5 pt-5">
+                        <h1>187000 сум/мес<span className="text-gray-300"> в рассрочку <InfoIcon /></span></h1>
+                    </div>
+                    <div className="flex pl-3 mt-3">
+                        <div className="pl-2">
+                            <Button variant="contained" color="secondary">Купить</Button>
+                        </div>
+                        <div className="pl-2">
+                            <Button variant="outlined">Купить в рассрочку</Button>
+                        </div>
+                        <div className="pl-2">
+                            <Button variant="outlined" color="secondary">Купить в один клик</Button>
+                        </div>
+                    </div>
+                    <div className="flex pl-5 pt-5">
+                        <p><CheckIcon className="text-green-500" />  Доставка по Узбекистану</p>
                     </div>
                 </div>
             </div>

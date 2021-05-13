@@ -55,7 +55,11 @@ const CarouselAutoplay = (props) => {
             >
                 {props.products.map((item, index) => (
                     <SplideSlide key={index}>
-                        <RecipeReviewCard productsIsLoaded={props.productsIsLoaded} data={item} />
+                        <RecipeReviewCard 
+                        productsIsLoaded={props.productsIsLoaded} data={item} 
+                        products={props.products}
+                        getProducts={props.getProducts}
+                        />
                     </SplideSlide>
                 ))}
             </Splide>

@@ -122,10 +122,6 @@ const ContentMain = (props) => {
                     <ProductDetails getProductDetail={props.data.getProductDetail}
                     getCurrentProduct={props.data.getCurrentProduct} alixoja="Valixoja"/>
                 </Route>
-
-                <Route path="/favorites">
-                    <Favorites products={props.data.products} />
-                </Route>
                 <Route path="/favorites">
                     <Favorites
                         products={props.data.products}

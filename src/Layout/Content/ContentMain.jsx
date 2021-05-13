@@ -19,6 +19,7 @@ import Login from '../../Pages/Login';
 import ProductDetails from '../../Pages/ProductDetails';
 import Header from '../Header/Header';
 import Favorites from '../../Pages/Favorites';
+import Basket from '../../Pages/Basket';
 
 const ContentMain = (props) => {
     return (
@@ -124,6 +125,20 @@ const ContentMain = (props) => {
 
                 <Route path="/favorites">
                     <Favorites products={props.data.products} />
+                </Route>
+                <Route path="/favorites">
+                    <Favorites
+                        products={props.data.products}
+                        getProducts={props.data.getProducts}
+                        filterFavorites={props.data.filterFavorites}
+                    />
+                </Route>
+                <Route path="/basket">
+                    <Basket
+                        products={props.data.products}
+                        getProducts={props.data.getProducts}
+                        filterBaskets={props.data.filterBaskets}
+                    />
                 </Route>
             </Switch>
         </div>

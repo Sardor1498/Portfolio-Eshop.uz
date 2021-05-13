@@ -78,41 +78,55 @@ export default function RecipeReviewCard(props) {
             {!product ? (
                 <CircularProgress />
             ) : (
+                <div className="h-96">
                     <Card
                         className={
                             classes.root +
-                            " h-full hover:shadow-3xl hover:border-4 cursor-pointer"
+                            " h-full p-2 hover:shadow-3xl cursor-pointer focus:border-yellow-800"
                         }
                     >
                         <Link to={"/details/" + product.id}>
-                            <CardMedia
-                                className={classes.media + " h-1/2"}
-                                image={product.photo}
-                                title={product.title}
-                            />
-                            <CardHeader className="h-1/5" subheader={product.title} />
+                            <div className="h-3/6 w-full">
+                                <CardMedia
+                                    style={size}
+                                    className={"h-full w-full"}
+                                    image={product.photo}
+                                    title={product.title}
+                                />
+                            </div>
+                            <div className="h-1/4">
+                                <CardHeader className="p-1" subheader={product.title} />
+                            </div>
                         </Link>
-                        <CardActions disableSpacing className="h-1/6" >
-                            <IconButton
-                                style={loading ? style : null}
-                                disabled={loading}
-                                aria-label="add to favorites"
-                                onClick={prod => handleClick(product)}
-                                color={product.selected ? "secondary" : "default"}
-                            >
-                                <FavoriteIcon />
-                            </IconButton>
-                            <IconButton aria-label="share" edge="end">
-                                <ShareIcon />
-                            </IconButton>
-                        </CardActions>
-                        <CardContent>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                {product.price}
-                            </Typography>
-                        </CardContent>
+                        <div className="h-1/4">
+                            <CardActions disableSpacing className="h-1/2 p-1">
+                                <IconButton
+                                    style={loading ? style : null}
+                                    disabled={loading}
+                                    aria-label="add to favorites"
+                                    onClick={prod => handleClick(product)}
+                                    color={product.selected ? "secondary" : "default"}
+                                >
+                                    <FavoriteIcon />
+                                </IconButton>
+                                <IconButton 
+                                    // style={loading ? style : null}
+                                    // disabled={loading}
+                                    // onClick={prod => oneClick(product)}
+                                    // aria-label="share"
+                                >
+                                    <ShareIcon id="button"/>
+                                </IconButton>
+                            </CardActions>
+                            <CardContent>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    {product.price}
+                                </Typography>
+                            </CardContent>
+                        </div>
                     </Card>
-                )}
+                </div>
+            )}
         </>
     );
 };

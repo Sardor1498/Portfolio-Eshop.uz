@@ -11,22 +11,22 @@ import StarOutlineIcon from '@material-ui/icons/StarOutline';
 
 const ProductDetails = props => {
     const { id } = useParams();
-    const [details, setDetails] = useState({});
     const [product, setProduct] = useState({});
+    const [details, setDetails] = useState({});
     // console.log(props);
 
+    const getProduct = async () => {
+        let resp = await props.getCurrentProduct(id);
+        setProduct(resp);
+    }
     const getDetail = async () => {
         let res = await props.getProductDetail(id);
         setDetails(res);
     };
-    const getProduct = async () => {
-        let res = await props.getCurrentProduct(id);
-        setProduct(res);
-    };
 
     useEffect(() => {
-        getDetail();
         getProduct();
+        getDetail();
     }, []);
 
     return (
@@ -180,7 +180,7 @@ const ProductDetails = props => {
                     <p className="text-gray-300">
                         _______________________________________
                     </p>
-<h1 className="">2400x1080</h1>
+                    <h1 className="">2400x1080</h1>
                 </div>
                 <div className="flex">
                     <h1>Соотношение сторон</h1>

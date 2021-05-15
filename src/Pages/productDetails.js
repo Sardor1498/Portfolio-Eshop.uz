@@ -13,20 +13,19 @@ const ProductDetails = props => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [details, setDetails] = useState({});
-    // console.log(props);
 
     const getProduct = async () => {
-        let resp = await props.getCurrentProduct(id);
-        setProduct(resp);
+        let res = await props.getCurrentProduct(id);
+        setProduct(res);
     }
-    const getDetail = async () => {
-        let res = await props.getProductDetail(id);
+    const getDetails = async () => {
+        let res = await props.getProductDetails(id);
         setDetails(res);
     };
 
     useEffect(() => {
         getProduct();
-        getDetail();
+        getDetails();
     }, []);
 
     return (

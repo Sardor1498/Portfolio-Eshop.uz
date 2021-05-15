@@ -80,7 +80,7 @@ const mapDispatchToProps = dispatch => ({
   login: user => dispatch(authAPI.login(user)),
   getProfile: () => dispatch(authAPI.getProfile()),
   logout: () => dispatch(authAPI.logout()),
-  getProductDetail: (id) => dispatch(detailsAPI.getProductDetail(id)),
+  getProductDetails: (id) => dispatch(detailsAPI.getProductDetails(id)),
 });
 
 const MainContainer = compose(

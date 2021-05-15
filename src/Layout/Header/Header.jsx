@@ -124,7 +124,6 @@ return (
                         <FavoriteBorderIcon className="cursor-pointer" />
                     </Badge>
                     <span>Избранные</span>
-
                     </Link>
                     <Badge className="cursor-pointer" badgeContent={1} color="secondary">
                         <ShoppingCartIcon className="cursor-pointer" />

@@ -26,7 +26,7 @@ const ContentMain = (props) => {
         <div>
             <Switch>
                 <Route exact path="/">
-                    <Home 
+                    <Home
                         products={props.data.products}
                         productsIsLoaded={props.data.productsIsLoaded}
                         createProduct={props.data.createProduct}
@@ -41,7 +41,7 @@ const ContentMain = (props) => {
                     />
                 </Route>
                 <Route path="/notebooks">
-                    <Notebooks 
+                    <Notebooks
                         categories={props.data.categories}
                         products={props.data.products}
                         brands={props.data.brands}
@@ -49,7 +49,7 @@ const ContentMain = (props) => {
                     />
                 </Route>
                 <Route path="/tv">
-                    <Tv 
+                    <Tv
                         categories={props.data.categories}
                         products={props.data.products}
                         brands={props.data.brands}
@@ -69,7 +69,7 @@ const ContentMain = (props) => {
                     <Register />
                 </Route>
                 <Route exat path="/login">
-                    <Login login={props.data.login}/>
+                    <Login login={props.data.login} />
                 </Route>
                 <Route path="/addproduct">
                     <AddProduct
@@ -103,10 +103,10 @@ const ContentMain = (props) => {
                     <Register />
                 </Route>
                 <Route path="/login">
-                    <Login login={props.data.login}/>
+                    <Login login={props.data.login} />
                 </Route>
                 <Route path="/add">
-                    <Add 
+                    <Add
                         createProduct={props.data.createProduct}
                         createBrand={props.data.createBrand}
                         createCategories={props.data.createCategories}
@@ -119,8 +119,11 @@ const ContentMain = (props) => {
                     />
                 </Route>
                 <Route path="/details/:id">
-                    <ProductDetails getProductDetail={props.data.getProductDetail}
-                    getCurrentProduct={props.data.getCurrentProduct} alixoja="Valixoja"/>
+                    <ProductDetails
+                        getProductDetail={props.data.getProductDetail}
+                        getCurrentProduct={props.data.getCurrentProduct}
+                        alixoja="Valixoja" /
+                    >
                 </Route>
                 <Route path="/favorites">
                     <Favorites

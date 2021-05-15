@@ -124,10 +124,9 @@ const Header = props => {
                                 <FavoriteBorderIcon className="cursor-pointer" />
                             </Badge>
                             <span>Избранные</span>
-
                         </Link>
                         <Link to="/basket">
-                            <Badge className="cursor-pointer" badgeContent={1} color="secondary">
+                            <Badge badgeContent={1} color="secondary">
                                 <ShoppingCartIcon className="cursor-pointer" />
                             </Badge>
                             <span>Корзина</span>

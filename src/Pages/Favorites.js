@@ -6,7 +6,7 @@ const Favorites = props => {
 
     const filterFavorites = () => {
         var arr = [];
-        if (props.product.length > 0) {
+        if (props.products.length > 0) {
             props.products.map(product =>
                 product.selected ? (arr.push(product), setFilteredProducts(product)) : null
             );

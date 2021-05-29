@@ -9,14 +9,10 @@ export const routes = [
     //     title: "sports",
     //     url: "sports"
     // },
-    {
-        title: "register",
-        url: "register"
-    },
-    {
-        title: "Buy Page",
-        url: "Buy"
-    },
+    // {
+    //     title: "register",
+    //     url: "register"
+    // },
     // {
     //     title: "Смартфоны, телефоны, гаджеты, аксессуары",
     //     url: "phones"
@@ -64,5 +60,9 @@ export const routes = [
     {
         title: "Add",
         url: "add"
+    },
+    {
+        title: "BuyPage",
+        url: "buy"
     },
 ];

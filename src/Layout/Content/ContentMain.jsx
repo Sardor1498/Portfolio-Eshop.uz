@@ -123,6 +123,7 @@ const ContentMain = (props) => {
                     <ProductDetails
                         getProductDetails={props.data.getProductDetails}
                         getCurrentProduct={props.data.getCurrentProduct}
+                        alixoja="Valixoja"
                     />
                 </Route>
                 <Route path="/favorites">
@@ -139,9 +140,11 @@ const ContentMain = (props) => {
                         filterBaskets={props.data.filterBaskets}
                     />
                 </Route>
-                {/* <Route path="/buy/:price">
-                    <BuyPage />
-                </Route> */}
+                <Route path="/buy/:price">
+                    <BuyPage 
+                        products={props.data.products}
+                    />
+                </Route>
             </Switch>
         </div>
     )

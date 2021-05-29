@@ -13,7 +13,7 @@ const Favorites = (props) => {
         }
     };
     useEffect(() => {
-        filterFavorites()
+        filterFavorites();
     }, [props.products])
     return (
         <>
@@ -29,7 +29,6 @@ const Favorites = (props) => {
                         </div>
                     ))
                     : null}
-
             </div>
         </>
     );

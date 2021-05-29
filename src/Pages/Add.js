@@ -4,6 +4,7 @@ import AddProduct from './AddProducts';
 import AddBrand from './AddBrand';
 import AddCategory from './AddCategory';
 import AddCatalog from './AddCatalog';
+import BuyPage from './BuyPage';
 
 const Add = (props) => {
     return (

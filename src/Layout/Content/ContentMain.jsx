@@ -129,8 +129,8 @@ const ContentMain = (props) => {
                 <Route path="/favorites">
                     <Favorites
                         products={props.data.products}
-                        getProducts={props.data.getProducts}
-                        filterFavorites={props.data.filterFavorites}
+                        getProducts={props.data.getProducts} 
+                        filterFavorites={props.data.filterFavorites}  
                     />
                 </Route>
                 <Route path="/basket">

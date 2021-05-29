@@ -93,6 +93,7 @@ const ProductDetails = props => {
                         <div className="flex pl-5 pt-5">
                             <p><CheckIcon className="text-green-500" />  Доставка по Узбекистану</p>
                         </div>
+                        
                     </div>
                 </div>
 

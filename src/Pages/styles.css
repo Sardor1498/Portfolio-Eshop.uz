@@ -1,0 +1,16 @@
+#month3:checked + #label3 {
+    background-color: red;
+    color: white;
+}
+#month6:checked + #label6 {
+    background-color: red;
+    color: white;
+}
+#month9:checked + #label9 {
+    background-color: red;
+    color: white;
+}
+#month12:checked + #label12 {
+    background-color: red;
+    color: white;
+}

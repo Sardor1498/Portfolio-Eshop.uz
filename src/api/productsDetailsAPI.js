@@ -25,7 +25,7 @@ export const detailsAPI = {
         };
     },
 
-    getProductDetail(id) {
+    getProductDetails(id) {
         return async dispatch => {
             let response = await instance.get(`product_detail/${id}`);
             if (response.data) {

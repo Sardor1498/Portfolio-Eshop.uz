@@ -13,6 +13,10 @@ export const routes = [
         title: "register",
         url: "register"
     },
+    {
+        title: "Buy Page",
+        url: "Buy"
+    },
     // {
     //     title: "Смартфоны, телефоны, гаджеты, аксессуары",
     //     url: "phones"

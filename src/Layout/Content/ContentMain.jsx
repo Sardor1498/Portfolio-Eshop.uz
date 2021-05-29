@@ -20,6 +20,7 @@ import ProductDetails from '../../Pages/ProductDetails';
 import Header from '../Header/Header';
 import Favorites from '../../Pages/Favorites';
 import Basket from '../../Pages/Basket';
+import BuyPage from '../../Pages/BuyPage';
 
 const ContentMain = (props) => {
     return (
@@ -120,16 +121,15 @@ const ContentMain = (props) => {
                 </Route>
                 <Route path="/details/:id">
                     <ProductDetails
-                        getProductDetail={props.data.getProductDetail}
+                        getProductDetails={props.data.getProductDetails}
                         getCurrentProduct={props.data.getCurrentProduct}
-                        alixoja="Valixoja" /
-                    >
+                    />
                 </Route>
                 <Route path="/favorites">
                     <Favorites
                         products={props.data.products}
-                        getProducts={props.data.getProducts}
-                        filterFavorites={props.data.filterFavorites}
+                        getProducts={props.data.getProducts} 
+                        filterFavorites={props.data.filterFavorites}  
                     />
                 </Route>
                 <Route path="/basket">
@@ -139,6 +139,9 @@ const ContentMain = (props) => {
                         filterBaskets={props.data.filterBaskets}
                     />
                 </Route>
+                {/* <Route path="/buy/:price">
+                    <BuyPage />
+                </Route> */}
             </Switch>
         </div>
     )

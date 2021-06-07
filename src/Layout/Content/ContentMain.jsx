@@ -57,12 +57,12 @@ const ContentMain = (props) => {
                         productsIsLoaded={props.data.productsIsLoaded}
                     />
                 </Route>
-                <Route path="/appliances">
+                {/* <Route path="/appliances">
                     <Appliances />
                 </Route>
                 <Route path="/office">
                     <Office />
-                </Route>
+                </Route> */}
                 <Route path="/sports">
                     <Sports />
                 </Route>
@@ -123,7 +123,6 @@ const ContentMain = (props) => {
                     <ProductDetails
                         getProductDetails={props.data.getProductDetails}
                         getCurrentProduct={props.data.getCurrentProduct}
-                        alixoja="Valixoja"
                     />
                 </Route>
                 <Route path="/favorites">
@@ -136,8 +135,6 @@ const ContentMain = (props) => {
                 <Route path="/basket">
                     <Basket
                         products={props.data.products}
-                        getProducts={props.data.getProducts}
-                        filterBaskets={props.data.filterBaskets}
                     />
                 </Route>
                 <Route path="/buy/:price">

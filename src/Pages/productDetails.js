@@ -10,11 +10,40 @@ import CheckIcon from '@material-ui/icons/Check';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 import BuyPage from "./BuyPage";
 import Modal from '../components/Modal';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
+import { makeStyles } from "@material-ui/core";
+
+
+
+const labels = {
+    0.5: "Useless",
+    1: "Useless+",
+    1.5: "Poor",
+    2: "Poor+",
+    2.5: "Ok",
+    3: "Ok+",
+    3.5: "Good",
+    4: "Good+",
+    4.5: "Excellent",
+    5: "Excellent+",
+};
+
+const useStyles = makeStyles({
+    root: {
+        width: 200,
+        display: 'flex',
+        alignItems: 'center',
+    },
+});
 
 const ProductDetails = props => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [details, setDetails] = useState({});
+    const [value, setValue] = React.useState(2);
+    const [hover, setHover] = React.useState(-1);
+    const classes = useStyles();
 
     const getProduct = async () => {
         let res = await props.getCurrentProduct(id);
@@ -32,60 +61,69 @@ const ProductDetails = props => {
 
     return (
         <>
-            <div className="grid grid-cols-2">
-                <div className="pl-60">
-                    <img className="p-5 w-96 h-100 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
-                    <img className="w-20 h-20 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
-                </div>
-                <div className="text-left pl-5">
-                    <h1 className="pt-2">Samsung</h1>
-                    <h1 className="text-4xl font-sans font-bold">Samsung Galaxy A10s 2/32GB</h1>
-                    <h1 className="text-4xl font-sans font-bold">Black A107</h1>
-                    <br />
-                    <div className="flex">
-                        <div className="text-left pl-5">
-                            <StarOutlineIcon />
-                            <StarOutlineIcon />
-                            <StarOutlineIcon />
-                            <StarOutlineIcon />
-                            <StarOutlineIcon />
+            <div className="container mx-auto">
+                <div className="grid grid-cols-2">
+                    <div className="pl-60">
+                        <img className="p-5 w-96 h-100 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
+                        <img className="w-20 h-20 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
+                    </div>
+                    <div className="text-left pl-5">
+                        <h1 className="pt-2">Samsung</h1>
+                        <h1 className="text-4xl font-sans font-bold">Samsung Galaxy A10s 2/32GB</h1>
+                        <h1 className="text-4xl font-sans font-bold">Black A107</h1>
+                        <br />
+                        <div className="flex">
+                            <div className={classes.root}>
+                                <Rating
+                                    name="hover-feedback"
+                                    value={value}
+                                    precision={0.5}
+                                    onChange={(event, newValue) => {
+                                        setValue(newValue);
+                                    }}
+                                    onChangeActive={(event, newHover) => {
+                                        setHover(newHover);
+                                    }}
+                                />
+                                {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+                            </div>
+                            <div className="text-gray-300 pl-3">
+                                <span>Отзывы (4)</span>
+                            </div>
+                            <div className="text-gray-300 pl-3">
+                                <span><MenuBookIcon /> В сравнение</span>
+                            </div>
                         </div>
-                        <div className="text-gray-300 pl-3">
-                            <span>Отзывы (4)</span>
+                        <br />
+                        <hr />
+                        <div className="text-left pl-5 pt-5 font-semibold">
+                            <span><AirportShuttleIcon /> <em>Быстрая доставка</em></span>
                         </div>
-                        <div className="text-gray-300 pl-3">
-                            <span><MenuBookIcon /> В сравнение</span>
+                        <h1 className="text-left pl-5 pt-5 font-semibold text-4xl">Коротко о товаре</h1>
+                        <div className=" text-left pl-5 pt-5">
+                            <p>Гарантийный срок (месяц): 12</p>
+                            <p>Версия ОС: Android 9.0 (pie)</p>
+                            <p>Объем встроенной памяти: 32GB</p>
+                            <p>Датчик Face ID: Есть</p>
                         </div>
-                    </div>
-                    <br />
-                    <hr />
-                    <div className="text-left pl-5 pt-5 font-semibold">
-                        <span><AirportShuttleIcon /> <em>Быстрая доставка</em></span>
-                    </div>
-                    <h1 className="text-left pl-5 pt-5 font-semibold text-4xl">Коротко о товаре</h1>
-                    <div className=" text-left pl-5 pt-5">
-                        <p>Гарантийный срок (месяц): 12</p>
-                        <p>Версия ОС: Android 9.0 (pie)</p>
-                        <p>Объем встроенной памяти: 32GB</p>
-                        <p>Датчик Face ID: Есть</p>
-                    </div>
-                    <div className="text-left text-3xl pl-5 pt-5 font-semibold">
-                        <span>1 640 000 сум</span>
-                    </div>
-                    <div className="text-left pl-5 pt-5">
-                        <h1>187000 сум/мес<span className="text-gray-300"> в рассрочку <InfoIcon /></span></h1>
-                    </div>
-                    <div className="flex pl-3 mt-3">
-                        <div className="pl-2">
-                            <Button variant="contained" color="secondary">Купить</Button>
+                        <div className="text-left text-3xl pl-5 pt-5 font-semibold">
+                            <span>1 640 000 сум</span>
                         </div>
-                        <div className="pl-2">
-                            <Modal
-                                openBtn="Add brand"
-                                component={
-                                    <BuyPage price={product.price}/>
-                                }
-                            />
+                        <div className="text-left pl-5 pt-5">
+                            <h1>187000 сум/мес<span className="text-gray-300"> в рассрочку <InfoIcon /></span></h1>
+                        </div>
+                        <div className="flex pl-3 mt-3">
+                            <div className="pl-2">
+                                <Button variant="contained" color="secondary">Купить</Button>
+                            </div>
+                            <div className="pl-2">
+                                <Modal
+                                    openBtn="Купит в рассрочку"
+                                    component={
+                                        <BuyPage price={product.price} />
+                                    }
+                                />
+                            </div>
                             <div className="pl-2">
                                 <Button variant="outlined" color="secondary">Купить в один клик</Button>
                             </div>

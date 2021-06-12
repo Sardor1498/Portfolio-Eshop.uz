@@ -17,7 +17,6 @@ import Add from '../../Pages/Add';
 import Register from '../../Pages/Register';
 import Login from '../../Pages/Login';
 import ProductDetails from '../../Pages/ProductDetails';
-import Header from '../Header/Header';
 import Favorites from '../../Pages/Favorites';
 import Basket from '../../Pages/Basket';
 import BuyPage from '../../Pages/BuyPage';

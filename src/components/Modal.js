@@ -56,20 +56,20 @@ const DialogActions = withStyles((theme) => ({
 
 const useStyles = makeStyles({
     root: {
-      minWidth: 275,
+        minWidth: 275,
     },
     bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
     },
     title: {
-      fontSize: 14,
+        fontSize: 14,
     },
     pos: {
-      marginBottom: 12,
+        marginBottom: 12,
     },
-  });
+});
 
 export default function Modal(props) {
     const classes = useStyles();
@@ -83,26 +83,53 @@ export default function Modal(props) {
         setOpen(false);
     };
 
+    const checkProps = () => {
+        let emptyTitleProps;
+        if (props.title1 === undefined &&
+            props.title2 === undefined &&
+            props.title3 === undefined &&
+            props.title4 === undefined &&
+            props.title5 === undefined
+        ) {
+            emptyTitleProps = true;
+        } else {
+            emptyTitleProps = false;
+        }
+        return emptyTitleProps;
+    }
+
+    const style = {
+        padding: "0"
+    }
+
     return (
-        <div className="m-5">
-            <Card className={classes.root}>
-                <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        {props.sosTitle}
-                    </Typography>
-                    <Typography>
-                        be{bull}nev{bull}o{bull}lent
-                    </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                        adjective
-                    </Typography>
-                    <Typography variant="body2" component="p">
-                        well meaning and kindly.
-          <br />
-                        {'"a benevolent smile"'}
-                    </Typography>
-                </CardContent>
-                <CardActions>
+        <div className={checkProps() ? null : "m-5"}>
+            <Card className={
+                checkProps() ? "" :
+                    classes.root}>
+                {
+                    checkProps() ? null : (
+                        <CardContent>
+                            <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                {props.title1}
+                            </Typography>
+                            <Typography>
+                                {props.title2}
+                            </Typography>
+                            <Typography className={classes.pos} color="textSecondary">
+                                {props.title3}
+                            </Typography>
+                            <Typography variant="body2" component="p">
+                                {props.title4}
+                                <br />
+                                {props.title5}
+                            </Typography>
+                        </CardContent>
+                    )
+                }
+                <CardActions
+                style={checkProps() ? style : null}
+                >
                     <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                         {props.openBtn}
                     </Button>

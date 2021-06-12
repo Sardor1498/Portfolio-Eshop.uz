@@ -45,6 +45,7 @@ const BuyPage = (props) => {
         setTotalM(totalOylik);
         setTotalAll(jamiSumma);
     }
+
     return (
         <>
             <div className="container mx-auto my-5 bg-gray-200">
@@ -64,8 +65,8 @@ const BuyPage = (props) => {
                         type="text"
                         className="w-full focus:border-red-600 focus:border-4 rounded p-3 border-gray-500"
                     />
-                    <p className="text-gray-400 ">
-                        Минимальная сумма: 431 000 сум
+                    <p className="text-gray-700">
+                        Минимальная сумма: {props.price * 0.15} сум
                     </p>
                     <h5>Срок рассрочки, месяц.</h5>
 
@@ -133,14 +134,14 @@ const BuyPage = (props) => {
                             </label>
                     </div>
                     <div className="grid grid-cols-2">
-                        <div className="border-2 border-gray-400 bg-transparent">
-                            <p>
-                                Ежемесесячный платеж:<span>{ totalM ? totalM + " сум" : null}</span>
+                        <div className="border-2 border-gray-400  bg-transparent">
+                            <p className="h-10">
+                                Ежемесесячный платеж:<span>{totalM ? totalM.toFixed(1   ) + " сум" : null}</span>
                             </p>
                         </div>
                         <div className="border-2 border-gray-400 bg-transparent">
                             <p>
-                                Общая сумма<span>{ totalAll ? totalAll + " сум" : null}</span>
+                                Общая сумма<span>{totalAll ? totalAll.toFixed(1 ) + " сум" : null}</span>
                             </p>
                         </div>
                     </div>
@@ -149,4 +150,5 @@ const BuyPage = (props) => {
         </>
     );
 };
+
 export default BuyPage;

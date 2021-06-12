@@ -3,10 +3,8 @@ import { Field, reduxForm } from "redux-form";
 import TextField from "@material-ui/core/TextField";
 import asyncValidate from "../Helpers/asyncValidate";
 import Button from "@material-ui/core/Button";
-import Axios from "axios";
-import Checkbox from "@material-ui/core/Checkbox";
-import { makeStyles } from "@material-ui/core/styles";
-import { ErrorOutlined } from '@material-ui/icons';
+import { useSelector } from 'react-redux';
+import { Redirect } from "react-router";
 
 const validate = values => {
     const errors = {};
@@ -45,6 +43,9 @@ const renderTextField = ({
 
 const Login = props => {
     const { pristine, reset, submitting, classes } = props;
+
+    const authorized = useSelector((state) => state.authReducer.isAuthorized);
+    
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -69,47 +70,49 @@ const Login = props => {
     };
 
     return (
-        <div className="flex justify-center mt-3">
-            <form className="w-1/2" onSubmit={e => handleSubmit(e)}>
-                <div className="mt-3">
-                    <Field
-                        name="email"
-                        component={renderTextField}
-                        label="Email"
-                        fullWidth={true}
-                        onChange={change}
-                    />
-                </div>
-                <div className="mt-3">
-                    <Field
-                        name="password"
-                        component={renderTextField}
-                        label="Parol"
-                        fullWidth={true}
-                        onChange={change}
-                    />
-                </div>
-                <div className="mt-3 flex">
-                    <div>
-                        <Button
-                            variant="outlined"
-                            disabled={pristine || submitting}
-                            type="submit"
-                            color="primary"
-                        >
-                            Kirish
+        <>
+            {authorized ? <Redirect to="/" /> :
+                <div className="flex justify-center mt-3">
+                    <form className="w-1/2" onSubmit={e => handleSubmit(e)}>
+                        <div className="mt-3">
+                            <Field
+                                name="email"
+                                component={renderTextField}
+                                label="Email"
+                                fullWidth={true}
+                                onChange={change}
+                            />
+                        </div>
+                        <div className="mt-3">
+                            <Field
+                                name="password"
+                                component={renderTextField}
+                                label="Parol"
+                                fullWidth={true}
+                                onChange={change}
+                            />
+                        </div>
+                        <div className="mt-3 flex">
+                            <div>
+                                <Button
+                                    variant="outlined"
+                                    disabled={pristine || submitting}
+                                    type="submit"
+                                    color="primary"
+                                >
+                                    Kirish
                         </Button>
-                    </div>
-                    <div className="ml-2">
-                        <Button
-                            variant="contained"
-                            onClick={reset}
-                            color="secondary"
-                        >
-                            Tozalash
+                            </div>
+                            <div className="ml-2">
+                                <Button
+                                    variant="contained"
+                                    onClick={reset}
+                                    color="secondary"
+                                >
+                                    Tozalash
                         </Button>
-                    </div>
-                    {/* <div className="ml-2">
+                            </div>
+                            {/* <div className="ml-2">
                         <Button
                             variant="contained"
                             onClick={getProfile}
@@ -118,9 +121,11 @@ const Login = props => {
                             GETPROFILE
                         </Button>
                     </div> */}
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
+            }
+        </>
     );
 };
 

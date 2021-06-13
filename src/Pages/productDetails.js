@@ -267,7 +267,7 @@ const ProductDetails = props => {
                         <h1 className="">5000 мАч</h1>
                     </div>
 
-                    <div className="text-left">
+                    {/* <div className="text-left">
                         <h1 className="text-3xl">Отзывы</h1>
                     </div>
                     <div className="text-2xl flex">
@@ -292,7 +292,7 @@ const ProductDetails = props => {
                                 <StarOutlinedIcon className="text-yellow-500" />
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

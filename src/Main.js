@@ -12,6 +12,7 @@ import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
 import { authAPI } from './api/usersAPI';
+import { priceAPI } from './api/priceAPI';
 import { detailsAPI } from './api/productsDetailsAPI';
 import Content from './Layout/Content/Content';
 
@@ -45,6 +46,7 @@ const Main = props => {
         <ContentMain 
           data={props}
           login={props.login}
+          price={props.price}
         />
       </div>
       <div>

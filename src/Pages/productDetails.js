@@ -13,6 +13,7 @@ import Modal from '../components/Modal';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from "@material-ui/core";
+import { useSelector } from 'react-redux';
 
 
 
@@ -54,6 +55,8 @@ const ProductDetails = props => {
         setDetails(res);
     };
 
+    const totalM = useSelector((state) => state.priceReducer.price)
+
     useEffect(() => {
         getProduct();
         getDetails();
@@ -64,13 +67,13 @@ const ProductDetails = props => {
             <div className="container mx-auto">
                 <div className="grid grid-cols-2">
                     <div className="pl-60">
-                        <img className="p-5 w-96 h-100 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
-                        <img className="w-20 h-20 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
+                        <img className="p-5 w-96 h-100 border-2 border-gray-500 bg-gray-50 mt-5" src={product.photo} alt="" />
+                        <img className="w-20 h-20 border-2 border-gray-500 bg-gray-50 mt-5" src={product.photo} alt="" />
                     </div>
                     <div className="text-left pl-5">
-                        <h1 className="pt-2">Samsung</h1>
-                        <h1 className="text-4xl font-sans font-bold">Samsung Galaxy A10s 2/32GB</h1>
-                        <h1 className="text-4xl font-sans font-bold">Black A107</h1>
+                        <h1 className="pt-2">{product.brandName}</h1>
+                        <h1 className="text-4xl font-sans font-bold">{product.title}</h1>
+                        <h1 className="text-4xl font-sans font-bold">{product.description}</h1>
                         <br />
                         <div className="flex">
                             <div className={classes.root}>
@@ -107,15 +110,17 @@ const ProductDetails = props => {
                             <p>Датчик Face ID: Есть</p>
                         </div>
                         <div className="text-left text-3xl pl-5 pt-5 font-semibold">
-                            <span>1 640 000 сум</span>
+                            <span>{product.price + " сўм"}</span>
                         </div>
                         <div className="text-left pl-5 pt-5">
-                            <h1>187000 сум/мес<span className="text-gray-300"> в рассрочку <InfoIcon /></span></h1>
+                            <h1>{!totalM ? totalM + " сум/мес" : null}<span className="text-gray-300"> в рассрочку <InfoIcon /></span></h1>
                         </div>
                         <div className="flex pl-3 mt-3">
-                            <div className="pl-2">
-                                <Button variant="contained" color="secondary">Купить</Button>
-                            </div>
+                            <Link to={"/basket/" + product.id}>
+                                <div className="pl-2">
+                                    <Button variant="contained" color="secondary">Купить</Button>
+                                </div>
+                            </Link>
                             <div className="pl-2">
                                 <Modal
                                     openBtn="Купит в рассрочку"
@@ -124,9 +129,11 @@ const ProductDetails = props => {
                                     }
                                 />
                             </div>
-                            <div className="pl-2">
-                                <Button variant="outlined" color="secondary">Купить в один клик</Button>
-                            </div>
+                            <Link to="/basket">
+                                <div className="pl-2">
+                                    <Button variant="outlined" color="secondary">Купить в один клик</Button>
+                                </div>
+                            </Link>
                         </div>
                         <div className="flex pl-5 pt-5">
                             <p><CheckIcon className="text-green-500" />  Доставка по Узбекистану</p>
@@ -141,10 +148,10 @@ const ProductDetails = props => {
                     <div className="text-left">
                         <h1 className="text-3xl">
                             Характеристики и описание
-                    </h1>
+                        </h1>
                         <h1 className="text-4xl">
                             Память и процессор смартфона
-                    </h1>
+                        </h1>
                     </div>
                     <div className="flex">
                         <h1>Объем оперативной памяти </h1>
@@ -160,7 +167,7 @@ const ProductDetails = props => {
                         <h1>Процессор </h1>
                         <p className="text-gray-300">
                             __________________________________________
-                    </p>
+                        </p>
                         <h1 className="">MediaTek Helio G80</h1>
                     </div>
                     <div className="text-left">
@@ -170,35 +177,35 @@ const ProductDetails = props => {
                         <h1>Спутниковая навигация</h1>
                         <p className="text-gray-300">
                             ____________________________
-                    </p>
+                        </p>
                         <h1 className="ml-5">{details.navigation}</h1>
                     </div>
                     <div className="flex mx-20 my-10">
                         <h1>Стандарт</h1>
                         <p className="text-gray-300">
                             ____________________________________________
-                    </p>
+                        </p>
                         <h1 className="">GSM, 3G, 4G LTE</h1>
                     </div>
                     <div className="flex">
                         <h1>Wi-Fi </h1>
                         <p className="text-gray-300">
                             ________________________________________________
-                    </p>
+                        </p>
                         <h1 className="">Wi-Fi 802.11</h1>
                     </div>
                     <div className="flex">
                         <h1>Bluetooth</h1>
                         <p className="text-gray-300">
                             ___________________________________________
-                    </p>
+                        </p>
                         <h1 className="">Bluetooth 5,0</h1>
                     </div>
                     <div className="flex">
                         <h1>NFC</h1>
                         <p className="text-gray-300">
                             _________________________________________________
-                    </p>
+                        </p>
                         <h1 className="">Yes (market/region dependent)</h1>
                     </div>
                     <div className="text-left">
@@ -208,28 +215,28 @@ const ProductDetails = props => {
                         <h1>Диагональ</h1>
                         <p className="text-gray-300">
                             __________________________________
-                    </p>
+                        </p>
                         <h1 className="">6.4"</h1>
                     </div>
                     <div className="flex">
                         <h1>Тип дисплея</h1>
                         <p className="text-gray-300">
                             _______________________
-                    </p>
+                        </p>
                         <h1 className="">Super AMOLED</h1>
                     </div>
                     <div className="flex">
                         <h1>Разрешениe экрана</h1>
                         <p className="text-gray-300">
                             _______________________________________
-                    </p>
+                        </p>
                         <h1 className="">2400x1080</h1>
                     </div>
                     <div className="flex">
                         <h1>Соотношение сторон</h1>
                         <p className="text-gray-300">
                             _________________________
-                    </p>
+                        </p>
                         <h1 className="">20:9</h1>
                     </div>
                     <div className="text-left">
@@ -239,14 +246,14 @@ const ProductDetails = props => {
                         <h1>Фронтальная камера</h1>
                         <p className="text-gray-300">
                             ___________________________________________
-                    </p>
+                        </p>
                         <h1 className="">20MP</h1>
                     </div>
                     <div className="flex">
                         <h1>Основная камера</h1>
                         <p className="text-gray-300">
                             ___________________________________________
-                    </p>
+                        </p>
                         <h1 className="">64MP + 8MP + 5MP + 5MP</h1>
                     </div>
                     <div className="text-left">
@@ -256,14 +263,14 @@ const ProductDetails = props => {
                         <h1>Тип аккумулятора</h1>
                         <p className="text-gray-300">
                             __________________________________
-                    </p>
+                        </p>
                         <h1 className="">Li-lon</h1>
                     </div>
                     <div className="flex">
                         <h1>Емкость аккумулятора</h1>
                         <p className="text-gray-300">
                             _______________________
-                    </p>
+                        </p>
                         <h1 className="">5000 мАч</h1>
                     </div>
 

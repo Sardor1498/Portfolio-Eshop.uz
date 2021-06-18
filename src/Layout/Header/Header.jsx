@@ -122,14 +122,14 @@ const Header = props => {
                         <Link to="/favorites">
                             <Badge badgeContent={count} color="primary">
                                 <FavoriteBorderIcon className="cursor-pointer" />
+                                <span>Избранные</span>
                             </Badge>
-                            <span>Избранные</span>
                         </Link>
                         <Link to="/basket">
                             <Badge className="cursor-pointer" badgeContent={1} color="secondary">
                                 <ShoppingCartIcon className="cursor-pointer" />
+                                <span>Корзина</span>
                             </Badge>
-                            <span>Корзина</span>
                         </Link>
 
                     </>

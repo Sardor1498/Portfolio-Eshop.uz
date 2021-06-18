@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import './styles.css'
 import { Link, useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 const BuyPage = (props) => {
     // const { price } = useParams();
     const [value, setValue] = React.useState("3");
     const [totalM, setTotalM] = useState();
     const [totalAll, setTotalAll] = useState();
-
+    const dispatch = useDispatch();
     const handleClick = event => {
         setValue(event.target.value);
     };
+
+    // const setToRedux = useCallback(
+    //     () => dispatch({type: "ADD_PRICE_SUCCESS", payload: 12}),
+    //     [dispatch]
+    //   )
 
     useEffect(() => {
         calc();
@@ -43,7 +49,10 @@ const BuyPage = (props) => {
         let totalOylik = asosiyOylikTolov + qushilganOylikFoiz
         let jamiSumma = totalOylik * value;
         setTotalM(totalOylik);
+        // dispatch({type: "ADD_PRICE_SUCCESS", payload: totalOylik});
         setTotalAll(jamiSumma);
+        dispatch({type: "ADD_PRICE_SUCCESS", payload: totalM}) // BuyPagedan globalni statega chiqarish uchun useDispatch qilindi
+        // setToRedux()
     }
 
     return (
@@ -69,7 +78,7 @@ const BuyPage = (props) => {
                         Минимальная сумма: {props.price * 0.15} сум
                     </p>
                     <h5>Срок рассрочки, месяц.</h5>
-
+{/* <button onClick={setToRedux(totalM)}>setToReduc</button> */}
                     <div className="radio-group bg-gray-100 rounded-full">
                         <input
                             onClick={handleClick}

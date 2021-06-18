@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../../Pages/Home';
 import Appliances from '../../Pages/Appliances';
@@ -23,6 +23,7 @@ import Basket from '../../Pages/Basket';
 import BuyPage from '../../Pages/BuyPage';
 
 const ContentMain = (props) => {
+
     return (
         <div>
             <Switch>
@@ -132,7 +133,7 @@ const ContentMain = (props) => {
                         filterFavorites={props.data.filterFavorites}  
                     />
                 </Route>
-                <Route path="/basket">
+                <Route path="/basket/:id?">
                     <Basket
                         products={props.data.products}
                     />

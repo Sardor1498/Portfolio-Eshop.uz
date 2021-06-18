@@ -113,7 +113,7 @@ const ProductDetails = props => {
                             <span>{product.price + " сўм"}</span>
                         </div>
                         <div className="text-left pl-5 pt-5">
-                            <h1>{!totalM ? totalM + " сум/мес" : null}<span className="text-gray-300"> в рассрочку <InfoIcon /></span></h1>
+                            <h1>{totalM + " сум/мес"}<span className="text-gray-300"> в рассрочку <InfoIcon /></span></h1>
                         </div>
                         <div className="flex pl-3 mt-3">
                             <Link to={"/basket/" + product.id}>

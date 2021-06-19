@@ -8,7 +8,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import InputSpinner from "../components/InputSpinner";
 import Icon from '@material-ui/core/Icon';
 import axios from "axios";
-import ProductDetails from "./ProductDetails";
+import ProductDetails from "./ProDetails";
 import { useDispatch } from 'react-redux';
 
 // const useStyles = makeStyles((theme) => ({

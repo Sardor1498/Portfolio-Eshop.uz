@@ -6,10 +6,7 @@ import Button from '@material-ui/core/Button';
 import { Link, useParams } from "react-router-dom";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import InputSpinner from "../components/InputSpinner";
-import Icon from '@material-ui/core/Icon';
 import axios from "axios";
-import ProductDetails from "./ProductDetails";
-import { useDispatch } from 'react-redux';
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {

@@ -122,8 +122,10 @@ const Basket = (props) => {
                                         </span>
                                     </div>
                                     <div className="col-span-1 px-2 py-1">
-                                        <div className="mt-3 w-14 text-gray-300 border cursor-pointer rounded-lg pb-2 text-4xl">
-                                            &times;
+                                        <div className="grid grid-cols-3 h-14 text-gray-300 border cursor-pointer rounded-lg text-4xl">
+                                            <div></div>
+                                            <div>&times;</div>
+                                            <div></div>
                                         </div>
                                     </div>
                                 </div>

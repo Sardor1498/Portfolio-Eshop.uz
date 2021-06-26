@@ -3,13 +3,24 @@ import SideBar from '../Layout/Sidebar/SideBar';
 import CarouselAutoplay from '../components/CarouselAutoplay';
 import Slideshow from '../Layout/SlideShow/SlideShow';
 import SaleComponent from '../components/SaleComponent';
+import Toggle from '../Layout/Header/Toggle';
+import { useSelector } from 'react-redux';
+
+const moonColor = {
+    backgroundColor: "#1E3A8A"
+}
+
 
 const Home = (props) => {
+    const darkMode = useSelector((state) => state.toggleReducer.toggle)
     return (
         <>
             {/* <div>
                 <Content />
             </div> */}
+            <div>
+                <Toggle darkMode={darkMode} />
+            </div>
             <div>
                 <Slideshow />
             </div>

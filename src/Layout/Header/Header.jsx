@@ -69,6 +69,7 @@ const Header = props => {
         }
     }
 
+
     useEffect(() => {
         getCount();
     }, [props.products])

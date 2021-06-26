@@ -21,6 +21,7 @@ import Header from '../Header/Header';
 import Favorites from '../../Pages/Favorites';
 import Basket from '../../Pages/Basket';
 import BuyPage from '../../Pages/BuyPage';
+import Compare from '../../Pages/Compare';
 
 const ContentMain = (props) => {
 
@@ -140,6 +141,11 @@ const ContentMain = (props) => {
                 </Route>
                 <Route path="/buy/:price">
                     <BuyPage 
+                        products={props.data.products}
+                    />
+                </Route>
+                <Route path="/compare">
+                    <Compare 
                         products={props.data.products}
                     />
                 </Route>

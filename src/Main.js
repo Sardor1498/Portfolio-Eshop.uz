@@ -27,8 +27,7 @@ const Main = props => {
   }, []);
 
   return (
-    <div className="App container mx-auto">
-      {/* <div className="container mx-auto"> */}
+    <div className="App">
       <div className="sticky top-0 z-20">
         <Header
           isAuthorized={props.isAuthorized}
@@ -53,7 +52,6 @@ const Main = props => {
       <div>
         <Footer />
       </div>
-      {/* </div> */}
     </div>
   );
 };

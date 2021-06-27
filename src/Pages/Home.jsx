@@ -6,6 +6,7 @@ import SaleComponent from '../components/SaleComponent';
 import CarouselS from '../components/CarouselS';
 
 const Home = (props) => {
+    // const darkMode = useSelector((state) => state.toggleReducer.toggle)
     return (
         <>
             <div>

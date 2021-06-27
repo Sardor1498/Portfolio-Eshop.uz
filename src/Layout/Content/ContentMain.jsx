@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../../Pages/Home';
 import Appliances from '../../Pages/Appliances';
@@ -18,9 +18,10 @@ import ProductDetails from '../../Pages/ProductDetails';
 import Favorites from '../../Pages/Favorites';
 import Basket from '../../Pages/Basket';
 import BuyPage from '../../Pages/BuyPage';
-import Office from '../../Pages/Office';
+import Compare from '../../Pages/Compare';
 
 const ContentMain = (props) => {
+
     return (
         <div>
             <Switch>
@@ -55,7 +56,7 @@ const ContentMain = (props) => {
                         productsIsLoaded={props.data.productsIsLoaded}
                     />
                 </Route>
-                <Route path="/appliances">
+                {/* <Route path="/appliances">
                     <Appliances />
                 </Route>
                 {/* <Route path="/office">
@@ -121,7 +122,6 @@ const ContentMain = (props) => {
                     <ProductDetails
                         getProductDetails={props.data.getProductDetails}
                         getCurrentProduct={props.data.getCurrentProduct}
-                        alixoja="Valixoja"
                     />
                 </Route>
                 <Route path="/favorites">
@@ -141,8 +141,10 @@ const ContentMain = (props) => {
                         products={props.data.products}
                     />
                 </Route>
-                <Route path="/office">
-                    <Office/>
+                <Route path="/compare">
+                    <Compare 
+                        products={props.data.products}
+                    />
                 </Route>
             </Switch>
         </div>

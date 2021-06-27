@@ -10,9 +10,9 @@ class Test extends React.Component {
             <>
                 <div className="flex m-5">
                     <TestRefFile />
-                    <TestRef />
-                    <Clock />
+                    {/* <Clock />
                     <Example1 />
+                    <TestRef /> */}
                 </div>
             </>
         );

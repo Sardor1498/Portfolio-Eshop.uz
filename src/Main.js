@@ -12,6 +12,7 @@ import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
 import { authAPI } from './api/usersAPI';
+import { priceAPI } from './api/priceAPI';
 import { detailsAPI } from './api/productsDetailsAPI';
 import Content from './Layout/Content/Content';
 
@@ -28,6 +29,7 @@ const Main = props => {
   return (
     <div className="App">
       <div className="container mx-auto">
+<<<<<<< HEAD
         <div className="sticky top-0 z-20">
           <Header
             isAuthorized={props.isAuthorized}
@@ -51,6 +53,32 @@ const Main = props => {
         <div>
           <Footer />
         </div>
+=======
+      <div className="sticky top-0 z-20">
+        <Header 
+          isAuthorized={props.isAuthorized}
+          login={props.login}
+          user={props.user}
+          logout={props.logout}
+          catalogs={props.catalogs}
+          products={props.products}
+          getProducts={props.getProducts}
+        />
+      </div>
+      <div>
+        <Content />
+      </div>
+      <div>
+        <ContentMain 
+          data={props}
+          login={props.login}
+          price={props.price}
+        />
+      </div>
+      <div>
+        <Footer />
+>>>>>>> 6f747e24bbc225a20737361d0cc8ee889d71a895
+      </div>
       </div>
     </div>
   );

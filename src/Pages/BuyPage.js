@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState, useCallback } from "react";
 import './styles.css'
+import { Link, useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 const BuyPage = (props) => {
     const [value, setValue] = React.useState("3");
@@ -11,6 +12,11 @@ const BuyPage = (props) => {
         setValue(event.target.value)
     }
 
+
+    // const setToRedux = useCallback(
+    //     () => dispatch({type: "ADD_PRICE_SUCCESS", payload: 12}),
+    //     [dispatch]
+    //   )
 
     useEffect(() => {
         calc();
@@ -43,10 +49,11 @@ const BuyPage = (props) => {
         let totalOylik = asosiyOylikTolov + qushilganOylikFoiz
         let jamiSumma = totalOylik * value;
         setTotalM(totalOylik);
+        // dispatch({type: "ADD_PRICE_SUCCESS", payload: totalOylik});
         setTotalAll(jamiSumma);
-        dispatch({type: "ADD_PRICE_SUCCESS", payload: totalM}) // BuyPage globalni statega chiqarish uchun useDispatch qilindi
+        dispatch({type: "ADD_PRICE_SUCCESS", payload: totalM}) // BuyPagedan globalni statega chiqarish uchun useDispatch qilindi
+        // setToRedux()
     }
-
 
     return (
         <>
@@ -67,11 +74,10 @@ const BuyPage = (props) => {
                         type="text"
                         className="w-full focus:border-red-600 focus:border-4 rounded p-3 border-gray-500"
                     />
-                    <p className="text-gray-700">
+                    <p className="text-gray-400 ">
                         Минимальная сумма: {props.price * 0.15} сум
                     </p>
                     <h5>Срок рассрочки, месяц.</h5>
-
                     <div className="radio-group bg-gray-100 rounded-full">
                         <input
                             onClick={handleClick}
@@ -136,14 +142,14 @@ const BuyPage = (props) => {
                         </label>
                     </div>
                     <div className="grid grid-cols-2">
-                        <div className="border-2 border-gray-400  bg-transparent">
-                            <p className="h-10">
-                                Ежемесесячный платеж:<span>{totalM ? totalM.toFixed(1) + " сум" : null}</span>
+                        <div className="border-2 border-gray-400 bg-transparent">
+                            <p>
+                                Ежемесесячный платеж:<span> {totalM ? totalM.toFixed(1) + " сум" : null}</span>
                             </p>
                         </div>
                         <div className="border-2 border-gray-400 bg-transparent">
                             <p>
-                                Общая сумма<span>{totalAll ? totalAll.toFixed(1) + " сум" : null}</span>
+                                Общая сумма<span> {totalAll ? totalAll.toFixed(1) + " сум" : null}</span>
                             </p>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 export default function TestRef(props) {
-    const textInput = useRef(null)
+    const textInput = useRef(null);
 
     function handleClick() {
         textInput.current.focus();
@@ -15,9 +15,9 @@ export default function TestRef(props) {
             />
             <input
                 type="button"
-                value="Focus the test Ref"
+                value="Focus the text input"
                 onClick={handleClick}
             />
         </div>
-    );
+    )
 }

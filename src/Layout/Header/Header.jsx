@@ -70,6 +70,7 @@ const Header = props => {
         }
     }
 
+
     useEffect(() => {
         getCount();
     }, [props.products])
@@ -80,10 +81,60 @@ const Header = props => {
                 className="grid md:grid-cols-3 sm:grid-cols-1 bg-gray-800 gap-2
                 md:place-content-center sm:h-22 md:h-14 md:min-h-full"
             >
-                <div className="flex justify-start">
-                    <HiddenPanel catalogs={props.catalogs} />
-                    <Toggle />
-                </div>
+                <SearchPanel />
+            </div>
+            <div className="text-white flex justify-around items-center">
+                {props.isAuthorized && props.user ? (
+                    <>
+                        <button
+                            aria-controls="customized-menu"
+                            aria-haspopup="true"
+                            className="bg-transparent hover:bg-white-200 text-white font-semibold py-1 px-2 rounded shadow"
+                            onClick={handleClick}
+                        >
+                            <AccountCircleIcon className="cursor-pointer mr-1" />
+                            {props.user.name}
+                        </button>
+                        <StyledMenu
+                            id="customized-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <StyledMenuItem>
+                                <ListItemIcon>
+                                    <SettingsIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Настройки" />
+                            </StyledMenuItem>
+                            <StyledMenuItem onClick={props.logout}>
+                                <ListItemIcon>
+                                    <ExitToAppIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText primary="Выход" />
+                            </StyledMenuItem>
+                        </StyledMenu>
+                        <Link to="/favorites">
+                            <Badge badgeContent={count} color="primary">
+                                <FavoriteBorderIcon className="cursor-pointer" />
+                                <span>Избранные</span>
+                            </Badge>
+                        </Link>
+                        <Link to="/basket">
+                            <Badge className="cursor-pointer" badgeContent={1} color="secondary">
+                                <ShoppingCartIcon className="cursor-pointer" />
+                                <span>Корзина</span>
+                            </Badge>
+                        </Link>
+
+                    </>
+                ) : (
+                    <Link className="text-white" to="/login">
+                        Login
+                    </Link>
+                )}
+
 
                 <div
                     className="grid md:place-content-center justify-end ml-20 

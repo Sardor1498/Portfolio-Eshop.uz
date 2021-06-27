@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import { useState } from 'react';
 
 const styles = (theme) => ({
     root: {
@@ -82,6 +83,23 @@ export default function Modal(props) {
     const handleClose = () => {
         setOpen(false);
     };
+    const checkProps = () => {
+        let emptyTitleProps;
+        if (props.title === undefined &&
+            props.title1 === undefined &&
+            props.title2 === undefined &&
+            props.title3 === undefined &&
+            props.title4 === undefined
+        ) {
+            emptyTitleProps = true;
+        } else {
+            emptyTitleProps = false;
+        }
+        return emptyTitleProps;
+    }
+    const style = {
+        padding: "0"
+    };
 
     const checkProps = () => {
         let emptyTitleProps;
@@ -111,24 +129,24 @@ export default function Modal(props) {
                     checkProps() ? null : (
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                {props.title1}
+                                {props.title}
                             </Typography>
                             <Typography>
-                                {props.title2}
+                                {props.title1}
                             </Typography>
                             <Typography className={classes.pos} color="textSecondary">
-                                {props.title3}
+                                {props.title2}
                             </Typography>
                             <Typography variant="body2" component="p">
-                                {props.title4}
+                                {props.title3}
                                 <br />
-                                {props.title5}
+                                {props.title4}
                             </Typography>
                         </CardContent>
                     )
                 }
                 <CardActions
-                style={checkProps() ? style : null}
+                    style={true ? style : null}
                 >
                     <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                         {props.openBtn}
@@ -151,9 +169,9 @@ export default function Modal(props) {
                 </DialogContent>
                 <DialogActions>
                     {props.bottomBtn ? props.bottomBtn : (
-                    <Button autoFocus onClick={handleClose} color={props.btnColor ? props.btnColor : "primary"}>
-                        {props.ButtonText ? props.ButtonText : "Перейти в корзину"}
-                    </Button>
+                        <Button autoFocus onClick={handleClose} color={props.btnColor ? props.btnColor : "primary"}>
+                            {props.btnBottomText ? props.btnBottomText : "Сохранить"}
+                        </Button>
                     )}
                 </DialogActions>
             </Dialog>

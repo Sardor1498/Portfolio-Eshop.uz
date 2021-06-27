@@ -3,7 +3,11 @@ import { Field, reduxForm } from "redux-form";
 import TextField from "@material-ui/core/TextField";
 import asyncValidate from "../Helpers/asyncValidate";
 import Button from "@material-ui/core/Button";
-import { useSelector } from 'react-redux';
+import Axios from "axios";
+import Checkbox from "@material-ui/core/Checkbox";
+import { makeStyles } from "@material-ui/core/styles";
+import { ErrorOutlined } from '@material-ui/icons';
+import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
 
 const validate = values => {
@@ -43,9 +47,8 @@ const renderTextField = ({
 
 const Login = props => {
     const { pristine, reset, submitting, classes } = props;
-
     const authorized = useSelector((state) => state.authReducer.isAuthorized);
-    
+    console.log(authorized + "jsmdsj");
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -112,6 +115,15 @@ const Login = props => {
                                     Tozalash
                         </Button>
                             </div>
+                            {/* <div className="ml-2">
+                        <Button
+                            variant="contained"
+                            onClick={getProfile}
+                            color="primary"
+                        >
+                            GETPROFILE
+                        </Button>
+                    </div> */}
                         </div>
                     </form>
                 </div>

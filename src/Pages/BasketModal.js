@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import InputSpinner from "../components/InputSpinner";
 
 const BasketModal = (props) => {
+
     const [count, setCount] = useState(1);
 
+    // useEffect(() => {
+    //     if (id) {
+    //         getProduct();
+    //     }
+    // }, [])
 
     return (
         <>
-            <div className="">
-                <div className="card grid grid-cols-12 p-3 border rounded-lg border-gray-200">
+            <div className="col-span-3 pl-4">
+                <div className="grid grid-cols-12 p-3 border rounded-lg border-gray-200">
                     <div className="col-span-1 border">
                         <img src={props.product.photo} alt={props.product.title} />
                     </div>
@@ -19,6 +25,9 @@ const BasketModal = (props) => {
                         <div className="text-left text-md pl-2 font-bold">
                             {props.product.description}
                         </div>
+                        {/* <div className="price">
+                            <span>{props.product ? props.product.price : null}</span>
+                        </div> */}
                     </div>
                     <div className="col-span-3">
                         <div className="input-spinner">

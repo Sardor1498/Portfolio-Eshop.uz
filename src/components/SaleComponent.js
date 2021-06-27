@@ -1,219 +1,111 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Axios from 'axios';
-import Card from "@material-ui/core/Card";
-import { Link } from "react-router-dom";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import React, { useState, useEffect } from 'react';
+import RecipeReviewCard from './RecipeReviewCard';
+import Button from "@material-ui/core/Button";
+import { Link, useParams } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        maxWidth: 345
-    },
-    color: {
-        color: "blue"
-    },
-    media: {
-        height: 200,
-        // backgroundSize: "contain",
-        paddingTop: "56.25%" // 16:9
-    },
-    expand: {
-        transform: "rotate(0deg)",
-        marginLeft: "auto",
-        transition: theme.transitions.create("transform", {
-            duration: theme.transitions.duration.shortest
-        })
-    },
-    expandOpen: {
-        transform: "rotate(180deg)"
-    },
-    avatar: {
-        backgroundColor: red[500]
-    }
-}));
-const style = {
-    color: "#f98181"
-};
-const size = {
-    backgroundSize: "contain"
-}
 
-export default function CarouselS(props) {
-    const classes = useStyles();
-    const [product, setProduct] = React.useState();
-    const [loading, setLoading] = React.useState(false)
+const SaleComponent = (props) => {
 
-    React.useEffect(() => {
-        setProduct(props.data);
-    }, []);
+    // function SaleComponent() {
+    //     const [product, setProduct] = React.useState([])
+    //     const [brands, setBrands] = React.useState([])
+    //     const [brand, setBrand] = React.useState('')
 
-    let url = "https://laravel-react-eshop.herokuapp.com";
+    //     useEffect(() => {
+    //         const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+    //         const url = 'https://avtodoka-msk.ru/aimylogic-mission.json'
+    //         fetch(proxyUrl + url)
+    //             .then(response => response.json())
+    //             .then(products => {
+    //                 setProduct(products)
+    //                 const brands = []
+    //                 products.map(product => {
+    //                     return (
+    //                         brands.push(...product.brend)
+    //                     )
+    //                 })
+    //                 setBrands([...new Set(brands)])
+    //             })
+    //     }, [])
 
-    const handleClick = async (prod) => {
-        let newProduct = { ...prod, selected: !prod.selected };
-        try {
-            setLoading(true);
-            let res = await Axios.put(`${url}/api/product/` + product.id, newProduct);
-            if (res.data) {
-                setLoading(false);
-                setProduct(res.data);
-                props.getProducts();
-            }
-        } catch (e) {
-            console.log(e)
+    //     function toggleBrand(e) {
+    //         setBrand(e.target.value)
+
+    //         setProduct(
+    //             product.filter(product => {
+    //                 if ([...product.brend].includes(e.target.value)) {
+    //                     return true
+    //                 }
+    //             })
+    //         )
+
+    //     }
+
+    const [product, setProduct] = useState();
+
+    const getProduct = () => {
+        let elem;
+        let arr = [];
+        for (let i = 0; i <= 7; i++) {
+            elem = props.products[i];
+            arr.push(elem);
         }
+        setProduct(arr);
+
     }
+
+    useEffect(() => {
+        if (props.products.length !== 0) {
+            getProduct();
+        }
+    }, [props.products])
 
     return (
-        <>
-            {!product ? (
-                <CircularProgress />
-            ) : (
-                <div className="h-96 ">
-                    <Card
-                        className={
-                            classes.root +
-                            " h-full p-2 hover:shadow-3xl cursor-pointer focus:border-yellow-800"
-                        }
-                    >
-                        <Link to={"/details/" + product.id}>
-                            <div className="h-3/6 w-full">
-                                <CardMedia
-                                    style={size}
-                                    className={"h-full w-full"}
-                                    image={product.photo}
-                                    title={product.title}
-                                />
-                            </div>
-                            <div className="h-1/4">
-                                <CardHeader className="p-1" subheader={product.title} />
-                            </div>
-                        </Link>
-                        <div className="h-1/4">
-                            <CardActions disableSpacing className="h-1/2 p-1">
-                                <IconButton
-                                    style={loading ? style : null}
-                                    disabled={loading}
-                                    aria-label="add to favorites"
-                                    onClick={prod => handleClick(product)}
-                                    color={product.selected ? "secondary" : "default"}
+        <div>
+            <span className="text-xl font-bold text-left">Товары на распродаже</span>
+            <div className="grid grid-cols-11">
+                <div className="col-span-3 bg-red-600 rounded pl-2">
+                    <div className="sticky top-16">
+                        <div className="text-xl text-white font-bold">Рассрочка</div>
+                        <div className="text-lg text-white font-semibold">Без оформления кредита</div>
+                        <img
+                            src="https://olcha.uz/uploads/advertising/images/extra/F5LdMy45DNa3b8OvN4yTXRqkptLUyX90yU4x1Rpn.png"
+                            alt="Rasm"
+                        // className="sticky top-0"
+                        />
+                        <div className="flex justify-center">
+                            <Link to="/favorites">
+                                <Button
+                                    variant="contained"
+                                    type="submit"
+                                    color="secondary"
                                 >
-                                    <FavoriteIcon />
-                                </IconButton>
-                                <IconButton>
-                                    <ShareIcon id="button"/>
-                                </IconButton>
-                            </CardActions>
-                            <CardContent>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    {product.price}
-                                </Typography>
-                            </CardContent>
+                                    Посмотреть все
+                                </Button>
+                            </Link>
                         </div>
-                    </Card>
+                    </div>
                 </div>
-            )}
-        </>
-    );
-};
+                <div className="col-span-8">
+                    <div className="grid md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 m-2">
+                        {
+                            product && product !== [] ? (
+                                product.map((item, index) => (
+                                    <div key={index} className="text-red-500">
+                                        <RecipeReviewCard
+                                            productsIsLoaded={props.productsIsLoaded}
+                                            data={item}
+                                        />
+                                    </div>
+                                ))
 
+                            ) : null
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState, useEffect } from 'react';
-
-
-
-// import RecipeReviewCard from './RecipeReviewCard';
-
-// const SaleComponent = (props) => {
-
-//     const [product, setProduct] = useState();
-
-//     const getProduct = () => {
-//         let elem;
-//         let arr = [];
-//         for (let i = 0; i < 9; i++) {
-//             elem = props.products[i];
-//             arr.push(elem);
-//         }
-//         setProduct(arr)
-//     }
-
-//     useEffect(() => {
-//         getProduct(props.products)
-//     }, [])
-
-//     return (
-//         <div>
-//             <div className="grid grid-cols-11">
-//                 <div className="col-span-3">
-
-//                 </div>
-//                 <div className="col-span-8">
-//                     <div className="grid md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-6 xl:grid-cols-8 gap-4 m-2">
-//                         {
-//                             product.length !== [] ? (
-//                                 <div className="text-red-500">
-//                                     <RecipeReviewCard
-//                                         productsIsLoaded={props.productsIsLoaded}
-//                                         data={product}
-//                                     />
-//                             </div>) : null}
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default SaleComponent;
+export default SaleComponent;

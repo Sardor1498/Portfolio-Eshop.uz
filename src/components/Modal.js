@@ -126,7 +126,7 @@ export default function Modal(props) {
                         </CardContent>
                     )
                 }
-                <CardActions
+                <CardActions 
                     style={true ? style : null}
                 >
                     <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -149,11 +149,9 @@ export default function Modal(props) {
                     {props.component}
                 </DialogContent>
                 <DialogActions>
-                    {props.bottomBtn ? props.bottomBtn : (
-                        <Button autoFocus onClick={handleClose} color={props.btnColor ? props.btnColor : "primary"}>
-                            {props.btnBottomText ? props.btnBottomText : "Сохранить"}
-                        </Button>
-                    )}
+                    <Button autoFocus onClick={handleClose} color="primary">
+                        Save changes
+                    </Button>
                 </DialogActions>
             </Dialog>
         </div>

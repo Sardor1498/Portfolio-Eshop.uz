@@ -75,7 +75,7 @@ export default function RecipeReviewCard(props) {
     return (
         <>
             {!product ? (
-                "LOADING..."
+                <CircularProgress />
             ) : (
                 <div className="h-96">
                     <Card

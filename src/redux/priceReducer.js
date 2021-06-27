@@ -1,14 +1,15 @@
 const initialState = {
-    price: {}
+    price: {},
+    loaded: false
 };
 
-export default function priceReducer(state = initialState, action) {
+export default function categoriesReducer(state = initialState, action) {
     switch (action.type) {
         case "ADD_PRICE_SUCCESS":
             return {
                 ...state,
                 price: action.payload,
-                name: "Meyrlan"
+                loaded: true
             };
             default:
                 return state;

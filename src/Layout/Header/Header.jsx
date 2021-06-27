@@ -13,7 +13,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import SettingsIcon from "@material-ui/icons/Settings";
 import Badge from "@material-ui/core/Badge";
-import Toggle from "../Header/Toggle";
 
 const StyledMenu = withStyles({
     paper: {
@@ -69,7 +68,6 @@ const Header = props => {
             )
         }
     }
-
 
     useEffect(() => {
         getCount();

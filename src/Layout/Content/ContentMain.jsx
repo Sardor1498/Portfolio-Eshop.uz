@@ -18,8 +18,6 @@ import ProductDetails from '../../Pages/ProductDetails';
 import Favorites from '../../Pages/Favorites';
 import Basket from '../../Pages/Basket';
 import BuyPage from '../../Pages/BuyPage';
-import Compare from '../../Pages/Compare';
-import Checkout from '../../Pages/Checkout';
 
 const ContentMain = (props) => {
 
@@ -141,14 +139,6 @@ const ContentMain = (props) => {
                     <BuyPage 
                         products={props.data.products}
                     />
-                </Route>
-                <Route path="/compare">
-                    <Compare 
-                        products={props.data.products}
-                    />
-                </Route>
-                <Route path="/checkout/:length?">
-                    <Checkout />
                 </Route>
             </Switch>
         </div>

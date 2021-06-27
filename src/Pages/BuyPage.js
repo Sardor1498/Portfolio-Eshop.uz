@@ -78,6 +78,7 @@ const BuyPage = (props) => {
                         Минимальная сумма: {props.price * 0.15} сум
                     </p>
                     <h5>Срок рассрочки, месяц.</h5>
+{/* <button onClick={setToRedux(totalM)}>setToReduc</button> */}
                     <div className="radio-group bg-gray-100 rounded-full">
                         <input
                             onClick={handleClick}

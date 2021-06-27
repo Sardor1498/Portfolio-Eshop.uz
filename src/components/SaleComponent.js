@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import RecipeReviewCard from './RecipeReviewCard';
+import RecipeReviewCard from './RecipeReviewCard'
 
 
 const SaleComponent = (props) => {
@@ -49,39 +49,64 @@ const SaleComponent = (props) => {
             arr.push(elem);
         }
         setProduct(arr);
-
     }
 
     useEffect(() => {
-        if (props.products.length !== 0) {
-            getProduct();
-        }
+        setProduct(props.products);
     }, [props.products])
 
     return (
         <div>
-            <span className="text-xl font-bold text-left">Товары на распродаже</span>
             <div className="grid grid-cols-11">
                 <div className="col-span-3">
-                    <img
-                        src="https://olcha.uz/uploads/advertising/images/extra/F5LdMy45DNa3b8OvN4yTXRqkptLUyX90yU4x1Rpn.png"
-                        alt="Rasm"
-                        className="sticky top-0"
-                    />
+
                 </div>
                 <div className="col-span-8">
                     <div className="grid md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 m-2">
-                        {
-                            product && product !== [] ? (
-                                product.map((item, index) => (
-                                    <div key={index} className="text-red-500">
-                                        <RecipeReviewCard
-                                            productsIsLoaded={props.productsIsLoaded}
-                                            data={item}
-                                        />
-                                    </div>
-                                ))
+                        {/* {brands.length ? (
+                            <div className="row">
+                                <div className="col-3">
+                                    <select value={brand} onChange={toggleBrand}>
+                                        <option value={''}>Выбрать бренд</option>
 
+                                        {brands.map((brend, index) => {
+                                            return (
+                                                <option value={brend} key={index}>{brend}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+                            </div>
+                        ) : null}
+                        {product.length ? (
+
+                            <div className="row">
+
+                                {product.map(product => {
+                                    return (
+
+                                        <RecipeReviewCard
+                                            key={product.id}
+                                            product={product}
+                                        />
+                                    )
+                                })}
+
+
+                            </div>
+                        ) : null}
+                    </div>
+) */}
+
+
+                        {
+                            product !== [] ? (
+                                <div className="text-red-500">
+                                    <RecipeReviewCard
+                                        productsIsLoaded={props.productsIsLoaded}
+                                        data={product}
+                                    />
+                                </div>
                             ) : null
                         }
                     </div>

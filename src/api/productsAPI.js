@@ -50,6 +50,7 @@ export const productsAPI = {
             }
         };
     },
+  
     getCurrentProduct(id) {
         return async dispatch => {
             let response = await instance.get(`product/${id}`);

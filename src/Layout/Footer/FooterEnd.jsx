@@ -9,18 +9,47 @@ import { Link } from 'react-router-dom';
 const FooterEnd = () => {
     return (
         <>
-        <div className="grid grid-cols-3 p-5">
-            <div></div>
-            <div className="flex justify-between">
-                <a href="http://facebook.com" target="_blank"><FacebookIcon className="text-blue-900" /></a>
-                <a href="http://twitter.com" target="_blank"><TwitterIcon className="text-blue-600" /></a>
-                <a href="http://pinterest.com" target="_blank"><PinterestIcon className="text-green-900" /></a>
-                <a href="http://youtube.com" target="_blank"><YouTubeIcon className="text-red-700" /></a>
-                <a href="http://instagram.com" target="_blank"><InstagramIcon className="text-pink-500" /></a>
+            <div className="grid grid-col-10 p-5">
+                <div className="flex justify-between">
+                    <div className="col-span-2">
+                        <a
+                            href="http://facebook.com"
+                            target="_blank">
+                            <FacebookIcon className="text-blue-900"/>
+                        </a>
+                    </div>
+                    <div className="col-span-2">
+                        <a
+                            href="http://twitter.com"
+                            target="_blank">
+                            <TwitterIcon className="text-blue-600"/>
+                        </a>
+                    </div>
+                    <div className="col-span-2">
+                        <a
+                            href="http://pinterest.com"
+                            target="_blank">
+                            <PinterestIcon
+                                className="text-green-900"/>
+                        </a>
+                    </div>
+                    <div className="col-span-2">
+                        <a
+                            href="http://youtube.com"
+                            target="_blank">
+                            <YouTubeIcon className="text-red-700"/>
+                        </a>
+                    </div>
+                    <div className="col-span-2">
+                        <a
+                            href="http://instagram.com"
+                            target="_blank">
+                            <InstagramIcon className="text-pink-500"/>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div></div>
-        </div>
-        <hr/>
+            <hr />
         </>
     )
 };

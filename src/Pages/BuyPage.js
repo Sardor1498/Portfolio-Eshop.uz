@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux'
 import './styles.css'
-import { Link, useParams } from "react-router-dom";
 
 const BuyPage = (props) => {
-    // const { price } = useParams();
     const [value, setValue] = React.useState("3");
     const [totalM, setTotalM] = useState();
     const [totalAll, setTotalAll] = useState();
-
+    const dispatch = useDispatch();
     const handleClick = event => {
-        setValue(event.target.value);
-    };
+        setValue(event.target.value)
+    }
+
 
     useEffect(() => {
         calc();
@@ -44,7 +44,9 @@ const BuyPage = (props) => {
         let jamiSumma = totalOylik * value;
         setTotalM(totalOylik);
         setTotalAll(jamiSumma);
+        dispatch({type: "ADD_PRICE_SUCCESS", payload: totalM}) // BuyPage globalni statega chiqarish uchun useDispatch qilindi
     }
+
 
     return (
         <>
@@ -86,7 +88,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             3 oy
-                            </label>
+                        </label>
                         <input
                             onClick={handleClick}
                             type="radio"
@@ -101,7 +103,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             6 oy
-                            </label>
+                        </label>
                         <input
                             onClick={handleClick}
                             type="radio"
@@ -116,7 +118,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             9 oy
-                            </label>
+                        </label>
                         <input
                             onClick={handleClick}
                             type="radio"
@@ -131,17 +133,17 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             12 oy
-                            </label>
+                        </label>
                     </div>
                     <div className="grid grid-cols-2">
                         <div className="border-2 border-gray-400  bg-transparent">
                             <p className="h-10">
-                                Ежемесесячный платеж:<span>{totalM ? totalM.toFixed(1   ) + " сум" : null}</span>
+                                Ежемесесячный платеж:<span>{totalM ? totalM.toFixed(1) + " сум" : null}</span>
                             </p>
                         </div>
                         <div className="border-2 border-gray-400 bg-transparent">
                             <p>
-                                Общая сумма<span>{totalAll ? totalAll.toFixed(1 ) + " сум" : null}</span>
+                                Общая сумма<span>{totalAll ? totalAll.toFixed(1) + " сум" : null}</span>
                             </p>
                         </div>
                     </div>

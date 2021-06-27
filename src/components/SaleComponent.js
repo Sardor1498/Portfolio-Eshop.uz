@@ -109,12 +109,7 @@ export default function CarouselS(props) {
                                 >
                                     <FavoriteIcon />
                                 </IconButton>
-                                <IconButton 
-                                    // style={loading ? style : null}
-                                    // disabled={loading}
-                                    // onClick={prod => oneClick(product)}
-                                    // aria-label="share"
-                                >
+                                <IconButton>
                                     <ShareIcon id="button"/>
                                 </IconButton>
                             </CardActions>

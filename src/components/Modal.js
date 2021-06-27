@@ -150,9 +150,11 @@ export default function Modal(props) {
                     {props.component}
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus onClick={handleClose} color="primary">
-                        Save changes
+                    {props.bottomBtn ? props.bottomBtn : (
+                    <Button autoFocus onClick={handleClose} color={props.btnColor ? props.btnColor : "primary"}>
+                        {props.ButtonText ? props.ButtonText : "Перейти в корзину"}
                     </Button>
+                    )}
                 </DialogActions>
             </Dialog>
         </div>

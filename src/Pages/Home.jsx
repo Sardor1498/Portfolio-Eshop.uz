@@ -8,10 +8,6 @@ import CarouselS from '../components/CarouselS';
 const Home = (props) => {
     return (
         <>
-            {/* <div>
-                <Content />
-            </div> */}
-
             <div>
                 <Slideshow />
             </div>
@@ -28,9 +24,9 @@ const Home = (props) => {
             </div>
             <div>
                 <CarouselS
-                     productsIsLoaded={props.productsIsLoaded}
-                     products={props.products}
-                     getProducts={props.getProducts}
+                    products={props.products}
+                    productsIsLoaded={props.productsIsLoaded}
+                    getProducts={props.getProducts}
                 />
             </div>
         </>

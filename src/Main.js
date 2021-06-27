@@ -17,7 +17,7 @@ import { detailsAPI } from './api/productsDetailsAPI';
 import Content from './Layout/Content/Content';
 
 const Main = props => {
-
+  
   useEffect(() => {
     props.getProducts();
     props.getCatalogs();
@@ -28,8 +28,9 @@ const Main = props => {
 
   return (
     <div className="App">
+      <div className="container mx-auto">
       <div className="sticky top-0 z-20">
-        <Header
+        <Header 
           isAuthorized={props.isAuthorized}
           login={props.login}
           user={props.user}
@@ -43,7 +44,7 @@ const Main = props => {
         <Content />
       </div>
       <div>
-        <ContentMain
+        <ContentMain 
           data={props}
           login={props.login}
           price={props.price}
@@ -51,6 +52,7 @@ const Main = props => {
       </div>
       <div>
         <Footer />
+      </div>
       </div>
     </div>
   );

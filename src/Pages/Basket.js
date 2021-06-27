@@ -169,14 +169,11 @@ const Basket = (props) => {
                                 <hr />
                                 <br />
                                 <div className="pb-4">
-                                    <Link to="/checkout/:length?">
-                                        <Button
-                                            variant="contained"
-                                            color="secondary"
-                                        >
-                                            Оформить заказ
-                                        </Button>
-                                    </Link>
+                                    <Button
+                                        variant="contained"
+                                        color="secondary">
+                                        Оформить заказ
+                                    </Button>
                                 </div>
                             </div>
                         </div>

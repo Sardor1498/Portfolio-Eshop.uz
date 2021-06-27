@@ -28,6 +28,7 @@ const Main = props => {
 
   return (
     <div className="App">
+      <div className="container mx-auto">
       <div className="sticky top-0 z-20">
         <Header 
           isAuthorized={props.isAuthorized}
@@ -51,6 +52,7 @@ const Main = props => {
       </div>
       <div>
         <Footer />
+      </div>
       </div>
     </div>
   );

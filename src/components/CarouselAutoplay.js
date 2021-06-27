@@ -1,7 +1,6 @@
 import React from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import RecipeReviewCard from './RecipeReviewCard';
-import { CircularProgress } from "@material-ui/core";
 import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
 // or
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';

@@ -7,7 +7,13 @@ import CallIcon from '@material-ui/icons/Call';
 import RotateRightIcon from '@material-ui/icons/RotateRight';
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
-const Favorites = (props) => {
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+// or
+import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
+// or
+import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
+
+const CarouselS = (props) => {
     const [filteredProducts, setFilteredProducts] = useState([]);
 
     const filterFavorites = () => {
@@ -38,9 +44,9 @@ const Favorites = (props) => {
                     <br />
                     <h3 className="hover:bg-red-800 font-bold  cursor-pointer"><RotateRightIcon /> Eco-friendly</h3>
                 </div>
+
                 <div className="col-span-7">
                     <Splide
-                        className="mb-3"
                         options={{
                             type: "loop",
                             gap: "0.5rem",
@@ -49,25 +55,17 @@ const Favorites = (props) => {
                             resetProgress: false,
                             arrows: "slider",
                             width: "100%",
-                            // perMove: 10,
-                            height: "20vh",
-                            // perPage: 7,
+                            height: "60vh",
                             lazyLoad: "nearby",
                             breakpoints: {
                                 640: {
                                     perPage: 2
                                 },
-                                768: {
+                                1440: {
                                     perPage: 4
                                 },
-                                1024: {
-                                    perPage: 5
-                                },
-                                1440: {
-                                    perPage: 7
-                                },
                                 2560: {
-                                    perPage: 8
+                                    perPage: 4
                                 }
                             }
                         }}
@@ -75,15 +73,12 @@ const Favorites = (props) => {
                     >
                         {filteredProducts !== []
                             ? filteredProducts.map((item, index) => (
-                                <div className="mt-3 mr-2">
-                                    <SplideSlide key={index}>
-                                        <RecipeReviewCard
-                                            key={index}
-                                            data={item}
-                                            getProducts={props.getProducts}
-                                        />
-                                    </SplideSlide>
-                                </div>
+                                <SplideSlide key={index}>
+                                    <RecipeReviewCard
+                                        getProducts={props.getProducts}
+                                        productsIsLoaded={props.productsIsLoaded} data={item}
+                                    />
+                                </SplideSlide>
                             ))
                             : null}
                     </Splide>
@@ -93,4 +88,4 @@ const Favorites = (props) => {
     )
 };
 
-export default Favorites;
+export default CarouselS;

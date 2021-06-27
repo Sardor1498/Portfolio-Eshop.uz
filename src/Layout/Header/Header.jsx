@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import HiddenPanel from "../Menu/HiddenPanel";
@@ -45,12 +45,9 @@ const StyledMenuItem = withStyles(theme => ({
     }
 }))(MenuItem);
 
-
-
 const Header = props => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const [count, setCount] = useState(0);
-
 
     const handleClick = event => {
         setAnchorEl(event.target);
@@ -72,12 +69,17 @@ const Header = props => {
     useEffect(() => {
         getCount();
     }, [props.products])
-
     return (
-        <>
+        <div
+            className="grid md:grid-cols-3 sm:grid-cols-1 bg-gray-800 gap-2
+         md:place-content-center sm:h-22 md:h-14 md:min-h-full"
+        >
+            <div className="flex justify-start">
+                <HiddenPanel catalogs={props.catalogs} />
+            </div>
             <div
-                className="grid md:grid-cols-3 sm:grid-cols-1 bg-gray-800 gap-2
-                md:place-content-center sm:h-22 md:h-14 md:min-h-full"
+                className="grid md:place-content-center justify-end ml-20 
+            sm:ml-0 -mt-8 sm:-mt-0 w-3/5 sm:w-3/5 md:w-full"
             >
                 <SearchPanel />
             </div>
@@ -108,91 +110,31 @@ const Header = props => {
                             </StyledMenuItem>
                             <StyledMenuItem onClick={props.logout}>
                                 <ListItemIcon>
-                                    <ExitToAppIcon fontSize="small" />
-                                </ListItemIcon>
+                                    <ExitToAppIcon fontSize="small" /></ListItemIcon>
                                 <ListItemText primary="Выход" />
                             </StyledMenuItem>
                         </StyledMenu>
-                        <Link to="/favorites">
+
+                        <Link className="text-white" to="/favorites">
                             <Badge badgeContent={count} color="primary">
                                 <FavoriteBorderIcon className="cursor-pointer" />
-                                <span>Избранные</span>
                             </Badge>
+                            Избранные
                         </Link>
-                        <Link to="/basket">
-                            <Badge className="cursor-pointer" badgeContent={1} color="secondary">
+                        <Link className="text-white" to="/basket">
+                            <Badge badgeContent={count} color="primary">
                                 <ShoppingCartIcon className="cursor-pointer" />
-                                <span>Корзина</span>
                             </Badge>
+                            Корзина
                         </Link>
-
                     </>
                 ) : (
                     <Link className="text-white" to="/login">
                         Login
                     </Link>
                 )}
-
-
-                <div
-                    className="grid md:place-content-center justify-end ml-20 
-            sm:ml-0 -mt-8 sm:-mt-0 w-3/5 sm:w-3/5 md:w-full"
-                >
-                    <SearchPanel />
-                </div>
-                <div className="text-white flex justify-around items-center">
-                    {props.isAuthorized && props.user ? (
-                        <>
-                            <button
-                                aria-controls="customized-menu"
-                                aria-haspopup="true"
-                                className="bg-transparent hover:bg-white-200 text-white font-semibold py-1 px-2 rounded shadow"
-                                onClick={handleClick}
-                            >
-                                <AccountCircleIcon className="cursor-pointer mr-1" />
-                                {props.user.name}
-                            </button>
-                            <StyledMenu
-                                id="customized-menu"
-                                anchorEl={anchorEl}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
-                            >
-                                <StyledMenuItem>
-                                    <ListItemIcon>
-                                        <SettingsIcon fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Настройки" />
-                                </StyledMenuItem>
-                                <StyledMenuItem onClick={props.logout}>
-                                    <ListItemIcon>
-                                        <ExitToAppIcon fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Выход" />
-                                </StyledMenuItem>
-                            </StyledMenu>
-                            <Link to="/favorites">
-                                <Badge badgeContent={count} color="primary">
-                                    <FavoriteBorderIcon className="cursor-pointer" />
-                                </Badge>
-                                <span>Избранные</span>
-                            </Link>
-                            <Link to="/basket">
-                                <Badge className="cursor-pointer" badgeContent={1} color="secondary">
-                                    <ShoppingCartIcon className="cursor-pointer" />
-                                </Badge>
-                                <span>Корзина</span>
-                            </Link>
-                        </>
-                    ) : (
-                        <Link className="text-white" to="/login">
-                            Login
-                        </Link>
-                    )}
-                </div>
             </div>
-        </>
+        </div>
     );
 };
 

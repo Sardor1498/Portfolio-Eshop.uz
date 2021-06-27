@@ -4,14 +4,14 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 
 const BuyPage = (props) => {
-    // const { price } = useParams();
     const [value, setValue] = React.useState("3");
     const [totalM, setTotalM] = useState();
     const [totalAll, setTotalAll] = useState();
     const dispatch = useDispatch();
     const handleClick = event => {
-        setValue(event.target.value);
-    };
+        setValue(event.target.value)
+    }
+
 
     // const setToRedux = useCallback(
     //     () => dispatch({type: "ADD_PRICE_SUCCESS", payload: 12}),
@@ -94,7 +94,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             3 oy
-                            </label>
+                        </label>
                         <input
                             onClick={handleClick}
                             type="radio"
@@ -109,7 +109,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             6 oy
-                            </label>
+                        </label>
                         <input
                             onClick={handleClick}
                             type="radio"
@@ -124,7 +124,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             9 oy
-                            </label>
+                        </label>
                         <input
                             onClick={handleClick}
                             type="radio"
@@ -139,7 +139,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             12 oy
-                            </label>
+                        </label>
                     </div>
                     <div className="grid grid-cols-2">
                         <div className="border-2 border-gray-400 bg-transparent">
@@ -158,4 +158,5 @@ const BuyPage = (props) => {
         </>
     );
 };
+
 export default BuyPage;

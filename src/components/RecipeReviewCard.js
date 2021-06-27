@@ -69,7 +69,6 @@ export default function RecipeReviewCard(props) {
                 props.getProducts();
             }
         } catch (e) {
-            console.log(e)
         }
     }
 

@@ -4,10 +4,8 @@ import Home from '../../Pages/Home';
 import Appliances from '../../Pages/Appliances';
 import Phones from '../../Pages/Phones';
 import Sports from '../../Pages/Sports';
-import Office from '../../Pages/Office';
 import Tv from '../../Pages/Tv';
 import Notebooks from '../../Pages/Notebooks';
-import Content from './Content';
 import AddProduct from '../../Pages/AddProducts';
 import Test from '../../Pages/Test/Test';
 import AddCategory from '../../Pages/AddCategory';
@@ -17,7 +15,6 @@ import Add from '../../Pages/Add';
 import Register from '../../Pages/Register';
 import Login from '../../Pages/Login';
 import ProductDetails from '../../Pages/ProductDetails';
-import Header from '../Header/Header';
 import Favorites from '../../Pages/Favorites';
 import Basket from '../../Pages/Basket';
 import BuyPage from '../../Pages/BuyPage';
@@ -63,7 +60,7 @@ const ContentMain = (props) => {
                 {/* <Route path="/appliances">
                     <Appliances />
                 </Route>
-                <Route path="/office">
+                {/* <Route path="/office">
                     <Office />
                 </Route> */}
                 <Route path="/sports">

@@ -3,7 +3,7 @@ import SideBar from '../Layout/Sidebar/SideBar';
 import CarouselAutoplay from '../components/CarouselAutoplay';
 import Slideshow from '../Layout/SlideShow/SlideShow';
 import SaleComponent from '../components/SaleComponent';
-import { useSelector } from 'react-redux';
+import CarouselS from '../components/CarouselS';
 
 const Home = (props) => {
     // const darkMode = useSelector((state) => state.toggleReducer.toggle)
@@ -21,14 +21,14 @@ const Home = (props) => {
                 />
             </div>
             <div>
-                <SaleComponent
+                <SideBar />
+            </div>
+            <div>
+                <CarouselS
                     products={props.products}
                     productsIsLoaded={props.productsIsLoaded}
                     getProducts={props.getProducts}
                 />
-            </div>
-            <div>
-                <SideBar />
             </div>
         </>
     )

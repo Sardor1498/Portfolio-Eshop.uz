@@ -101,25 +101,6 @@ export default function Modal(props) {
         padding: "0"
     };
 
-    const checkProps = () => {
-        let emptyTitleProps;
-        if (props.title1 === undefined &&
-            props.title2 === undefined &&
-            props.title3 === undefined &&
-            props.title4 === undefined &&
-            props.title5 === undefined
-        ) {
-            emptyTitleProps = true;
-        } else {
-            emptyTitleProps = false;
-        }
-        return emptyTitleProps;
-    }
-
-    const style = {
-        padding: "0"
-    }
-
     return (
         <div className={checkProps() ? null : "m-5"}>
             <Card className={

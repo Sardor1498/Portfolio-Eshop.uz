@@ -14,6 +14,7 @@ import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from "@material-ui/core";
 import { useSelector } from 'react-redux';
+import BasketModal from "./BasketModal";
 
 
 
@@ -116,11 +117,22 @@ const ProductDetails = props => {
                             <h1>{totalM + " сум/мес"}<span className="text-gray-300"> в рассрочку <InfoIcon /></span></h1>
                         </div>
                         <div className="flex pl-3 mt-3">
-                            <Link to={"/basket/" + product.id}>
-                                <div className="pl-2">
-                                    <Button variant="contained" color="secondary">Купить</Button>
-                                </div>
-                            </Link>
+                            <Modal
+                                openBtn="Купить"
+                                component={
+                                    <BasketModal
+                                        product={product} />
+                                }
+                                bottomBtn={
+                                    <Link to={"/basket/" + product.id}>
+                                        <div className="pl-2">
+                                            <Button variant="contained" color="secondary">
+                                                Купить
+                                            </Button>
+                                        </div>
+                                    </Link>
+                                }
+                            />
                             <div className="pl-2">
                                 <Modal
                                     openBtn="Купит в рассрочку"

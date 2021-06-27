@@ -83,13 +83,14 @@ export default function Modal(props) {
     const handleClose = () => {
         setOpen(false);
     };
+    
     const checkProps = () => {
         let emptyTitleProps;
-        if (props.title === undefined &&
-            props.title1 === undefined &&
+        if (props.title1 === undefined &&
             props.title2 === undefined &&
             props.title3 === undefined &&
-            props.title4 === undefined
+            props.title4 === undefined &&
+            props.title5 === undefined
         ) {
             emptyTitleProps = true;
         } else {
@@ -97,11 +98,12 @@ export default function Modal(props) {
         }
         return emptyTitleProps;
     }
+
     const style = {
         padding: "0"
-    };
+    }
 
-    return (
+return (
         <div className={checkProps() ? null : "m-5"}>
             <Card className={
                 checkProps() ? "" :
@@ -126,7 +128,7 @@ export default function Modal(props) {
                         </CardContent>
                     )
                 }
-                <CardActions 
+                <CardActions
                     style={true ? style : null}
                 >
                     <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -141,17 +143,14 @@ export default function Modal(props) {
                     {props.modalHeaderTitle}
                 </DialogTitle>
                 <DialogContent dividers>
-                    {/* <AddProduct 
-                        createProduct={props.data.createProduct}
-                        categories={props.data.categories}
-                        brands={props.data.brands}
-                    /> */}
                     {props.component}
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus onClick={handleClose} color="primary">
-                        Save changes
-                    </Button>
+                    {props.bottomBtn ? props.bottomBtn : (
+                        <Button autoFocus onClick={handleClose} color={props.btnColor ? props.btnColor : "primary"}>
+                            {props.btnBottomText ? props.btnBottomText : "Сохранить"}
+                        </Button>
+                    )}
                 </DialogActions>
             </Dialog>
         </div>

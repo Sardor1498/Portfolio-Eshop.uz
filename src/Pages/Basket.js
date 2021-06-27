@@ -129,7 +129,7 @@ const Basket = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-span-1 border border-gray-200 rounded-lg mx-2">
+                            <div className="col-span-1 border border-gray-200 rounded-lg">
                                 <form>
                                     <TextField
                                         id="outlined-basic"

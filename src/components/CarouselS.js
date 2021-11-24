@@ -30,36 +30,37 @@ const CarouselS = (props) => {
 
     return (
         <div>
-            <div className="grid grid-cols-10">
-                <div className="col-span-3 bg-blue-700 rounded-2xl hover:bg-gray-500 text-left">
-                    <h1 className="hover:bg-red-800 font-bold font-bold cursor-pointer">Почему Eshop.uz</h1>
-                    <br />
-                    <h3 className="hover:bg-red-800 font-bold  cursor-pointer"><AirportShuttleIcon />Удобная оплата и быстрая доставка</h3>
-                    <br />
-                    <h3 className="hover:bg-red-800 font-bold  cursor-pointer"><SecurityIcon />Гарантия качества</h3>
-                    <br />
-                    <h3 className="hover:bg-red-800 font-bold  cursor-pointer"><CreditCardIcon /> Плати как удобно</h3>
-                    <br />
-                    <h3 className="hover:bg-red-800 font-bold  cursor-pointer"><CallIcon /> Поддержка 7 дней в неделю</h3>
-                    <br />
-                    <h3 className="hover:bg-red-800 font-bold  cursor-pointer"><RotateRightIcon /> Eco-friendly</h3>
+            <span className="font-bold text-2xl">Часто бывает нужно</span>
+            <div className="grid grid-cols-11">
+                <div className="col-span-3 h-96 mt-14 bg-red-600 rounded hover:bg-red-500 text-left p-12">
+                    <h1 className="hover:text-white text-yellow font-bold cursor-pointer">Почему Eshop.uz</h1>
+                    <h3 className="hover:text-white text-yellow font-bold cursor-pointer"><AirportShuttleIcon />
+                        Удобная оплата и быстрая доставка
+                    </h3>
+                    <h3 className="hover:text-white text-yellow font-bold cursor-pointer"><SecurityIcon />Гарантия качества</h3>
+                    <h3 className="hover:text-white text-yellow font-bold cursor-pointer"><CreditCardIcon /> Плати как удобно</h3>
+                    <h3 className="hover:text-white text-yellow font-bold cursor-pointer"><CallIcon /> Поддержка 7 дней в неделю</h3>
+                    <h3 className="hover:text-white text-yellow font-bold cursor-pointer"><RotateRightIcon /> Eco-friendly</h3>
                 </div>
 
-                <div className="col-span-7">
+                <div className="col-span-8">
                     <Splide
                         options={{
                             type: "loop",
                             gap: "0.5rem",
+                            perMove: 1,
+                            pagination: false,
                             autoplay: true,
                             pauseOnHover: false,
                             resetProgress: false,
                             arrows: "slider",
                             width: "100%",
-                            height: "60vh",
+                            // height: "60vh",
                             lazyLoad: "nearby",
                             breakpoints: {
+
                                 640: {
-                                    perPage: 2
+                                    perPage: 3.5
                                 },
                                 1440: {
                                     perPage: 4

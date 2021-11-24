@@ -1,6 +1,5 @@
 const initialState = {
-    price: {},
-    loaded: false
+    price: "",
 };
 
 export default function categoriesReducer(state = initialState, action) {
@@ -9,7 +8,6 @@ export default function categoriesReducer(state = initialState, action) {
             return {
                 ...state,
                 price: action.payload,
-                loaded: true
             };
             default:
                 return state;

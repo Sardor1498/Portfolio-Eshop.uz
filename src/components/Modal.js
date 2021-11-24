@@ -14,6 +14,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import { useState } from 'react';
+import CircularIntegration from './CircularIntegration';
 
 const styles = (theme) => ({
     root: {
@@ -83,7 +84,7 @@ export default function Modal(props) {
     const handleClose = () => {
         setOpen(false);
     };
-    
+
     const checkProps = () => {
         let emptyTitleProps;
         if (props.title1 === undefined &&
@@ -103,7 +104,7 @@ export default function Modal(props) {
         padding: "0"
     }
 
-return (
+    return (
         <div className={checkProps() ? null : "m-5"}>
             <Card className={
                 checkProps() ? "" :
@@ -131,7 +132,11 @@ return (
                 <CardActions
                     style={true ? style : null}
                 >
-                    <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                    <Button
+                        variant={props.openBtnVariant ? props.openBtnVariant : "outlined"}
+                        color={props.openBtnColor ? props.openBtnColor : "primary"}
+                        onClick={handleClickOpen}
+                    >
                         {props.openBtn}
                     </Button>
                 </CardActions>
@@ -147,9 +152,9 @@ return (
                 </DialogContent>
                 <DialogActions>
                     {props.bottomBtn ? props.bottomBtn : (
-                        <Button autoFocus onClick={handleClose} color={props.btnColor ? props.btnColor : "primary"}>
-                            {props.btnBottomText ? props.btnBottomText : "Сохранить"}
-                        </Button>
+                        <div>
+                            {props.btnBottomText ? props.btnBottomText : <CircularIntegration />}
+                        </div>
                     )}
                 </DialogActions>
             </Dialog>

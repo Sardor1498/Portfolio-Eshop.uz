@@ -29,9 +29,9 @@ const SaleComponent = (props) => {
         <div>
             <span className="text-xl font-bold text-left">Товары на распродаже</span>
             <div className="grid grid-cols-11">
-                <div className="col-span-3 bg-red-600 rounded pl-2">
+                <div className="col-span-3 bg-red-600 hover:bg-red-500 rounded pl-2">
                     
-                    <div className="sticky top-16">
+                    <div className="sticky top-16 pt-10">
                         <div className="text-xl text-white font-bold">Рассрочка</div>
                         <div className="text-lg text-white font-semibold">Без оформления кредита</div>
                         <img
@@ -39,7 +39,7 @@ const SaleComponent = (props) => {
                             alt="Rasm"
                         // className="sticky top-0"
                         />
-                        <div className="flex justify-center">
+                        <div className="flex justify-center pb-10">
                             <Link to="/favorites">
                                 <Button
                                     variant="contained"

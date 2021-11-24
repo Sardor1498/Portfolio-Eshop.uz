@@ -81,7 +81,10 @@ const Header = props => {
                 className="grid md:place-content-center justify-end ml-20 
             sm:ml-0 -mt-8 sm:-mt-0 w-3/5 sm:w-3/5 md:w-full"
             >
-                <SearchPanel />
+                <SearchPanel
+                    product={props.products}
+                    setSearchProducts={props.setSearchProducts}
+                />
             </div>
             <div className="text-white flex justify-around items-center">
                 {props.isAuthorized && props.user ? (

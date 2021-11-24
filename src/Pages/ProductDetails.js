@@ -39,6 +39,10 @@ const useStyles = makeStyles({
     },
 });
 
+// const openBtnColor = {
+//     backgroundColor: "red"
+// }
+
 const ProductDetails = props => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
@@ -56,7 +60,8 @@ const ProductDetails = props => {
         setDetails(res);
     };
 
-    const totalM = useSelector((state) => state.priceReducer.price)
+    const totalM = useSelector((state) =>
+        state.priceReducer !== {} ? state.priceReducer.price : null)
 
     useEffect(() => {
         getProduct();
@@ -114,11 +119,17 @@ const ProductDetails = props => {
                             <span>{product.price + " сўм"}</span>
                         </div>
                         <div className="text-left pl-5 pt-5">
-                            <h1>{totalM + " сум/мес"}<span className="text-gray-300"> в рассрочку <InfoIcon /></span></h1>
+                            <h1>{totalM ? totalM + " сум/мес" : null}
+                                <span className="text-gray-300">{totalM ? " в рассрочку" : null}
+                                <InfoIcon />
+                                </span>
+                            </h1>
                         </div>
                         <div className="flex pl-3 mt-3">
                             <Modal
                                 openBtn="Купить"
+                                openBtnColor="secondary"
+                                openBtnVariant="contained"
                                 component={
                                     <BasketModal
                                         product={product} />

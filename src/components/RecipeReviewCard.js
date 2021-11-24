@@ -77,45 +77,82 @@ export default function RecipeReviewCard(props) {
             {!product ? (
                 <CircularProgress />
             ) : (
-                <div className="h-96">
+                <div className={props.className ? props.className : "h-96"}>
                     <Card
                         className={
                             classes.root +
                             " h-full p-2 hover:shadow-3xl cursor-pointer focus:border-yellow-800"
                         }
                     >
-                        <Link to={"/details/" + product.id}>
-                            <div className="h-3/6 w-full">
-                                <CardMedia
-                                    style={size}
-                                    className={"h-full w-full"}
-                                    image={product.photo}
-                                    title={product.title}
-                                />
-                            </div>
-                            <div className="h-1/4">
-                                <CardHeader className="p-1" subheader={product.title} />
-                            </div>
-                        </Link>
+                        {
+                            props.categories ?
+                                <Link to="/phones">
+                                    <div className="h-3/6 w-full">
+                                        <CardMedia
+                                            style={size}
+                                            className={"h-full w-full"}
+                                            image={product.photo ? product.photo : props.image}
+                                            title={product.title ? product.title : null}
+                                        >
+                                            {
+                                                props.categories ?
+                                                    <img src={props.image ? props.image : null} alt="Categories" /> : null
+                                            }
+                                        </CardMedia>
+                                    </div>
+                                    <div className="h-1/4 overflow-hidden">
+                                        <CardHeader className="p-1" subheader={product.title ? product.title : null} />
+                                    </div>
+                                </Link>
+                                : (
+                                    <Link to={"/details/" + product.id}>
+                                        <div className="h-3/6 w-full">
+                                            <CardMedia
+                                                style={size}
+                                                className={"h-full w-full"}
+                                                image={product.photo ? product.photo : props.image}
+                                                title={product.title ? product.title : null}
+                                            >
+                                                {
+                                                    props.categories ?
+                                                        <img src={props.image ? props.image : null} alt="Categories" /> : null
+                                                }
+                                            </CardMedia>
+                                        </div>
+                                        <div className="h-1/4 overflow-hidden">
+                                            <CardHeader className="p-1" subheader={product.title ? product.title : null} />
+                                        </div>
+                                    </Link>
+                                )
+                        }
+
+
+
                         <div className="h-1/4">
                             <CardActions disableSpacing className="h-1/2 p-1">
-                                <IconButton
-                                    style={loading ? style : null}
-                                    disabled={loading}
-                                    aria-label="add to favorites"
-                                    onClick={prod => handleClick(product)}
-                                    color={product.selected ? "secondary" : "default"}
-                                >
-                                    <FavoriteIcon />
-                                </IconButton>
-                                <IconButton 
-                                    // style={loading ? style : null}
-                                    // disabled={loading}
-                                    // onClick={prod => oneClick(product)}
-                                    // aria-label="share"
-                                >
-                                    <ShareIcon id="button"/>
-                                </IconButton>
+                                {
+                                    props.icons ? props.icons : (
+                                        <div>
+                                            <IconButton
+                                                style={loading ? style : null}
+                                                disabled={loading}
+                                                aria-label="add to favorites"
+                                                onClick={prod => handleClick(product)}
+                                                color={product.selected ? "secondary" : "default"}
+                                            >
+                                                <FavoriteIcon />
+                                            </IconButton>
+                                            <IconButton
+                                            // style={loading ? style : null}
+                                            // disabled={loading}
+                                            // onClick={prod => oneClick(product)}
+                                            // aria-label="share"
+                                            >
+                                                <ShareIcon id="button" />
+                                            </IconButton>
+                                        </div>
+                                    )
+                                }
                             </CardActions>
                             <CardContent>
                                 <Typography variant="body2" color="textSecondary" component="p">

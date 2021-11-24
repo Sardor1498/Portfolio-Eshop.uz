@@ -27,9 +27,11 @@ const ContentMain = (props) => {
                 <Route exact path="/">
                     <Home
                         products={props.data.products}
+                        categories={props.data.categories}
                         productsIsLoaded={props.data.productsIsLoaded}
                         createProduct={props.data.createProduct}
                         getProducts={props.data.getProducts}
+                        searchProducts={props.searchProducts}
                     />
                 </Route>
                 <Route path="/phones">

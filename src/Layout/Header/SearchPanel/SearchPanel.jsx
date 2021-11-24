@@ -27,8 +27,19 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function SearchPanel() {
+export default function SearchPanel({ product, setSearchProducts }) {
+
     const classes = useStyles();
+
+
+    const handleChange = (e) => {
+        let filtered = product.filter(result => {
+            return result.description.match(new RegExp(`${e.target.value}`, 'gi')) ||
+            result.brandName.match(new RegExp(`${e.target.value}`, 'gi')) ||
+            result.title.match(new RegExp(`${e.target.value}`, 'gi'))
+        })
+        setSearchProducts(filtered)
+    }
 
     return (
         <Paper component="form" className={classes.root + " h-8"}>
@@ -36,6 +47,7 @@ export default function SearchPanel() {
                 className={classes.input}
                 placeholder="Search Eshop.uz"
                 inputProps={{ "aria-label": "search google maps" }}
+                onChange={(e) => handleChange(e)}
             />
             <IconButton
                 type="submit"

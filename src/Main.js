@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { BrowserRouter, withRouter } from "react-router-dom";
 import { connect, Provider } from "react-redux";
 import { compose } from "redux";
@@ -17,6 +17,8 @@ import { detailsAPI } from './api/productsDetailsAPI';
 import Content from './Layout/Content/Content';
 
 const Main = props => {
+
+  const [searchProducts, setSearchProducts] = useState([])
   
   useEffect(() => {
     props.getProducts();
@@ -38,6 +40,7 @@ const Main = props => {
           catalogs={props.catalogs}
           products={props.products}
           getProducts={props.getProducts}
+          setSearchProducts={setSearchProducts}
         />
       </div>
       <div>
@@ -45,6 +48,7 @@ const Main = props => {
       </div>
       <div>
         <ContentMain 
+          searchProducts={searchProducts}
           data={props}
           login={props.login}
           price={props.price}

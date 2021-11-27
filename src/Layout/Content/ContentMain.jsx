@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../../Pages/Home';
 import Appliances from '../../Pages/Appliances';
 import Phones from '../../Pages/Phones';
 import Sports from '../../Pages/Sports';
-import Office from '../../Pages/Office';
 import Tv from '../../Pages/Tv';
 import Notebooks from '../../Pages/Notebooks';
-import Content from './Content';
 import AddProduct from '../../Pages/AddProducts';
 import Test from '../../Pages/Test/Test';
 import AddCategory from '../../Pages/AddCategory';
@@ -17,21 +15,23 @@ import Add from '../../Pages/Add';
 import Register from '../../Pages/Register';
 import Login from '../../Pages/Login';
 import ProductDetails from '../../Pages/ProductDetails';
-import Header from '../Header/Header';
 import Favorites from '../../Pages/Favorites';
 import Basket from '../../Pages/Basket';
 import BuyPage from '../../Pages/BuyPage';
 
 const ContentMain = (props) => {
+
     return (
         <div>
             <Switch>
                 <Route exact path="/">
                     <Home
                         products={props.data.products}
+                        categories={props.data.categories}
                         productsIsLoaded={props.data.productsIsLoaded}
                         createProduct={props.data.createProduct}
                         getProducts={props.data.getProducts}
+                        searchProducts={props.searchProducts}
                     />
                 </Route>
                 <Route path="/phones">
@@ -57,12 +57,12 @@ const ContentMain = (props) => {
                         productsIsLoaded={props.data.productsIsLoaded}
                     />
                 </Route>
-                <Route path="/appliances">
+                {/* <Route path="/appliances">
                     <Appliances />
                 </Route>
-                <Route path="/office">
+                {/* <Route path="/office">
                     <Office />
-                </Route>
+                </Route> */}
                 <Route path="/sports">
                     <Sports />
                 </Route>
@@ -123,21 +123,18 @@ const ContentMain = (props) => {
                     <ProductDetails
                         getProductDetails={props.data.getProductDetails}
                         getCurrentProduct={props.data.getCurrentProduct}
-                        alixoja="Valixoja"
                     />
                 </Route>
                 <Route path="/favorites">
                     <Favorites
                         products={props.data.products}
-                        getProducts={props.data.getProducts}
-                        filterFavorites={props.data.filterFavorites}
+                        getProducts={props.data.getProducts} 
+                        filterFavorites={props.data.filterFavorites}  
                     />
                 </Route>
-                <Route path="/basket">
+                <Route path="/basket/:id?">
                     <Basket
                         products={props.data.products}
-                        getProducts={props.data.getProducts}
-                        filterBaskets={props.data.filterBaskets}
                     />
                 </Route>
                 <Route path="/buy/:price">

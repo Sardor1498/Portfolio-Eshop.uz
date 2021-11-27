@@ -13,6 +13,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import { useState } from 'react';
+import CircularIntegration from './CircularIntegration';
 
 const styles = (theme) => ({
     root: {
@@ -97,9 +99,10 @@ export default function Modal(props) {
         }
         return emptyTitleProps;
     }
+
     const style = {
         padding: "0"
-    };
+    }
 
     return (
         <div className={checkProps() ? null : "m-5"}>
@@ -110,27 +113,30 @@ export default function Modal(props) {
                     checkProps() ? null : (
                         <CardContent>
                             <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                {props.title1}
+                                {props.title}
                             </Typography>
                             <Typography>
-                                {props.title2}
+                                {props.title1}
                             </Typography>
                             <Typography className={classes.pos} color="textSecondary">
-                                {props.title3}
+                                {props.title2}
                             </Typography>
                             <Typography variant="body2" component="p">
-                                {props.title4}
+                                {props.title3}
                                 <br />
-                                {props.title5}
+                                {props.title4}
                             </Typography>
                         </CardContent>
                     )
                 }
-
                 <CardActions
-                    style={checkProps() ? style : null}
+                    style={true ? style : null}
                 >
-                    <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                    <Button
+                        variant={props.openBtnVariant ? props.openBtnVariant : "outlined"}
+                        color={props.openBtnColor ? props.openBtnColor : "primary"}
+                        onClick={handleClickOpen}
+                    >
                         {props.openBtn}
                     </Button>
                 </CardActions>
@@ -142,17 +148,14 @@ export default function Modal(props) {
                     {props.modalHeaderTitle}
                 </DialogTitle>
                 <DialogContent dividers>
-                    {/* <AddProduct 
-                        createProduct={props.data.createProduct}
-                        categories={props.data.categories}
-                        brands={props.data.brands}
-                    /> */}
                     {props.component}
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus onClick={handleClose} color="primary">
-                        Save changes
-                    </Button>
+                    {props.bottomBtn ? props.bottomBtn : (
+                        <div>
+                            {props.btnBottomText ? props.btnBottomText : <CircularIntegration />}
+                        </div>
+                    )}
                 </DialogActions>
             </Dialog>
         </div>

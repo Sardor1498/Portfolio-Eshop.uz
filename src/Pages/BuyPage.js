@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import './styles.css'
 import { Link, useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 const BuyPage = (props) => {
-    // const { price } = useParams();
     const [value, setValue] = React.useState("3");
     const [totalM, setTotalM] = useState();
     const [totalAll, setTotalAll] = useState();
-
+    const dispatch = useDispatch();
     const handleClick = event => {
-        setValue(event.target.value);
-    };
+        setValue(event.target.value)
+    }
+
+
+    // const setToRedux = useCallback(
+    //     () => dispatch({type: "ADD_PRICE_SUCCESS", payload: 12}),
+    //     [dispatch]
+    //   )
 
     useEffect(() => {
         calc();
@@ -43,7 +49,10 @@ const BuyPage = (props) => {
         let totalOylik = asosiyOylikTolov + qushilganOylikFoiz
         let jamiSumma = totalOylik * value;
         setTotalM(totalOylik);
+        // dispatch({type: "ADD_PRICE_SUCCESS", payload: totalOylik});
         setTotalAll(jamiSumma);
+        dispatch({type: "ADD_PRICE_SUCCESS", payload: totalM}) // BuyPagedan globalni statega chiqarish uchun useDispatch qilindi
+        // setToRedux()
     }
 
     return (
@@ -65,11 +74,14 @@ const BuyPage = (props) => {
                         type="text"
                         className="w-full focus:border-red-600 focus:border-4 rounded p-3 border-gray-500"
                     />
+<<<<<<< HEAD
                     <p className="text-gray-500 ">
+=======
+                    <p className="text-gray-400 ">
+>>>>>>> ee9a3b958b3913ecabc8bfe3178948c4d99c9fdc
                         Минимальная сумма: {props.price * 0.15} сум
                     </p>
                     <h5>Срок рассрочки, месяц.</h5>
-
                     <div className="radio-group bg-gray-100 rounded-full">
                         <input
                             onClick={handleClick}
@@ -86,7 +98,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             3 oy
-                            </label>
+                        </label>
                         <input
                             onClick={handleClick}
                             type="radio"
@@ -101,7 +113,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             6 oy
-                            </label>
+                        </label>
                         <input
                             onClick={handleClick}
                             type="radio"
@@ -116,7 +128,7 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             9 oy
-                            </label>
+                        </label>
                         <input
                             onClick={handleClick}
                             type="radio"
@@ -131,17 +143,25 @@ const BuyPage = (props) => {
                             className="py-1 px-3 w-24 m-0 h-8 font-bold rounded-full"
                         >
                             12 oy
-                            </label>
+                        </label>
                     </div>
                     <div className="grid grid-cols-2">
                         <div className="border-2 border-gray-400 bg-transparent">
                             <p>
+<<<<<<< HEAD
                                 Ежемесесячный платеж:<span>{ totalM ? totalM.toFixed(2) + " сум" : null}</span>
+=======
+                                Ежемесесячный платеж:<span> {totalM ? totalM.toFixed(1) + " сум" : null}</span>
+>>>>>>> ee9a3b958b3913ecabc8bfe3178948c4d99c9fdc
                             </p>
                         </div>
                         <div className="border-2 border-gray-400 bg-transparent">
                             <p>
+<<<<<<< HEAD
                                 Общая сумма<span>{ totalAll ? totalAll.toFixed(2) + " сум" : null}</span>
+=======
+                                Общая сумма<span> {totalAll ? totalAll.toFixed(1) + " сум" : null}</span>
+>>>>>>> ee9a3b958b3913ecabc8bfe3178948c4d99c9fdc
                             </p>
                         </div>
                     </div>
@@ -150,4 +170,5 @@ const BuyPage = (props) => {
         </>
     );
 };
+
 export default BuyPage;

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { BrowserRouter, withRouter } from "react-router-dom";
 import { connect, Provider } from "react-redux";
 import { compose } from "redux";
@@ -12,10 +12,13 @@ import { catalogsAPI } from './api/catalogsAPI';
 import { categoriesAPI } from './api/categoriesAPI';
 import { brandsAPI } from './api/brandsAPI';
 import { authAPI } from './api/usersAPI';
+import { priceAPI } from './api/priceAPI';
 import { detailsAPI } from './api/productsDetailsAPI';
 import Content from './Layout/Content/Content';
 
 const Main = props => {
+
+  const [searchProducts, setSearchProducts] = useState([])
   
   useEffect(() => {
     props.getProducts();
@@ -27,6 +30,7 @@ const Main = props => {
 
   return (
     <div className="App">
+      <div className="container mx-auto">
       <div className="sticky top-0 z-20">
         <Header 
           isAuthorized={props.isAuthorized}
@@ -36,6 +40,7 @@ const Main = props => {
           catalogs={props.catalogs}
           products={props.products}
           getProducts={props.getProducts}
+          setSearchProducts={setSearchProducts}
         />
       </div>
       <div>
@@ -43,12 +48,15 @@ const Main = props => {
       </div>
       <div>
         <ContentMain 
+          searchProducts={searchProducts}
           data={props}
           login={props.login}
+          price={props.price}
         />
       </div>
       <div>
         <Footer />
+      </div>
       </div>
     </div>
   );

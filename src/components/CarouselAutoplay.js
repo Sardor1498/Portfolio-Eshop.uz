@@ -1,7 +1,6 @@
 import React from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import RecipeReviewCard from './RecipeReviewCard';
-import { CircularProgress } from "@material-ui/core";
 import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
 // or
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
@@ -27,7 +26,7 @@ const CarouselAutoplay = (props) => {
                     resetProgress: false,
                     arrows: "slider",
                     width: "100%",
-                    // perMove: 10,
+                    perMove: 1,
                     // height: "20vh",
                     // perPage: 7,
                     lazyLoad: "nearby",
@@ -42,7 +41,7 @@ const CarouselAutoplay = (props) => {
                             perPage: 5
                         },
                         1440: {
-                            perPage: 7
+                            perPage: 6
                         },
                         2560: {
                             perPage: 8

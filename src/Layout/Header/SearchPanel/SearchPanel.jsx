@@ -30,12 +30,21 @@ const useStyles = makeStyles(theme => ({
 export default function SearchPanel() {
     const classes = useStyles();
 
+    const search = (e) => {
+        const text = "Salom"
+        const result = text.match(/`${e.target.value}`/gi)
+        console.log(e);
+        console.log(result);
+    }
+
+
     return (
         <Paper component="form" className={classes.root + " h-8"}>
             <InputBase
                 className={classes.input}
                 placeholder="Search Eshop.uz"
                 inputProps={{ "aria-label": "search google maps" }}
+                onChange={search}
             />
             <IconButton
                 type="submit"

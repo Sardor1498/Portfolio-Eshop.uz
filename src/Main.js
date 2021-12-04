@@ -19,6 +19,7 @@ import Content from './Layout/Content/Content';
 const Main = props => {
 
   const [searchProducts, setSearchProducts] = useState([])
+  console.log(searchProducts)
   
   useEffect(() => {
     props.getProducts();

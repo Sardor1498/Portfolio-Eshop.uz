@@ -10,9 +10,9 @@ import SearchProducts from '../components/SearchProducts'
 const Home = (props) => {
     return (
         <>
-            <div className={props.searchProducts.length > 0 ? "grid grid-cols-4 gap-5" : null}>
+            <div className={props.searchProducts ? "grid grid-cols-4 gap-5" : null}>
                 {
-                    props.searchProducts !== [] && props.searchProducts.length > 0 ? props.searchProducts.map((item) => (
+                    props.searchProducts !== [] && props.searchProducts ? props.searchProducts.map((item) => (
                         <SearchProducts
                             key={item.id}
                             data={item}
@@ -26,7 +26,7 @@ const Home = (props) => {
             </div>
             <div>
                 {
-                    props.searchProducts.length > 0 ? <Slideshow /> : null
+                    props.searchProducts !== [] ? <Slideshow /> : null
                 }
             </div>
             <div>

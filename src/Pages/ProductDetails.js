@@ -73,7 +73,6 @@ const ProductDetails = props => {
             <div className="container mx-auto">
                 <div className="grid grid-cols-2">
                     <div className="pl-60">
-<<<<<<< HEAD
                         <img className="p-5 w-96 h-100 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
                         <img className="w-20 h-20 border-2 border-gray-500 bg-gray-50 mt-5" src={Image} alt="" />
                     </div>
@@ -89,30 +88,6 @@ const ProductDetails = props => {
                                 <StarOutlineIcon />
                                 <StarOutlineIcon />
                                 <StarOutlineIcon />
-=======
-                        <img className="p-5 w-96 h-100 border-2 border-gray-500 bg-gray-50 mt-5" src={product.photo} alt="" />
-                        <img className="w-20 h-20 border-2 border-gray-500 bg-gray-50 mt-5" src={product.photo} alt="" />
-                    </div>
-                    <div className="text-left pl-5">
-                        <h1 className="pt-2">{product.brandName}</h1>
-                        <h1 className="text-4xl font-sans font-bold">{product.title}</h1>
-                        <h1 className="text-4xl font-sans font-bold">{product.description}</h1>
-                        <br />
-                        <div className="flex">
-                            <div className={classes.root}>
-                                <Rating
-                                    name="hover-feedback"
-                                    value={value}
-                                    precision={0.5}
-                                    onChange={(event, newValue) => {
-                                        setValue(newValue);
-                                    }}
-                                    onChangeActive={(event, newHover) => {
-                                        setHover(newHover);
-                                    }}
-                                />
-                                {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
->>>>>>> ee9a3b958b3913ecabc8bfe3178948c4d99c9fdc
                             </div>
                             <div className="text-gray-300 pl-3">
                                 <span>Отзывы (4)</span>
@@ -134,7 +109,6 @@ const ProductDetails = props => {
                             <p>Датчик Face ID: Есть</p>
                         </div>
                         <div className="text-left text-3xl pl-5 pt-5 font-semibold">
-<<<<<<< HEAD
                             <span>1 640 000 сум</span>
                         </div>
                         <div className="text-left pl-5 pt-5">
@@ -152,36 +126,6 @@ const ProductDetails = props => {
                                     }
                                 />
                             </div>
-=======
-                            <span>{product.price + " сўм"}</span>
-                        </div>
-                        <div className="text-left pl-5 pt-5">
-                            <h1>{totalM ? totalM + " сум/мес" : null}
-                                <span className="text-gray-300">{totalM ? " в рассрочку" : null}
-                                <InfoIcon />
-                                </span>
-                            </h1>
-                        </div>
-                        <div className="flex pl-3 mt-3">
-                            <Modal
-                                openBtn="Купить"
-                                openBtnColor="secondary"
-                                openBtnVariant="contained"
-                                component={
-                                    <BasketModal
-                                        product={product} />
-                                }
-                                bottomBtn={
-                                    <Link to={"/basket/" + product.id}>
-                                        <div className="pl-2">
-                                            <Button variant="contained" color="secondary">
-                                                Купить
-                                            </Button>
-                                        </div>
-                                    </Link>
-                                }
-                            />
->>>>>>> ee9a3b958b3913ecabc8bfe3178948c4d99c9fdc
                             <div className="pl-2">
                                 <Modal
                                     openBtn="Купит в рассрочку"
@@ -190,15 +134,6 @@ const ProductDetails = props => {
                                     }
                                 />
                             </div>
-<<<<<<< HEAD
-
-=======
-                            <Link to="/basket">
-                                <div className="pl-2">
-                                    <Button variant="outlined" color="secondary">Купить в один клик</Button>
-                                </div>
-                            </Link>
->>>>>>> ee9a3b958b3913ecabc8bfe3178948c4d99c9fdc
                         </div>
                         <div className="flex pl-5 pt-5">
                             <p><CheckIcon className="text-green-500" />  Доставка по Узбекистану</p>

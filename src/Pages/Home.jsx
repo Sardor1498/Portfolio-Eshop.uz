@@ -3,9 +3,12 @@ import SideBar from '../Layout/Sidebar/SideBar';
 import CarouselAutoplay from '../components/CarouselAutoplay';
 import Slideshow from '../Layout/SlideShow/SlideShow';
 import SaleComponent from '../components/SaleComponent';
+<<<<<<< HEAD
+=======
 import CarouselS from '../components/CarouselS';
 import CategoryCarousel from './CategoryCarousel';
 import SearchProducts from '../components/SearchProducts'
+>>>>>>> ee9a3b958b3913ecabc8bfe3178948c4d99c9fdc
 
 const Home = (props) => {
     return (
@@ -52,6 +55,15 @@ const Home = (props) => {
                 />
             </div>
             <div>
+<<<<<<< HEAD
+                <SaleComponent 
+                    products={props.products}
+                    productsIsLoaded={props.productsIsLoaded}
+                    getProducts={props.getProducts} />
+            </div>
+            <div>
+                <SideBar />
+=======
                 <span className="text-lg font-sans font-extrabold">Категория</span>
                 <CategoryCarousel
                     products={props.products}
@@ -59,6 +71,7 @@ const Home = (props) => {
                     productsIsLoaded={props.productsIsLoaded}
                     getProducts={props.getProducts}
                 />
+>>>>>>> ee9a3b958b3913ecabc8bfe3178948c4d99c9fdc
             </div>
         </>
     )
